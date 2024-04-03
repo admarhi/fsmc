@@ -1,6 +1,7 @@
-^mcfusi\.Rproj$
+^fsmc\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^dev*$
 ^dev$
 ^dev_data$
+vignettes/func_sim.Rmd

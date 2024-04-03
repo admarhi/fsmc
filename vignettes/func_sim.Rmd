@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(fsmc)
+#library(fsmc)
 ```
 
 ## Examples
@@ -37,7 +37,6 @@ for (f in list.files("../inst/extdata/misosoupR", full.names = TRUE)) {
     dplyr::select(dplyr::all_of(c("MO", "met", "val")))
 
   # Extract solution name
-  
   name <- stringr::str_split(f, "/")[[1]][5] %>% stringr::str_remove(".csv")
   
   # Assign solution to list
@@ -56,7 +55,7 @@ for (c1 in names(msR)) {
     alignment_list <- list()
     alignment_list[[c1]] <- msR[[c1]]
     alignment_list[[c2]] <- msR[[c2]]
-    msR_alignments[[alignment_name]] <- MiCo.align(alignment_list)
+    msR_alignments[[alignment_name]] <- MiCo.align.v2(alignment_list)
   }
   done <- c(done, c1)
   cat("Alignment:", round(length(done)/length(msR)*100, 2), "%     \r")
@@ -65,12 +64,27 @@ for (c1 in names(msR)) {
 
 ## Analyse the alignments
 
+### Binary Matrices
+What is the minimum number of edges and what is the maximum number of edges?
+What is the number of aligned edges?
+
 ### Jaccard Score
 `sum(mat, na.rm = TRUE) / (ncol(mat) * nrow(mat) - (is.na(mat) %>% sum()))`
-
 If this value is != 1 for any alignments, these alignments have partial differences that would be interesting to investigate. 
 
 ```{r}
+msR_tb <- tibble::tibble(
+  alignment
+  min_n_reacts = numeric(length = 1540),
+  max_n_reacts = numeric(length = 1540),
+  aligned_reacts = numeric(length = 1540),
+)
+```
 
+```{r}
+for (a in seq(length(msR_alignments))) {
+  
+  msR_tb
+}
 ```
 
