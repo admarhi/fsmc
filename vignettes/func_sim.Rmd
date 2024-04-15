@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 msR <- list()
 
 # Read all solutions and save to list
-for (f in list.files("../inst/extdata/misosoupR", full.names = TRUE)) {
+for (f in list.files("../inst/extdata/test_2", full.names = TRUE)) {
   tb <- read.csv(file = f) %>%
     tibble::as_tibble() %>%
     dplyr::rename(
@@ -38,7 +38,7 @@ for (f in list.files("../inst/extdata/misosoupR", full.names = TRUE)) {
 
   # Extract solution name
   name <- stringr::str_split(f, "/")[[1]][5] %>% stringr::str_remove(".csv")
-  
+
   # Assign solution to list
   msR[[name]] <- tb
 }
@@ -74,7 +74,7 @@ If this value is != 1 for any alignments, these alignments have partial differen
 
 ```{r}
 msR_tb <- tibble::tibble(
-  alignment
+  alignment_js = numeric(length = 1540),
   min_n_reacts = numeric(length = 1540),
   max_n_reacts = numeric(length = 1540),
   aligned_reacts = numeric(length = 1540),
@@ -84,7 +84,18 @@ msR_tb <- tibble::tibble(
 ```{r}
 for (a in seq(length(msR_alignments))) {
   
-  msR_tb
+  c1 <- msR_alignments[[a]]$bin_matrices[[1]]
+  c2 <- msR_alignments[[a]]$bin_matrices[[2]]
+  alignment <- msR_alignments[[a]]$alignment
+
+  c1_sum <- sum(c1[!is.na(c1)] != 0)
+  c2_sum <- sum(c2[!is.na(c2)] != 0)
+  al_sum <- sum(alignment[!is.na(alignment)] != 0)
+  
+  msR_tb$alignment_js[a] <- al_sum / min(c1_sum, c2_sum)
+  msR_tb$min_n_reacts[a] <- min(c1_sum, c2_sum)
+  msR_tb$max_n_reacts[a] <- max(c1_sum, c2_sum)
+  msR_tb$aligned_reacts[a] <- al_sum
 }
 ```
 
