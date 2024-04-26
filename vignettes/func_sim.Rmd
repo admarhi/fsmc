@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 #library(fsmc)
+library(ggplot2)
 ```
 
 ## Examples
@@ -74,19 +75,25 @@ If this value is != 1 for any alignments, these alignments have partial differen
 
 ```{r}
 msR_tb <- tibble::tibble(
+  alignment_name = names(msR_alignments),
+  co_names = names(msR_alignments),
   alignment_js = numeric(length = 1540),
   min_n_reacts = numeric(length = 1540),
   max_n_reacts = numeric(length = 1540),
   aligned_reacts = numeric(length = 1540),
-)
+) %>% 
+  tidyr::separate(
+    co_names, into = c("co1", "co2"), sep = "-"
+  )
 ```
 
 ```{r}
-for (a in seq(length(msR_alignments))) {
+for (a in seq(nrow(msR_tb))) {
+  a_name <- msR_tb$alignment_name[a]
   
-  c1 <- msR_alignments[[a]]$bin_matrices[[1]]
-  c2 <- msR_alignments[[a]]$bin_matrices[[2]]
-  alignment <- msR_alignments[[a]]$alignment
+  c1 <- msR_alignments[[a_name]]$bin_matrices[[1]]
+  c2 <- msR_alignments[[a_name]]$bin_matrices[[2]]
+  alignment <- msR_alignments[[a_name]]$alignment
 
   c1_sum <- sum(c1[!is.na(c1)] != 0)
   c2_sum <- sum(c2[!is.na(c2)] != 0)
@@ -98,4 +105,172 @@ for (a in seq(length(msR_alignments))) {
   msR_tb$aligned_reacts[a] <- al_sum
 }
 ```
+
+
+```{r}
+msR_tb <- msR_tb %>% 
+  dplyr::select(-"alignment_name") %>% 
+  dplyr::mutate(
+    co1 = as.factor(.data$co1),
+    co2 = as.factor(.data$co2)
+  )
+```
+
+
+```{r}
+msR_tb %>% 
+  ggplot(aes(aligned_reacts, min_n_reacts)) +
+  geom_point()
+msR_tb %>% 
+  ggplot(aes(aligned_reacts, max_n_reacts)) +
+  geom_point()
+msR_tb %>% 
+  ggplot(aes(alignment_js, aligned_reacts)) +
+  geom_point()
+msR_tb %>% 
+  ggplot(aes(alignment_js, min_n_reacts)) +
+  geom_point()
+msR_tb %>% 
+  ggplot(aes(alignment_js, max_n_reacts, color = co2)) +
+  geom_point() + theme(legend.position = "none")
+```
+Find the ones that have more than 300 max reacts
+```{r}
+msR_tb %>% 
+  dplyr::filter(
+    max_n_reacts > 300
+  )
+```
+
+
+Filter tibbles for just ac or cit
+
+```{r}
+msR_ac <- msR_tb %>% 
+  dplyr::filter(
+    stringr::str_starts(co1, "ac_") & stringr::str_starts(co2, "ac_")
+  )
+
+msR_cit <- msR_tb %>% 
+  dplyr::filter(
+    stringr::str_starts(co1, "cit_") & stringr::str_starts(co2, "cit_")
+  )
+
+msR_mix <- msR_tb %>% 
+  dplyr::filter(
+    stringr::str_starts(co1, "cit_") & stringr::str_starts(co2, "ac_") |
+    stringr::str_starts(co1, "ac_") & stringr::str_starts(co2, "cit_")
+  )
+```
+
+```{r}
+msR_ac %>% 
+  ggplot(aes(aligned_reacts, min_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(aligned_reacts, max_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, aligned_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, min_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, max_n_reacts)) +
+  geom_point() + theme(legend.position = "none")
+```
+
+```{r}
+msR_ac %>% 
+  ggplot(aes(aligned_reacts, min_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(aligned_reacts, max_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, aligned_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, min_n_reacts)) +
+  geom_point()
+msR_ac %>% 
+  ggplot(aes(alignment_js, max_n_reacts)) +
+  geom_point() + theme(legend.position = "none")
+```
+Join the two tibbles with categorical value for type of substrate
+
+```{r}
+msR_ac$substrate <- "ac"
+msR_cit$substrate <- "cit"
+msR_mix$substrate <- "mix"
+msR_ac_cit <-
+  dplyr::bind_rows(msR_ac, msR_cit, msR_mix) %>% 
+  dplyr::mutate(substrate = as.factor(.data$substrate))
+```
+
+Plot the same with color for substrate
+```{r}
+msR_ac_cit %>% 
+  ggplot(aes(aligned_reacts, min_n_reacts, color = substrate)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() + 
+  theme(legend.position = "top")
+msR_ac_cit %>% 
+  ggplot(aes(aligned_reacts, max_n_reacts, color = substrate)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() + 
+  theme(legend.position = "top")
+msR_ac_cit %>% 
+  ggplot(aes(alignment_js, aligned_reacts, color = substrate)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() + 
+  theme(legend.position = "top")
+msR_ac_cit %>% 
+  ggplot(aes(alignment_js, min_n_reacts, color = substrate)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() + 
+  theme(legend.position = "top")
+msR_ac_cit %>% 
+  ggplot(aes(alignment_js, max_n_reacts, color = substrate)) +
+  geom_point(alpha = 0.5) +
+  theme_bw() + 
+  theme(legend.position = "top")
+
+
+msR_ac_cit %>% 
+  dplyr::select(-"co1", -"co2") %>% 
+  tidyr::pivot_longer(cols = 2:4) %>% 
+  ggplot(aes(name, value, color = name)) +
+  geom_boxplot() +
+  facet_grid(cols = vars(substrate)) +
+  theme_bw() +
+  theme(
+    axis.title = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    legend.position = "bottom"
+  )
+
+msR_ac_cit %>% 
+  dplyr::select(-"co1", -"co2") %>% 
+  tidyr::pivot_longer(cols = 1) %>% 
+  ggplot(aes(name, value, color = substrate)) +
+  geom_violin(alpha = 0.2) +
+  geom_jitter(alpha = 0.2) +
+  geom_boxplot(alpha = 0) +
+  scale_y_continuous(limits = c(0,1), expand = c(0,0)) +
+  facet_grid(cols = vars(substrate)) +
+  theme_bw() +
+  theme(
+    axis.title = element_blank(),
+    legend.position = "none")
+```
+
+
+
+
+
+
+
 
