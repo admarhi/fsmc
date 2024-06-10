@@ -443,6 +443,30 @@ MiCo.align.v2 <- function(co_list) {
     }
   }
 
+  #### Calculate the identity score ####
+
+  # Get the sum of the alignment
+  alignment_sum <- sum(alignment, na.rm = TRUE)
+
+  # Get the sums of the communities
+  # 1. bin mat - alignment
+  # 2. resulting mat * the value matrix
+  # 3. sum of resulting matrix
+  # 4. take the sum of these, add alignment
+  # 5. divide alignment_sum by resulting value
+
+  # Subtract the alignment from the communities' binary matrices
+  minus_alig_list <- lapply(bin_matrices, `-`, e = bin_mat)
+
+
+  # Multiply the reduced matrices by the production matrices
+  for (co in names(co_list)) {
+    minus_alig_list[[co]] * flux_prod_j
+  }
+
+
+
+
   res <- list(
     comms = co_list,
     neighbs = neighbs,
