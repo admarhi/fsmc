@@ -83,7 +83,7 @@ msR_tb <- tibble::tibble(
   aligned_reacts = numeric(length = 1540),
 ) %>% 
   tidyr::separate(
-    co_names, into = c("co1", "co2"), sep = "-"
+    .data$co_names, into = c("co1", "co2"), sep = "-"
   )
 ```
 
@@ -268,7 +268,19 @@ msR_ac_cit %>%
 ```
 
 
+#### Do the clustering ####
+```{r}
+msR_clean <- msR_tb %>% 
+  dplyr::filter(
+    !stringr::str_starts(co1, "f6p") | 
+    !stringr::str_starts(co2, "f6p"),
+    !is.na(alignment_js))
 
+msR_clean
+```
+```{r}
+
+```
 
 
 

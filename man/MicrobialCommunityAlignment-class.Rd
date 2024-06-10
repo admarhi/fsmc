@@ -11,9 +11,8 @@ communities
 \section{Slots}{
 
 \describe{
-\item{\code{mico}}{A list of objects of type MicrobialCommunity.}
+\item{\code{mi_co}}{A list of objects of type MicrobialCommunity.}
 
-\item{\code{alignment_info}}{A character vector representing alignment-related
-information.}
+\item{\code{output_data}}{A list containing the alignment data.}
 }}
 

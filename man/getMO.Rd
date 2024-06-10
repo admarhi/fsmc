@@ -5,12 +5,16 @@
 \alias{getMO,MicrobialCommunity-method}
 \title{Get MO from MicrobialCommunity object}
 \usage{
-getMO(object)
+getMO(object, unique = FALSE)
 
-\S4method{getMO}{MicrobialCommunity}(object)
+\S4method{getMO}{MicrobialCommunity}(object, unique = FALSE)
 }
 \arguments{
 \item{object}{An object of class MicrobialCommunity.}
+
+\item{unique}{Liogical to toggle unique output.}
+
+\item{MicrobialCommunity}{}
 }
 \value{
 A character vector representing the microorganisms.

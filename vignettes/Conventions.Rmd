@@ -1,0 +1,29 @@
+---
+title: "Conventions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Conventions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsmc)
+```
+
+
+# Conventions
+
+## Overview
+
+- Classes: UpperCamelCase
+- Methods: lowerCamelCase
+- functions: snake_case
+- file names: snake_case

@@ -4,12 +4,10 @@
 \alias{MicrobialCommunityAlignment}
 \title{Constructor Function for MicrobialCommunityAlignment Objects}
 \usage{
-MicrobialCommunityAlignment(mico, alignment_info)
+MicrobialCommunityAlignment(mi_co)
 }
 \arguments{
-\item{mico}{A list of of objects of type MicrobialCommunity.}
-
-\item{alignment_info}{A character vector giving additional information for
+\item{mi_co}{A list of of objects of type MicrobialCommunity.
 the alignment.}
 }
 \description{
