@@ -2,23 +2,30 @@
 % Please edit documentation in R/class-MiCo.R
 \name{MiCo}
 \alias{MiCo}
-\title{Constructor Function for MicrobialCommunity Objects}
+\title{Constructor Function for MiCo (Microbial Community) Objects}
 \usage{
-MiCo(path = NULL, MO = character(), met = character(), flux = numeric())
+MiCo(
+  path = NULL,
+  species = character(),
+  metabolites = character(),
+  fluxes = numeric()
+)
 }
 \arguments{
 \item{path}{Path to a csv file storing community data. Not required when
 using MO, met, flux to specify the data.}
 
-\item{MO}{character vector representing the microorganisms present in the
+\item{species}{character vector representing the microorganisms present in the
 community.}
 
-\item{met}{A character vectors representing the metabolites consumed and
+\item{metabolites}{A character vectors representing the metabolites consumed and
 produced within the community.}
 
-\item{flux}{A numeric vector representing the fluxes of each metabolite in
+\item{fluxes}{A numeric vector representing the fluxes of each metabolite in
 the community.}
 }
 \description{
-Constructor Function for MicrobialCommunity Objects
+Constructor function for MiCo objects. This function can be used
+to create a new MiCo object from a CSV file or from vectors of
+microorganisms, metabolites and fluxes.
 }

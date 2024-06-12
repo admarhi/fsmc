@@ -3,7 +3,7 @@
 \docType{class}
 \name{MiCoAl-class}
 \alias{MiCoAl-class}
-\title{MicrobialCommunityAlignment-class}
+\title{Microbial Community Alignment Class}
 \description{
 A class to represent an alignment of multiple microbial
 communities

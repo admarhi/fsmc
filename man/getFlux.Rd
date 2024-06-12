@@ -3,7 +3,7 @@
 \name{getFlux}
 \alias{getFlux}
 \alias{getFlux,MiCo-method}
-\title{Get Fluxes from MiCo Object}
+\title{Get Fluxes from MiCo (Microbial Community) Object}
 \usage{
 getFlux(object)
 
@@ -18,7 +18,7 @@ A numeric vector representing the fluxes.
 A numeric vector representing the fluxes.
 }
 \description{
-Get Fluxes from MiCo Object
+Get Fluxes from MiCo (Microbial Community) Object
 }
 \section{Functions}{
 \itemize{

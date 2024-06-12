@@ -3,20 +3,24 @@
 \docType{class}
 \name{MiCo-class}
 \alias{MiCo-class}
-\title{MicrobialCommunity-class}
+\title{Microbial Community Class}
 \description{
 A class to represent communities of microorganisms.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{MO}}{A character vector representing the microorganisms present in the
-community.}
-
-\item{\code{met}}{A character vectors representing the metabolites consumed and
-produced within the community.}
-
-\item{\code{flux}}{A numeric vector representing the fluxes of each metabolite in
+\item{\code{species}}{A character vector representing the microorganisms present in
 the community.}
+
+\item{\code{metabolites}}{A character vector representing the metabolites consumed
+and produced within the community.}
+
+\item{\code{fluxes}}{A numeric vector representing the fluxes of each metabolite in
+the community.}
+
+\item{\code{edges}}{A list containing a hash of neighbouring metabolites and
+neighbouring species. For neighbouring metabolites, both the ingoing and
+outgoing flux is specified.}
 }}
 
