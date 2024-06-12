@@ -13,5 +13,5 @@ setGeneric("getMet", function(object) {
 #' @return A character vector representing the metabolites.
 #' @export
 setMethod("getMet", "MiCo", function(object) {
-  object@met
+  object@metabolites
 })

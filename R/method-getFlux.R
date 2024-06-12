@@ -1,6 +1,6 @@
-#' Get Fluxes from MiCo Object
+#' Get Fluxes from MiCo (Microbial Community) Object
 #'
-#' @param object An object of class MicrobialCommunity.
+#' @param object An object of class MiCo.
 #' @return A numeric vector representing the fluxes.
 #' @export
 setGeneric("getFlux", function(object) {
@@ -12,5 +12,5 @@ setGeneric("getFlux", function(object) {
 #' @return A numeric vector representing the fluxes.
 #' @export
 setMethod("getFlux", "MiCo", function(object) {
-  object@flux
+  object@fluxes
 })

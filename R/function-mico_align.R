@@ -1,16 +1,21 @@
-#' Functional Similarity of Microbial Communities
+#' Functional Alignment of Microbial Communities
 #'
-#' @param co_list List containing communities
+#' @param ... Microbial communities
+#' @param pairwise Logical indicating whether to perform pairwise alignment.
 #'
 #' @return List with alignment values
 #' @export
 #'
 #' @examples
 #' #
-MiCo.align.v2 <- function(co_list) {
+mico_align <- function(..., pairwise = FALSE) {
 
   # Get number of communities and print warning about flux score
-  if (length(co_list) > 2) message("\nFluxes only available for two comms!\n")
+  # if (length(co_list) > 2) message("\nFluxes only available for two comms!\n")
+  ### Change to output of what type of alignment is happening
+
+  # Get the list of communities
+  co_list <- list(...)
 
   # Add names if none exist
   if (is.null(names(co_list))) {

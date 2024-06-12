@@ -4,6 +4,6 @@
 #' @export
 setMethod("show", "MiCo", function(object) {
   cat("MiCo (MicrobialCommunity) Object\n")
-  cat(" - Unique microorganisms (MO):", length(unique(object@MO)), "\n")
-  cat(" - Unique metabolites (met):", length(unique(object@met)), "\n")
+  cat(" - Unique microorganisms (MO):", length(unique(object@species)), "\n")
+  cat(" - Unique metabolites (met):", length(unique(object@metabolites)), "\n")
 })

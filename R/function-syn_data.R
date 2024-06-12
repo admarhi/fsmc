@@ -1,3 +1,7 @@
+### Needs to generate an MiCo object
+### add argument to set seed within Namespace
+
+
 #' Generate Random Synthetic Communities
 #'
 #' @param n_mo Number of micro organisms

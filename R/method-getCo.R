@@ -21,8 +21,8 @@ setGeneric("getCo", function(object) {
 #' ### Write examples for both classes
 setMethod("getCo", "MiCo", function(object) {
   tibble::tibble(
-    MO = object@MO,
-    met = object@met,
-    flux = object@flux
+    species = object@species,
+    metabolites = object@metabolites,
+    fluxes = object@fluxes
   )
 })

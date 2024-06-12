@@ -1,20 +1,22 @@
-#' @title MicrobialCommunityAlignment-class
+#' @title Microbial Community Alignment Class
+#'
 #' @description A class to represent an alignment of multiple microbial
 #' communities
 #'
 #' @slot communities A list of objects of type MicrobialCommunity.
-#' @slot output A list containing the alignment data.
+#' @slot alignment A list containing the alignment data.
 #'
 #' @exportClass MiCoAl
+#'
 setClass(
   "MiCoAl",
   slots = c(
     communities = "list",
-    output = "list"
+    alignment = "list"
   ),
   prototype = list(
     communities = list(),
-    output = list()
+    alignment = list()
   ),
   validity = function(object) {
     if (!all(sapply(object@communities, is, "MiCo"))) {
@@ -27,10 +29,13 @@ setClass(
 
 #' Constructor for Microbial Community Alignment Objects
 #'
-#' @param communities A list of of objects of type MiCo
+#' @param ... Any number of MiCo objects to be aligned.
+#' @param pairwise Logical indicating whether to perform pairwise alignment.
 #'
 #' @export
-MiCoAl <- function(communities) {
+MiCoAl <- function(..., pairwise = FALSE) {
+  communities <- list(...)
+  names(communities) <- sapply(communities, function(x) x@names)
   methods::new(
     "MiCoAl",
     communities = communities)

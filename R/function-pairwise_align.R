@@ -8,7 +8,7 @@
 #' @examples
 #' ### Todo
 pairwise_align <- function(mi_co_list) {
-  combs <- combn(seq(length(mi_co_list)), 2)
+  combs <- utils::combn(seq(length(mi_co_list)), 2)
   for (i in seq(ncol(combs))) {
     c1 <- combs[1,i]
     c2 <- combs[2,i]

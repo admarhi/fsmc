@@ -1,33 +1,33 @@
-#' Get MO from c object
+#' Get Species From a MiCo (Microbial Community) Object
 #'
-#' @param unique Liogical to toggle unique output.
+#' @param unique Logical to toggle unique output.
 #' @param object An object of class MiCo
 #'
 #' @return A character vector representing the microorganisms.
 #' @export
-setGeneric("getMO", function(object, unique = FALSE) {
-  standardGeneric("getMO")
+setGeneric("getSpecies", function(object, unique = FALSE) {
+  standardGeneric("getSpecies")
 })
 
 
 #' @param object An object of class MiCo
 #' @param unique Logical to toggle unique output.
-#' @describeIn getMO Get MO from MicrobialCommunity object
+#' @describeIn getSpecies Get Species From a MiCo (Microbial Community) Object
 #' @return A character vector representing the microorganisms.
 #' @export
-setMethod("getMO", "MiCo", function(object, unique) {
+setMethod("getSpecies", "MiCo", function(object, unique) {
   cat(
     "Microorganisms in community:\n",
-    "Length:", length(object@MO), ", ",
-    "unique:", length(unique(object@MO)),
+    "Length:", length(object@species), ", ",
+    "unique:", length(unique(object@species)),
     "\n", sep = "")
-  t <- table(object@MO)
+  t <- table(object@species)
   for (i in 1:length(t)) {
     cat(" - ", names(t)[i], ": ", t[i], "\n", sep = "")
   }
   if (unique) {
-    invisible(unique(object@MO))
+    invisible(unique(object@species))
   } else {
-    invisible(object@MO)
+    invisible(object@species)
   }
 })
