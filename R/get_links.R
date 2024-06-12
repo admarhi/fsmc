@@ -1,12 +1,15 @@
-#' Get Links
+#' Find All Edges of a Community
 #'
-#' @param df Data frame with ...
+#' Takes a data frame describing a microbial community as input and returns a
+#' data frame with all links present in the community.
 #'
-#' @return Tibble with links
+#' @param df Data frame describing a microbial community.
+#'
+#' @return Data frame with all links present in the community.
 #' @export
 #'
 #' @examples
-#' #
+#' get_links(exCo1)
 get_links <- function(df) {
 
   # Get unique species
@@ -40,7 +43,7 @@ get_links <- function(df) {
     # Get all species for which the flux is greater than 0
     k <- hash::keys(sml[[i]])[hash::values(sml[[i]]) > 0]
 
-    # Iterate ove all species
+    # Iterate over all species
     for (j in 1:length(species)) {
 
       # Skip same
@@ -60,6 +63,7 @@ get_links <- function(df) {
       }
     }
   }
+  ### Still exporting as data frame, should be tibble.
   return(tb)
 }
 

@@ -1,4 +1,4 @@
-#### Community Class ####
+#### Class ####
 #' @title MicrobialCommunity-class
 #' @description A class to represent communities of microorganisms.
 #'
@@ -9,29 +9,34 @@
 #' @slot flux A numeric vector representing the fluxes of each metabolite in
 #' the community.
 #'
-#' @exportClass MicrobialCommunity
+#' @exportClass MiCo
 setClass(
-  "MicrobialCommunity",
+  "MiCo",
   slots = c(
     MO = "character",
     met = "character",
     flux = "numeric",
+    neighbours = "list",
     edges = "list"
   ),
   prototype = list(
     MO = character(),
     met = character(),
-    flux = numeric()
+    flux = numeric(),
+    neighbours = list(),
+    edges = list()
   ),
   validity = function(object) {
     if (length(object@met) != length(object@flux)) {
       return("The number of metabolites and fluxes must be the same")
     }
+    ### Build other checks
     TRUE
   }
 )
 
 
+#### Constructor ####
 #' Constructor Function for MicrobialCommunity Objects
 #'
 #' @param path Path to a csv file storing community data. Not required when
@@ -44,7 +49,7 @@ setClass(
 #' the community.
 #'
 #' @export
-MicrobialCommunity <- function(
+MiCo <- function(
     path = NULL, MO = character(), met = character(), flux = numeric()) {
 
   if (!is.null(path)) {
@@ -60,52 +65,9 @@ MicrobialCommunity <- function(
   if (is.null(path) & is.null(MO) | is.null(met) | is.null(flux)) {
     stop("When path is not given, 'MO', 'met' and 'flux' must be provided.")
   }
-
-
   methods::new(
-    "MicrobialCommunity",
+    "MiCo",
     MO = MO,
     met = met,
     flux = flux)
-}
-
-
-#### Alignment Class ####
-#' @title MicrobialCommunityAlignment-class
-#' @description A class to represent an alignment of multiple microbial
-#' communities
-#'
-#' @slot mi_co A list of objects of type MicrobialCommunity.
-#' @slot output_data A list containing the alignment data.
-#'
-#' @exportClass MicrobialCommunityAlignment
-setClass(
-  "MicrobialCommunityAlignment",
-  slots = c(
-    mi_co = "list",
-    output_data = "list"
-  ),
-  prototype = list(
-    mi_co = list(),
-    output_data = list()
-  ),
-  validity = function(object) {
-    if (!all(sapply(object@mi_co, is, "MicrobialCommunity"))) {
-      return(
-        "All elements of 'hypergraphs' must be MicrobialCommunity objects")
-    }
-    TRUE
-  }
-)
-
-#' Constructor Function for MicrobialCommunityAlignment Objects
-#'
-#' @param mi_co A list of of objects of type MicrobialCommunity.
-#' the alignment.
-#'
-#' @export
-MicrobialCommunityAlignment <- function(mi_co) {
-  methods::new(
-    "MicrobialCommunityAlignment",
-    mi_co = mi_co)
 }
