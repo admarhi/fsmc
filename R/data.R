@@ -1,4 +1,4 @@
-#' Example Community 1
+#' ac_A1R12_1
 #'
 #' Example community taken from `misosoup`.
 #'
@@ -11,6 +11,6 @@
 #'    \item{flux}{Flux of the metabolite}}
 #'
 #' @examples
-#' exCo1
+#' ac_A1R12_1
 #'
-"exCo1"
+"ac_A1R12_1"
