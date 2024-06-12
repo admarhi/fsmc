@@ -5,3 +5,4 @@
 ^dev$
 ^dev_data$
 vignettes/func_sim.Rmd
+^data-raw$

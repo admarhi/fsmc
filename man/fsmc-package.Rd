@@ -4,12 +4,12 @@
 \name{fsmc-package}
 \alias{fsmc}
 \alias{fsmc-package}
-\title{fsmc: What the Package Does (One Line, Title Case)}
+\title{fsmc: Functional Similarity of Microbial Communities}
 \description{
 What the package does (one paragraph).
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Adrian Hirt \email{am.hirt@pm.me} (\href{https://orcid.org/0009-0008-1929-6629}{ORCID})
 
 }
 \keyword{internal}

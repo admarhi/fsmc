@@ -1,9 +1,9 @@
 Package: fsmc
-Title: What the Package Does (One Line, Title Case)
+Title: Functional Similarity of Microbial Communities
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+    person("Adrian", "Hirt", , "am.hirt@pm.me", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0008-1929-6629"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -15,7 +15,8 @@ Imports:
     methods,
     purrr,
     stats,
-    tibble
+    tibble,
+    utils
 Suggests: 
     knitr,
     rmarkdown
