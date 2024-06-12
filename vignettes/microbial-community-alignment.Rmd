@@ -1,8 +1,8 @@
 ---
-title: "Conventions"
+title: "microbial-community-alignment"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Conventions}
+  %\VignetteIndexEntry{microbial-community-alignment}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -19,14 +19,7 @@ library(fsmc)
 ```
 
 
-# Conventions
 
-## Overview
+### Identity
+A value which gives a scalar value to represent the identity between two communities. 
 
-- Classes: UpperCamelCase
-- Methods: lowerCamelCase
-- functions: snake_case
-- file names: identical to function/method/class name
-
-
-## Documentation
