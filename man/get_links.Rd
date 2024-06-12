@@ -2,19 +2,20 @@
 % Please edit documentation in R/get_links.R
 \name{get_links}
 \alias{get_links}
-\title{Get Links}
+\title{Find All Edges of a Community}
 \usage{
 get_links(df)
 }
 \arguments{
-\item{df}{Data frame with ...}
+\item{df}{Data frame describing a microbial community.}
 }
 \value{
-Tibble with links
+Data frame with all links present in the community.
 }
 \description{
-Get Links
+Takes a data frame describing a microbial community as input and returns a
+data frame with all links present in the community.
 }
 \examples{
-#
+get_links(exCo1)
 }

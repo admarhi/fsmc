@@ -2,7 +2,7 @@
 % Please edit documentation in R/matrix_alignment.R
 \name{MiCo.align.v2}
 \alias{MiCo.align.v2}
-\title{Functional Similarity of Microbial Communities (v2)}
+\title{Functional Similarity of Microbial Communities}
 \usage{
 MiCo.align.v2(co_list)
 }
@@ -13,7 +13,7 @@ MiCo.align.v2(co_list)
 List with alignment values
 }
 \description{
-Functional Similarity of Microbial Communities (v2)
+Functional Similarity of Microbial Communities
 }
 \examples{
 #
