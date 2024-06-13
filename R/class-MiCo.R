@@ -14,6 +14,16 @@
 #' @slot bin_matrix A binary matrix representing the presence of fluxes.
 #' @slot flux_matrix A matrix representing the fluxes between metabolites.
 #' @slot names A string representing the name of the community.
+#' @slot n_edges_matrix A matrix representing the number of species in the
+#' edge between two metabolites.
+#' @slot flux_prod_j_matrix A matrix representing the total flux of production
+#' of j in the community.
+#' @slot eff_flux_prod_j_matrix A matrix giving the effective fluxes of
+#' production of j in the community.
+#' @slot flux_cons_i_matrix A matrix giving the total flux of consumption of i
+#' in the community.
+#' @slot eff_flux_cons_i_matrix A matrix giving the effective fluxes of
+#' consumption of i in the community.
 #'
 #' @exportClass MiCo
 #'
@@ -26,6 +36,11 @@ setClass(
     edges = "list",
     bin_matrix = "matrix",
     flux_matrix = "matrix",
+    n_edges_matrix = "matrix",
+    flux_prod_j_matrix = "matrix",
+    eff_flux_prod_j_matrix = "matrix",
+    flux_cons_i_matrix = "matrix",
+    eff_flux_cons_i_matrix = "matrix",
     names = "character"
   ),
   prototype = list(
@@ -35,6 +50,11 @@ setClass(
     edges = list(),
     bin_matrix = matrix(),
     flux_matrix = matrix(),
+    n_edges_matrix = matrix(),
+    flux_prod_j_matrix = matrix(),
+    eff_flux_prod_j_matrix = matrix(),
+    flux_cons_i_matrix = matrix(),
+    eff_flux_cons_i_matrix = matrix(),
     names = character()
   ),
   validity = function(object) {
@@ -103,9 +123,51 @@ MiCo <- function(
     metabolites = metabolites,
     fluxes = fluxes), silent = TRUE)
 
-  # Get the binary matrix
+  # Init the matrices
   mets <- unique(metabolites)
-  bin_matrix <- matrix(0, nrow = length(mets), ncol = length(mets))
+  bin_matrix <-
+    n_edges_matrix <-
+    flux_prod_j_matrix <-
+    eff_flux_prod_j_matrix <-
+    flux_cons_i_matrix <-
+    eff_flux_cons_i_matrix <-
+    matrix(
+      data = 0,
+      nrow = length(mets),
+      ncol = length(mets),
+      dimnames = list(mets, mets))
+
+  # Fill the matrices
+  for (i in seq(length(mets))) {
+    consumers_i <- edges$metabolites[[mets[i]]]$consumers
+    for (j in seq(length(mets))) {
+      producers_j <- edges$metabolites[[mets[j]]]$producers
+      # met_edges <- Reduce(intersect, list(producers_j, consumers_i))
+      met_edges <- intersect(producers_j, consumers_i)
+      if (length(met_edges) == 0) next
+      bin_matrix[i,j] <- 1
+      n_edges_matrix[i,j] <- length(met_edges)
+      p_flux_j <- edges$metabolites[[mets[j]]]$prod_fluxes
+      c_flux_i <- edges$metabolites[[mets[i]]]$cons_fluxes
+      flux_prod_j_matrix[i,j] <- sum(p_flux_j[names(p_flux_j) %in% met_edges])
+      flux_cons_i_matrix[i,j] <- sum(c_flux_i[names(c_flux_i) %in% met_edges])
+    }
+  }
+
+  ### Combine this with the upper loop if works
+  # Calculate the other matrices' values
+  # for (m1 in mets) {
+  #   consumers_m1 <- edges$metabolites[[m1]]$consumers
+  #   for (m2 in mets) {
+  #     producers_m2 <- edges$metabolites[[m2]]$producers
+  #     met_edges <- intersect(producers_m2, consumers_m1)
+  #     if (bin_matrix[m1, m2] == 0) next
+  #     ### Make a function that takes the respective parts of the list and
+  #     ### returns the effective flux and the total flux
+  #
+  #   }
+  # }
+
 
 
 
@@ -117,12 +179,10 @@ MiCo <- function(
     fluxes = fluxes,
     edges = edges,
     bin_matrix = bin_matrix,
+    n_edges_matrix = n_edges_matrix,
+    flux_prod_j_matrix = flux_prod_j_matrix,
+    eff_flux_prod_j_matrix = eff_flux_prod_j_matrix,
+    flux_cons_i_matrix = flux_cons_i_matrix,
+    eff_flux_cons_i_matrix = eff_flux_cons_i_matrix,
     names = name)
-
-
-  # Calculate the edges
-
-
-
-
 }

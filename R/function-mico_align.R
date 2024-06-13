@@ -93,10 +93,8 @@ mico_align <- function(..., pairwise = FALSE) {
 
         # Save number of edges
         edges_n[[co]][i,j] <- length(edges)
-
         # Save edges
         edges_list[[co]][[paste0(mets[i], "_to_", mets[j])]] <- edges
-
       }
     }
   }
