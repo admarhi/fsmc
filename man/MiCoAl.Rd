@@ -4,10 +4,12 @@
 \alias{MiCoAl}
 \title{Constructor for Microbial Community Alignment Objects}
 \usage{
-MiCoAl(communities)
+MiCoAl(..., pairwise = FALSE)
 }
 \arguments{
-\item{communities}{A list of of objects of type MiCo}
+\item{...}{Any number of MiCo objects to be aligned.}
+
+\item{pairwise}{Logical indicating whether to perform pairwise alignment.}
 }
 \description{
 Constructor for Microbial Community Alignment Objects

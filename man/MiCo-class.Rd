@@ -22,5 +22,26 @@ the community.}
 \item{\code{edges}}{A list containing a hash of neighbouring metabolites and
 neighbouring species. For neighbouring metabolites, both the ingoing and
 outgoing flux is specified.}
+
+\item{\code{bin_matrix}}{A binary matrix representing the presence of fluxes.}
+
+\item{\code{flux_matrix}}{A matrix representing the fluxes between metabolites.}
+
+\item{\code{names}}{A string representing the name of the community.}
+
+\item{\code{n_edges_matrix}}{A matrix representing the number of species in the
+edge between two metabolites.}
+
+\item{\code{flux_prod_j_matrix}}{A matrix representing the total flux of production
+of j in the community.}
+
+\item{\code{eff_flux_prod_j_matrix}}{A matrix giving the effective fluxes of
+production of j in the community.}
+
+\item{\code{flux_cons_i_matrix}}{A matrix giving the total flux of consumption of i
+in the community.}
+
+\item{\code{eff_flux_cons_i_matrix}}{A matrix giving the effective fluxes of
+consumption of i in the community.}
 }}
 

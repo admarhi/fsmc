@@ -6,6 +6,7 @@
 \usage{
 MiCo(
   path = NULL,
+  name = NULL,
   species = character(),
   metabolites = character(),
   fluxes = numeric()
@@ -14,6 +15,8 @@ MiCo(
 \arguments{
 \item{path}{Path to a csv file storing community data. Not required when
 using MO, met, flux to specify the data.}
+
+\item{name}{A character vector representing the name of the community.}
 
 \item{species}{character vector representing the microorganisms present in the
 community.}

@@ -13,6 +13,6 @@ communities
 \describe{
 \item{\code{communities}}{A list of objects of type MicrobialCommunity.}
 
-\item{\code{output}}{A list containing the alignment data.}
+\item{\code{alignment}}{A list containing the alignment data.}
 }}
 
