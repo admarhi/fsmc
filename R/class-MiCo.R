@@ -151,6 +151,7 @@ MiCo <- function(
       c_flux_i <- edges$metabolites[[mets[i]]]$cons_fluxes
       flux_prod_j_matrix[i,j] <- sum(p_flux_j[names(p_flux_j) %in% met_edges])
       flux_cons_i_matrix[i,j] <- sum(c_flux_i[names(c_flux_i) %in% met_edges])
+      ### Write the method to get the effective fluxes
     }
   }
 

@@ -36,7 +36,12 @@ setClass(
 MiCoAl <- function(..., pairwise = FALSE) {
   communities <- list(...)
   names(communities) <- sapply(communities, function(x) x@names)
+  alignment <- list()
+  alignment$binary_matrix <-
+    Reduce(`*`, lapply(communities, function(obj) slot(obj, "bin_matrix")))
+  ### Implement the overall score in the next step!
   methods::new(
     "MiCoAl",
-    communities = communities)
+    communities = communities,
+    alignment = alignment)
 }

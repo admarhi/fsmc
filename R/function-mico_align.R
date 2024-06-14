@@ -1,13 +1,15 @@
+########################## IMOPRTANT ##########################
+# This is an old function and not exported, rewrite the parts
+# individually into methods for the OOP approach.
+###############################################################
+
+
 #' Functional Alignment of Microbial Communities
 #'
 #' @param ... Microbial communities
 #' @param pairwise Logical indicating whether to perform pairwise alignment.
 #'
 #' @return List with alignment values
-#' @export
-#'
-#' @examples
-#' #
 mico_align <- function(..., pairwise = FALSE) {
 
   # Get number of communities and print warning about flux score
