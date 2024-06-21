@@ -5,12 +5,16 @@
 \alias{getEdges,MiCo-method}
 \title{Get Edges From a MiCo (Microbial Community) Object}
 \usage{
-getEdges(object, unique = FALSE)
+getEdges(object, type = NULL)
 
-\S4method{getEdges}{MiCo}(object, unique = FALSE)
+\S4method{getEdges}{MiCo}(object, type = NULL)
 }
 \arguments{
 \item{object}{An object of class MiCo}
+
+\item{type}{Character string indicating which type of edges to return. Can
+be either of \code{c("species", "metabolites")}, and defaults to \code{NULL.}
+If \code{NULL}, both types of edges are returned.}
 }
 \value{
 A list of edges in the community.

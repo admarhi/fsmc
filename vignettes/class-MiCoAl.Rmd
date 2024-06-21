@@ -1,0 +1,37 @@
+---
+title: "Microbial Community Alignment Class"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Microbial-Community-Alignment-Class}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsmc)
+```
+
+
+
+
+- Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
+- The default is to align all communities against each other
+- if `pairwise = TRUE` all unique pairwise combinations are aligned. 
+
+### Methods
+
+- cluster: Takes a `MiCoAl` object as input and an additional argument to specify the clustering algorithm to be used.
+- only works on `MiCoAl` objects that have more than one alignment. 
+
+### Identity
+A value which gives a scalar value to represent the identity between two communities. 
+
+$$ \frac{\alpha}{\sum\limits_{i = 1}^{n}(\sum C_i - \alpha) + \alpha} $$
+

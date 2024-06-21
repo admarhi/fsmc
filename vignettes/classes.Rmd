@@ -1,8 +1,8 @@
 ---
-title: "classes"
+title: "Classes"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{classes}
+  %\VignetteIndexEntry{Classes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,40 +18,18 @@ knitr::opts_chunk$set(
 library(fsmc)
 ```
 
-# Classes inn `fsmc`
+# Classes in `fsmc`
+`fsmc` is built around classes which simplify common workflows with microbial communities. 
 
-`fsmc` is built around a few classes which simplify common workflows with microbial communities. 
+- Implement S4 and why?
+- How to use classes
+
 
 ## MiCo
+The `MiCo` class serves as the standard way to save and work with data on the metabolism of a microbial community. Read more about the class in the [MiCo class documentation](class-MiCo.html).
 
-The `MiCo` class serves as the standard way to save and work with data on the metabolism of a microbial community. 
-
-### Slots
-
-- MO
-- metabolites
-- fluxes
-
-### Functionality
-
-Upon the creation of a `MiCo` class based on a three column input, additional information is calculated:
-
-- neighbours
-- binary matrix
-- edges
-- flux_consumption
-- flux_production
-- effective_flux_consumption
-- effective_flux_production
 
 ## MiCoAl
-The `MiCoAl` class serves as the standard way to align one or more `MiCo` objects. 
+The `MiCoAl` class serves as the standard way to align one or more `MiCo` objects. Read more about the class in the [MiCoAl class documentation](class-MiCoAl.html).
 
-- Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
-- The default is to align all communities against each other
-- if `pairwise = TRUE` all unique pairwise combinations are aligned. 
 
-### Methods
-
-- cluster: Takes a `MiCoAl` object as input and an additional argument to specify the clustering algorithm to be used.
-- only works on `MiCoAl` objects that have more than one alignment. 

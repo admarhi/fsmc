@@ -7,7 +7,7 @@
 MiCoAl(..., pairwise = FALSE)
 }
 \arguments{
-\item{...}{Any number of MiCo objects to be aligned.}
+\item{...}{MiCo objects to be aligned.}
 
 \item{pairwise}{Logical indicating whether to perform pairwise alignment.}
 }

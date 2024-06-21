@@ -169,9 +169,6 @@ MiCo <- function(
   #   }
   # }
 
-
-
-
   # Create the community
   methods::new(
     "MiCo",

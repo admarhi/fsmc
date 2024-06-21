@@ -1,4 +1,4 @@
-#' Show method for MicrobialCommunity objects
+#' Show method for Microbial Community objects
 #'
 #' @param object An object of class MiCo
 #' @export
@@ -7,3 +7,19 @@ setMethod("show", "MiCo", function(object) {
   cat(" - Unique microorganisms (MO):", length(unique(object@species)), "\n")
   cat(" - Unique metabolites (met):", length(unique(object@metabolites)), "\n")
 })
+
+
+#' Show method for Microbial Community Alignment Objects
+#'
+#' @param object An object of class MiCoAl
+#' @export
+setMethod("show", "MiCoAl", function(object) {
+  desc <- stringr::str_glue(
+    "Microbial Community Alignment Object (MiCoAl)\n",
+    "Alignment of {length(object@communities)} communities with an overall ",
+    "score of {5}."
+  )
+  print(desc)
+})
+
+

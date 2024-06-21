@@ -1,0 +1,73 @@
+---
+title: "Microbial Community Class"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Microbial-Community-Class}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsmc)
+```
+
+## MiCo
+
+The `MiCo` class serves as the standard way to save and work with data on the metabolism of a microbial community. 
+
+## Creation 
+To create an object of type `MiCo`, the user must input the data listed below. This data can either be contained in a single tibble or data frame, saved in a CSV file, or input as separate vectors.
+
+- `species`: A character vector specifying the species present in the community.
+- `metabolites`: A character vector specifying the metabolites present in the community.
+- `fluxes`: A numeric vector specifying the fluxes of each metabolite in the community.
+- `name`: Character string giving the name of the community.
+
+```{r}
+s <- c("RQR9693L", "RQR9693L", "RQR9693L", "RQR9693L", "MEV1152G", "MEV1152G", "MEV1152G", "XIQ2234Q", "XIQ2234Q", "XIQ2234Q")
+m <- c("met3", "met1", "met4", "met4", "met3", "met2", "met2", "met3", "met4", "met1")
+f <- c(-0.3023640,  0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769,  0.6027292)
+
+MiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
+```
+
+`fsmc` provides the function `syn_community()` to generate random `MiCo` objects based on user parameters. 
+
+```{r}
+syn_community(n_species = 8, max_met = 10, name = "example_syn_MiCo")
+```
+
+
+## Contents
+
+Upon the creation of a `MiCo` class based on a three column input, additional information is calculated:
+
+- species
+- metabolites
+- fluxes
+- edges
+- binary matrix
+- flux matrix 
+- name
+- flux_consumption
+- flux_production
+- effective_flux_consumption
+- effective_flux_production
+
+Each of these slots is described in the `MiCo()` class documentation.
+
+
+## Methods 
+- `getCo()`: Returns the community in tibble format.
+- `getSpecies()`: Retrieves the species from a community.
+- `getMet()`: Retrieves metabolites from a community.
+- `getFlux()`: Retrieves the fluxes from a community.
+- `getEdges()`: Retrieves the edges from a community.
+

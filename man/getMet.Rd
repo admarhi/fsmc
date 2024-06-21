@@ -5,23 +5,18 @@
 \alias{getMet,MiCo-method}
 \title{Get Metabolites from MiCo object}
 \usage{
-getMet(object)
+getMet(object, unique = FALSE)
 
-\S4method{getMet}{MiCo}(object)
+\S4method{getMet}{MiCo}(object, unique = FALSE)
 }
 \arguments{
-\item{object}{An object of class MicrobialCommunity.}
+\item{object}{An object of class MiCo}
+
+\item{unique}{Logical to toggle unique output.}
 }
 \value{
-A character vector representing the metabolites.
-
 A character vector representing the metabolites.
 }
 \description{
 Get Metabolites from MiCo object
 }
-\section{Functions}{
-\itemize{
-\item \code{getMet(MiCo)}: Get met from MicrobialCommunity object
-
-}}

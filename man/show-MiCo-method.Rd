@@ -2,7 +2,7 @@
 % Please edit documentation in R/method-show.R
 \name{show,MiCo-method}
 \alias{show,MiCo-method}
-\title{Show method for MicrobialCommunity objects}
+\title{Show method for Microbial Community objects}
 \usage{
 \S4method{show}{MiCo}(object)
 }
@@ -10,5 +10,5 @@
 \item{object}{An object of class MiCo}
 }
 \description{
-Show method for MicrobialCommunity objects
+Show method for Microbial Community objects
 }
