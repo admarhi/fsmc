@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/admarhi/fsmc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/admarhi/fsmc/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/admarhi/fsmc/branch/main/graph/badge.svg)](https://codecov.io/gh/admarhi/fsmc?branch=main)
 <!-- badges: end -->
 
 ## Installation
