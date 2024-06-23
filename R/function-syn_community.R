@@ -1,6 +1,6 @@
 #' Generate Random Synthetic Microbial Communities
 #'
-#' @param n_mo Number of micro organisms
+#' @param n_species Number of species in the community
 #' @param max_met Maximum number of metabolites in the communities
 #' @param scale_fac Scaling factor
 #' @param seed Seed for reproducibility

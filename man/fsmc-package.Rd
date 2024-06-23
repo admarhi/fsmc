@@ -8,6 +8,13 @@
 \description{
 What the package does (one paragraph).
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://admarhi.github.io/fsmc/}
+}
+
+}
 \author{
 \strong{Maintainer}: Adrian Hirt \email{am.hirt@pm.me} (\href{https://orcid.org/0009-0008-1929-6629}{ORCID})
 

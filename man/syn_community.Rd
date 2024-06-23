@@ -15,6 +15,8 @@ syn_community(
 )
 }
 \arguments{
+\item{n_species}{Number of species in the community}
+
 \item{max_met}{Maximum number of metabolites in the communities}
 
 \item{scale_fac}{Scaling factor}
@@ -26,8 +28,6 @@ syn_community(
 \item{MiCo}{Logical value to toggle return of MiCo object or tibble.}
 
 \item{name}{Character string giving the desired name of the community.}
-
-\item{n_mo}{Number of micro organisms}
 }
 \value{
 List with \code{n_co} number of communities.

@@ -11,10 +11,11 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
 Imports: 
     hash,
+    igraph,
     magrittr,
     methods,
-    purrr,
     stats,
+    stringr,
     tibble,
     utils
 Suggests: 
