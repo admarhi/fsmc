@@ -69,51 +69,49 @@ setClass(
 
 #' @title Constructor Function for MiCo (Microbial Community) Objects
 #'
-#' @description Constructor function for MiCo objects. This function can be used
-#' to create a new MiCo object from a CSV file or from vectors of
+#' @description Constructor function for MiCo objects. This function can be
+#' used to create a new MiCo object from a CSV file or from vectors of
 #' microorganisms, metabolites and fluxes.
 #'
-#' @param path Path to a csv file storing community data. Not required when
-#' using MO, met, flux to specify the data.
+#' @param data A data frame/tibble or a path to a csv file storing community
+#' data. Not required when using the `species`, `metabolites`, and `fluxes`
+#' arguments.
 #' @param name A character vector representing the name of the community.
-#' @param species character vector representing the microorganisms present in the
-#' community.
-#' @param metabolites A character vectors representing the metabolites consumed and
-#' produced within the community.
+#' @param species character vector representing the microorganisms present in
+#' the community.
+#' @param metabolites A character vectors representing the metabolites consumed
+#' and produced within the community.
 #' @param fluxes A numeric vector representing the fluxes of each metabolite in
 #' the community.
 #'
 #' @export
 MiCo <- function(
-    path = NULL,
+    data = NULL,
     name = NULL,
     species = character(),
     metabolites = character(),
     fluxes = numeric()) {
 
-  if (!is.null(path)) {
-
-    ### Build for other file formats.
-    ### This should be a read_community function
-
-    # Read data from CSV file
-    df <- utils::read.csv(file = path)
-
-    # Extract columns assuming the CSV is in order "MO", "met", "flux"
-    species <- df[,2] ### Check for order of columns
-    metabolites <- df[,1] ### Check for order of columns
-    fluxes <- df[,3] ### Check for order of columns
-
-    if (is.null(name)) name <- sub(".csv", "", basename(path))
-  }
-
-  # Check if it is possible to create the community
-  if (is.null(path) &
+  if (!is.null(data)) {
+    if (is.character(data) && file.exists(data)) {
+      if (is.null(name)) name <- sub(".csv", "", basename(data))
+      data <- tibble::as_tibble(utils::read.csv(data))
+    } else if (is.data.frame(data) | tibble::is_tibble(data)) {
+      if (is.null(name)) name <- deparse(substitute(data))
+    }
+    stopifnot(exprs = {
+      all(c("species", "metabolites", "fluxes") %in% names(data))
+      !is.null(name) ### Should be obsolete
+    })
+    species <- data$species
+    metabolites <- data$metabolites
+    fluxes <- data$fluxes
+  } else if (
       is.null(species) |
       is.null(metabolites) |
       is.null(fluxes)) {
     stop(
-      "When path is not given, 'species', 'metabolites' and 'fluxes' ",
+      "When data is not given, 'species', 'metabolites' and 'fluxes' ",
       "must be provided.")
   }
 
