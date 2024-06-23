@@ -24,10 +24,12 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/class-MiCo.html">Microbial Community Class</a>
+    <a class="dropdown-item" href="../articles/class-MiCo.html">MiCo (Microbial Community) Class</a>
     <a class="dropdown-item" href="../articles/class-MiCoAl.html">Microbial Community Alignment Class</a>
     <a class="dropdown-item" href="../articles/classes.html">Classes</a>
     <a class="dropdown-item" href="../articles/Conventions.html">Conventions</a>
+    <a class="dropdown-item" href="../articles/data-import.html">Data Import</a>
+    <a class="dropdown-item" href="../articles/example_workflow.html">Example Workflow</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -75,18 +77,18 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ac_A1R12_1</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 59 × 3</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    MO     met      flux</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> B3M02  ac      0.491</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> m_1A01 ac     -<span style="color: #BB0000;">0.491</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> B3M02  acald   0.873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> m_1A01 acald  -<span style="color: #BB0000;">0.873</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> B3M02  ade     0.274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> m_1A01 ade    -<span style="color: #BB0000;">0.274</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> B3M02  ala__D -<span style="color: #BB0000;">0.969</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> m_1A01 ala__D  0.969</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> B3M02  ala__L -<span style="color: #BB0000;">1.16</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> m_1A01 ala__L  1.16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    species metabolites fluxes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> B3M02   ac           0.491</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> m_1A01  ac          -<span style="color: #BB0000;">0.491</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> B3M02   acald        0.873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> m_1A01  acald       -<span style="color: #BB0000;">0.873</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> B3M02   ade          0.274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> m_1A01  ade         -<span style="color: #BB0000;">0.274</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> B3M02   ala__D      -<span style="color: #BB0000;">0.969</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> m_1A01  ala__D       0.969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> B3M02   ala__L      -<span style="color: #BB0000;">1.16</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> m_1A01  ala__L       1.16 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 49 more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

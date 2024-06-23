@@ -6,7 +6,9 @@ articles:
   class-MiCoAl: class-MiCoAl.html
   classes: classes.html
   Conventions: Conventions.html
-last_built: 2024-06-23T17:48Z
+  data-import: data-import.html
+  example_workflow: example_workflow.html
+last_built: 2024-06-23T20:25Z
 urls:
   reference: https://admarhi.github.io/fsmc/reference
   article: https://admarhi.github.io/fsmc/articles
