@@ -153,6 +153,7 @@ MiCo <- function(
     }
   }
 
+
   ### Combine this with the upper loop if works
   # Calculate the other matrices' values
   # for (m1 in mets) {
