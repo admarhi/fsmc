@@ -5,7 +5,7 @@
 \title{Constructor Function for MiCo (Microbial Community) Objects}
 \usage{
 MiCo(
-  path = NULL,
+  data = NULL,
   name = NULL,
   species = character(),
   metabolites = character(),
@@ -13,22 +13,23 @@ MiCo(
 )
 }
 \arguments{
-\item{path}{Path to a csv file storing community data. Not required when
-using MO, met, flux to specify the data.}
+\item{data}{A data frame/tibble or a path to a csv file storing community
+data. Not required when using the \code{species}, \code{metabolites}, and \code{fluxes}
+arguments.}
 
 \item{name}{A character vector representing the name of the community.}
 
-\item{species}{character vector representing the microorganisms present in the
-community.}
+\item{species}{character vector representing the microorganisms present in
+the community.}
 
-\item{metabolites}{A character vectors representing the metabolites consumed and
-produced within the community.}
+\item{metabolites}{A character vectors representing the metabolites consumed
+and produced within the community.}
 
 \item{fluxes}{A numeric vector representing the fluxes of each metabolite in
 the community.}
 }
 \description{
-Constructor function for MiCo objects. This function can be used
-to create a new MiCo object from a CSV file or from vectors of
+Constructor function for MiCo objects. This function can be
+used to create a new MiCo object from a CSV file or from vectors of
 microorganisms, metabolites and fluxes.
 }
