@@ -1,0 +1,32 @@
+---
+title: "Data Import"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Data-Import}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsmc)
+```
+
+## Import Single File
+
+
+
+## Import Directory
+
+```{r}
+# Obtain path to the example data
+path <- system.file("extdata", "misosoup", package = "fsmc")
+
+# Call the `MiCo` function to create a community object for every file in the directory
+```

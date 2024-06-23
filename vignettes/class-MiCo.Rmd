@@ -1,8 +1,8 @@
 ---
-title: "Microbial Community Class"
+title: "MiCo (Microbial Community) Class"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Microbial-Community-Class}
+  %\VignetteIndexEntry{MiCo-(Microbial-Community)-Class}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -61,7 +61,7 @@ Upon the creation of a `MiCo` class based on a three column input, additional in
 - effective_flux_consumption
 - effective_flux_production
 
-Each of these slots is described in the `MiCo()` class documentation.
+Each of these slots is described in the `MiCo-class()` class documentation.
 
 
 ## Methods 
