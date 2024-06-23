@@ -9,3 +9,5 @@ vignettes/func_sim.Rmd
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+^README\.Rmd$
+^\.github$
