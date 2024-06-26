@@ -25,9 +25,7 @@ outgoing flux is specified.}
 
 \item{\code{bin_matrix}}{A binary matrix representing the presence of fluxes.}
 
-\item{\code{flux_matrix}}{A matrix representing the fluxes between metabolites.}
-
-\item{\code{names}}{A string representing the name of the community.}
+\item{\code{name}}{A string representing the name of the community.}
 
 \item{\code{n_edges_matrix}}{A matrix representing the number of species in the
 edge between two metabolites.}

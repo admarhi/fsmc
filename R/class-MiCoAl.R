@@ -38,7 +38,7 @@ MiCoAl <- function(..., pairwise = FALSE) {
   # Make list of communities
   coms <- list(...)
   # Name the communities
-  names(coms) <- sapply(coms, function(x) x@names)
+  names(coms) <- sapply(coms, function(x) x@name)
   # Turn list into hash for quicker access
   coms <- hash::hash(coms)
   # Get all unique metabolites
