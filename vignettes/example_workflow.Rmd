@@ -12,10 +12,12 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
 ```
 
 ```{r setup}
 library(fsmc)
+options(tibble.print_max = 10)
 ```
 
 

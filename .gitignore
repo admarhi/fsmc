@@ -4,3 +4,5 @@ dev*
 inst/doc
 .Rhistory
 docs
+/doc/
+/Meta/

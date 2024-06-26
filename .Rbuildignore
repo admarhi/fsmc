@@ -11,3 +11,5 @@ vignettes/func_sim.Rmd
 ^pkgdown$
 ^README\.Rmd$
 ^\.github$
+^doc$
+^Meta$
