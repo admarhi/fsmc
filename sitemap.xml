@@ -4,6 +4,9 @@
     <loc>https://admarhi.github.io/fsmc/404.html</loc>
   </url>
   <url>
+    <loc>https://admarhi.github.io/fsmc/LICENSE-text.html</loc>
+  </url>
+  <url>
     <loc>https://admarhi.github.io/fsmc/LICENSE.html</loc>
   </url>
   <url>
@@ -20,6 +23,9 @@
   </url>
   <url>
     <loc>https://admarhi.github.io/fsmc/articles/data-import.html</loc>
+  </url>
+  <url>
+    <loc>https://admarhi.github.io/fsmc/articles/data.html</loc>
   </url>
   <url>
     <loc>https://admarhi.github.io/fsmc/articles/example_workflow.html</loc>
@@ -74,6 +80,12 @@
   </url>
   <url>
     <loc>https://admarhi.github.io/fsmc/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://admarhi.github.io/fsmc/reference/multiple_alignment.html</loc>
+  </url>
+  <url>
+    <loc>https://admarhi.github.io/fsmc/reference/pairwise_alignment.html</loc>
   </url>
   <url>
     <loc>https://admarhi.github.io/fsmc/reference/show-MiCo-method.html</loc>
