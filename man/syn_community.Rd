@@ -5,16 +5,18 @@
 \title{Generate Random Synthetic Microbial Communities}
 \usage{
 syn_community(
+  name,
   n_species,
   max_met,
   scale_fac = 2,
   seed = FALSE,
   dead_ends = FALSE,
-  MiCo = TRUE,
-  name = NULL
+  MiCo = TRUE
 )
 }
 \arguments{
+\item{name}{Character string giving the desired name of the community.}
+
 \item{n_species}{Number of species in the community}
 
 \item{max_met}{Maximum number of metabolites in the communities}
@@ -26,8 +28,6 @@ syn_community(
 \item{dead_ends}{Logical value to toggle dead ends in data}
 
 \item{MiCo}{Logical value to toggle return of MiCo object or tibble.}
-
-\item{name}{Character string giving the desired name of the community.}
 }
 \value{
 List with \code{n_co} number of communities.
@@ -36,5 +36,5 @@ List with \code{n_co} number of communities.
 Generate Random Synthetic Microbial Communities
 }
 \examples{
-#
+syn_community("Ex. Community", n_species = 5, max_met = 10)
 }

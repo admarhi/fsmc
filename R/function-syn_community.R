@@ -12,15 +12,15 @@
 #' @export
 #'
 #' @examples
-#' #
+#' syn_community("Ex. Community", n_species = 5, max_met = 10)
 syn_community <- function(
+    name,
     n_species,
     max_met,
     scale_fac = 2,
     seed = FALSE,
     dead_ends = FALSE,
-    MiCo = TRUE,
-    name = NULL) {
+    MiCo = TRUE) {
 
   r_names <- function(n = 5000) {
     a <- do.call(paste0, replicate(3, sample(LETTERS, n, TRUE), FALSE))
