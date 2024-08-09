@@ -46,10 +46,8 @@ multiple_alignment <- function(coms) {
           ### Retrieve all additional relevant data
         }
       }
-
       # Remove community hash from edge hash if no communities
       if (length(al[[edge]]$communities) == 0) hash::del(edge, al)
-
     }
   }
 
@@ -60,9 +58,14 @@ multiple_alignment <- function(coms) {
     unique() %>%
     sort(decreasing = TRUE)
 
+  al$levels <- levels
+  al$levels_mat <- levels_mat
+
   #### Alignment Score ####
-  # Get the minimum flux of production of j from any community for every edge.
-  base <- 5
+  # The overall score of the alignment gives the non-redundant count of aligned
+  # reactions in each level of the alignment.
+
+
 
 
   return(al)

@@ -16,10 +16,11 @@ setMethod("show", "MiCo", function(object) {
 #' @param object An object of class MiCoAl
 #' @export
 setMethod("show", "MiCoAl", function(object) {
+  alig_score <- "### ToDo ###"
   stringr::str_glue(
     "Microbial Community Alignment Object (MiCoAl)\n",
     "Alignment of {length(object@communities)} communities with an overall ",
-    "score of {5}."
+    "score of {alig_score}."
   ) %>% cat()
 })
 

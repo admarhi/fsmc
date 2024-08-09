@@ -33,7 +33,7 @@ syn_community(
 List with \code{n_co} number of communities.
 }
 \description{
-Generate Random Synthetic Microbial Communities
+A function that creates synthetic data suitable for demonstration purposes of the \code{fsmc} package.
 }
 \examples{
 syn_community("Ex. Community", n_species = 5, max_met = 10)

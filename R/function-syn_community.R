@@ -1,5 +1,7 @@
 #' Generate Random Synthetic Microbial Communities
 #'
+#' A function that creates synthetic data suitable for demonstration purposes of the `fsmc` package. 
+#' 
 #' @param n_species Number of species in the community
 #' @param max_met Maximum number of metabolites in the communities
 #' @param scale_fac Scaling factor

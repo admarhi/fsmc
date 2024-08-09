@@ -19,8 +19,6 @@ library(fsmc)
 ```
 
 
-
-
 - Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
 - The default is to align all communities against each other
 - if `pairwise = TRUE` all unique pairwise combinations are aligned. 
@@ -34,4 +32,6 @@ library(fsmc)
 A value which gives a scalar value to represent the identity between two communities. 
 
 $$ \frac{\alpha}{\sum\limits_{i = 1}^{n}(\sum C_i - \alpha) + \alpha} $$
+
+
 

@@ -12,16 +12,17 @@ setClass(
   "MiCoAl",
   slots = c(
     communities = "list",
-    alignment = "list"
+    alignment = "list",
+    comment = "character"
   ),
   prototype = list(
     communities = list(),
-    alignment = list()
+    alignment = list(),
+    comment = character()
   ),
   validity = function(object) {
     if (!all(sapply(object@communities, is, "MiCo"))) {
-      return(
-        "All elements must be MiCo objects")
+      return("All elements must be MiCo objects")
     }
     TRUE
   }
@@ -35,8 +36,16 @@ setClass(
 #' @export
 MiCoAl <- function(..., pairwise = FALSE) {
 
+  ### Make check that it is either multiple MiCo or a list of MiCo
+
+  if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
+    coms <- list(...)[[1]]
+  } else {
+    coms <- list(...)
+  }
   # Make list of communities
-  coms <- list(...)
+  # coms <- list(...)
+
   # Name the communities
   names(coms) <- sapply(coms, function(x) x@name)
   # Turn list into hash for quicker access

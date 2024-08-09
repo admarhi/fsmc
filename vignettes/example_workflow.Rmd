@@ -40,6 +40,8 @@ cit_A1R12_1
 # Create MiCo objects
 mc1 <- MiCo(ac_A1R12_1)
 mc2 <- MiCo(cit_A1R12_1)
+mc3 <- MiCo(ac_A1R12_2)
+mc4 <- MiCo(cit_A1R12_2)
 
 # Inspect MiCo Objects
 mc1
@@ -51,7 +53,7 @@ Two `MiCo` objects can be aligned by creating a `MiCoAl` object. The `MiCoAl` cr
 
 ```{r}
 # Align the MiCo objects by creating a MiCoAl object
-alignment <- MiCoAl(mc1, mc2)
+alignment <- MiCoAl(mc1, mc2, mc3, mc4)
 
 # Inspect the alignment
 alignment
@@ -59,4 +61,10 @@ alignment
 
 ### Analysis of the Alignment
 
+```{r}
+
+# alignmentNetwork(alignment, 0.8)
+alignmentHeatmap(alignment, 0.2)
+
+```
 

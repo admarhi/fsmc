@@ -2,6 +2,8 @@
 
 export(MiCo)
 export(MiCoAl)
+export(alignmentHeatmap)
+export(alignmentNetwork)
 export(getCo)
 export(getEdges)
 export(getFlux)
