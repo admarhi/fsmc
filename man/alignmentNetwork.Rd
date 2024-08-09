@@ -2,9 +2,12 @@
 % Please edit documentation in R/method-alignmentNetwork.R
 \name{alignmentNetwork}
 \alias{alignmentNetwork}
+\alias{alignmentNetwork,MiCoAl-method}
 \title{MiCoAl Network Plot}
 \usage{
 alignmentNetwork(object, frac)
+
+\S4method{alignmentNetwork}{MiCoAl}(object, frac)
 }
 \arguments{
 \item{object}{An object of class MiCoAl.}

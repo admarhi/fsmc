@@ -2,9 +2,12 @@
 % Please edit documentation in R/method-alignmentHeatmap.R
 \name{alignmentHeatmap}
 \alias{alignmentHeatmap}
+\alias{alignmentHeatmap,MiCoAl-method}
 \title{MiCoAl Heatmap}
 \usage{
 alignmentHeatmap(object, frac)
+
+\S4method{alignmentHeatmap}{MiCoAl}(object, frac)
 }
 \arguments{
 \item{object}{An object of class MiCoAl.}
