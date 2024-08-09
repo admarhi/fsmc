@@ -63,6 +63,7 @@ setClass(
   }
 )
 
+
 #' @title Microbial Community Alignment Class
 #'
 #' @description A class to represent an alignment of multiple microbial

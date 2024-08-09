@@ -16,7 +16,7 @@
 #' the community.
 #'
 #' @export
-MiCo <- function(
+newMiCo <- function(
     data = NULL,
     name = NULL,
     species = character(),

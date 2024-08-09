@@ -2,9 +2,10 @@
 #'
 #' @param ... MiCo objects to be aligned.
 #' @param pairwise Logical indicating whether to perform pairwise alignment.
+#' @param comment A comment to be added to the alignment.
 #'
 #' @export
-MiCoAl <- function(..., pairwise = FALSE, comment = NULL) {
+newMiCoAl <- function(..., pairwise = FALSE, comment = NULL) {
 
   ### Make check that it is either multiple MiCo or a list of MiCo
 
