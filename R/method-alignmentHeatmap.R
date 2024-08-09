@@ -12,6 +12,7 @@ setGeneric("alignmentHeatmap", function(object, frac) {
   standardGeneric("alignmentHeatmap")
 })
 
+#' @rdname alignmentHeatmap
 setMethod("alignmentHeatmap", "MiCoAl", function(object, frac) {
 
   # Filter the adjacency matrix for desired levels for visualization.

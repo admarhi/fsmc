@@ -12,6 +12,8 @@ setGeneric("alignmentNetwork", function(object, frac) {
   standardGeneric("alignmentNetwork")
 })
 
+
+#' @rdname alignmentNetwork
 setMethod("alignmentNetwork", "MiCoAl", function(object, frac) {
 
   # Filter the adjacency matrix for desired levels for visualization.
