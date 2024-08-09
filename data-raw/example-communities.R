@@ -30,7 +30,6 @@ misosoup <- list()
 for (f in fs::dir_ls("inst/extdata/misosoup")) {
   name <- f %>% fs::path_file() %>% fs::path_ext_remove()
   tb <- read.csv(f) %>% tibble::as_tibble()
-  # misosoup[[name]] <- MiCo(data = tb, name = name)
   misosoup[[name]] <- tb
 }
 usethis::use_data(misosoup, overwrite = TRUE)

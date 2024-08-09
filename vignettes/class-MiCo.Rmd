@@ -35,13 +35,13 @@ s <- c("RQR9693L", "RQR9693L", "RQR9693L", "RQR9693L", "MEV1152G", "MEV1152G", "
 m <- c("met3", "met1", "met4", "met4", "met3", "met2", "met2", "met3", "met4", "met1")
 f <- c(-0.3023640,  0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769,  0.6027292)
 
-MiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
+newMiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
 ```
 
 `fsmc` provides the function `syn_community()` to generate random `MiCo` objects based on user parameters. 
 
 ```{r}
-syn_community(n_species = 8, max_met = 10, name = "example_syn_MiCo")
+makeSynMiCo(n_species = 8, max_met = 10, name = "example_syn_MiCo")
 ```
 
 

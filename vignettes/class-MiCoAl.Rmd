@@ -22,6 +22,7 @@ library(fsmc)
 - Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
 - The default is to align all communities against each other
 - if `pairwise = TRUE` all unique pairwise combinations are aligned. 
+- Should the alignment be calculated upon the creation of the object or should it be calculated on demand?
 
 ### Methods
 

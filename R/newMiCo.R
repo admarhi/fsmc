@@ -47,7 +47,7 @@ newMiCo <- function(
   }
 
   # Get the edges
-  edges <- get_edges(tibble::tibble(
+  edges <- findEdges(tibble::tibble(
     species = species,
     metabolites = metabolites,
     fluxes = fluxes), silent = TRUE)

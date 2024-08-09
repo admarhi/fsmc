@@ -19,12 +19,12 @@ library(fsmc)
 ```
 
 ```{r}
-c1 <- MiCo(misosoup[[1]])
-c2 <- MiCo(misosoup[[2]])
-alig <- MiCoAl(c1, c2)
+c1 <- newMiCo(misosoup[[1]])
+c2 <- newMiCo(misosoup[[2]])
+alig <- newMiCoAl(c1, c2)
 ```
 
 ```{r}
-alignmentNetwork(alig, 1)
+plotAlignmentNetwork(alig, 1)
 ```
 

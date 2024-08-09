@@ -31,3 +31,8 @@ setMethod("getSpecies", "MiCo", function(object, unique) {
     invisible(object@species)
   }
 })
+
+
+
+## For the MiCoAl method, this could retrieve the level of the alignment and
+## return the species present.

@@ -1,7 +1,7 @@
 #' Generate Random Synthetic Microbial Communities
 #'
-#' A function that creates synthetic data suitable for demonstration purposes of the `fsmc` package. 
-#' 
+#' A function that creates synthetic data suitable for demonstration purposes of the `fsmc` package.
+#'
 #' @param n_species Number of species in the community
 #' @param max_met Maximum number of metabolites in the communities
 #' @param scale_fac Scaling factor
@@ -14,8 +14,8 @@
 #' @export
 #'
 #' @examples
-#' syn_community("Ex. Community", n_species = 5, max_met = 10)
-syn_community <- function(
+#' makeSynMiCo("Ex. Community", n_species = 5, max_met = 10)
+makeSynMiCo <- function(
     name,
     n_species,
     max_met,
@@ -65,7 +65,7 @@ syn_community <- function(
 
   if (!MiCo) return(community)
 
-  MiCo(
+  newMiCo(
     species = species,
     metabolites = mets,
     fluxes = fluxes,

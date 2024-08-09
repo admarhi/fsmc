@@ -24,7 +24,7 @@ newMiCoAl <- function(..., pairwise = FALSE, comment = NULL) {
 
   # Perform the desired alignment type
   ### Can be extended easily with switch in the future
-  align_func <- if (pairwise) pairwise_alignment else multiple_alignment
+  align_func <- if (pairwise) .alignPairwise else .alignMultiple
 
   # Perform the alignment
   alignment <- align_func(coms)

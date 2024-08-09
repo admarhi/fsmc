@@ -8,13 +8,7 @@
 #'
 #' @examples
 #' ###
-setGeneric("alignmentNetwork", function(object, frac) {
-  standardGeneric("alignmentNetwork")
-})
-
-
-#' @rdname alignmentNetwork
-setMethod("alignmentNetwork", "MiCoAl", function(object, frac) {
+plotAlignmentNetwork <- function(object, frac) {
 
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@alignment$levels_mat
@@ -47,4 +41,4 @@ setMethod("alignmentNetwork", "MiCoAl", function(object, frac) {
     main = glue::glue("Microbial Community Alignment"))
 
   invisible(g)
-})
+}

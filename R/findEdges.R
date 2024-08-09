@@ -12,8 +12,8 @@
 #' @export
 #'
 #' @examples
-#' get_edges(ac_A1R12_1)
-get_edges <- function(tb, silent = FALSE) {
+#' findEdges(ac_A1R12_1)
+findEdges <- function(tb, silent = FALSE) {
 
   ### Could delete the silent option
   ### Check that the columns are in the right order and correct names

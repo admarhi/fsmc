@@ -8,12 +8,7 @@
 #'
 #' @examples
 #' ###
-setGeneric("alignmentHeatmap", function(object, frac) {
-  standardGeneric("alignmentHeatmap")
-})
-
-#' @rdname alignmentHeatmap
-setMethod("alignmentHeatmap", "MiCoAl", function(object, frac) {
+plotAlignmentHeatmap <- function(object, frac) {
 
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@alignment$levels_mat
@@ -32,15 +27,18 @@ setMethod("alignmentHeatmap", "MiCoAl", function(object, frac) {
       met = "RowName",
       met2 = "ColName") %>%
     dplyr::filter(.data[["level"]] > min_weight) %>%
-    ggplot2::ggplot(ggplot2::aes(x = met, y = met2, fill = level)) +
+    ggplot2::ggplot(ggplot2::aes(
+      x = .data$met, y = .data$met2, fill = .data$level)) +
     ggplot2::geom_tile() +
     ggplot2::scale_fill_gradient(low = "white", high = "red") +
+    ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme_minimal() +
     ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 90, hjust = 1),
+      axis.text.x = ggplot2::element_text(angle = 90, hjust = 0, vjust = 2),
       axis.title = ggplot2::element_blank(),
-      panel.grid = ggplot2::element_blank()
+      panel.grid = ggplot2::element_blank(),
+      legend.position = "bottom"
     )
 
   gg
-})
+}

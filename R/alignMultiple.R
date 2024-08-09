@@ -3,11 +3,10 @@
 #' @param coms Named list of MiCo objects.
 #'
 #' @return A list containing the alignment data.
-#' @export
 #'
 #' @examples
 #' ###
-multiple_alignment <- function(coms) {
+.alignMultiple <- function(coms) {
   ### Check that all communities are named
   # Get all unique metabolites
   mets <- unique(unlist(lapply(coms, getMet)))
