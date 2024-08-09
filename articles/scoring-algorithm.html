@@ -39,7 +39,8 @@
     <li><a class="dropdown-item" href="../articles/Conventions.html">Conventions</a></li>
     <li><a class="dropdown-item" href="../articles/data-import.html">Data Import</a></li>
     <li><a class="dropdown-item" href="../articles/data.html">Data</a></li>
-    <li><a class="dropdown-item" href="../articles/example_workflow.html">Example Workflow</a></li>
+    <li><a class="dropdown-item" href="../articles/experiment-1.html">Experiment 1</a></li>
+    <li><a class="dropdown-item" href="../articles/experiment-2.html">experiment-2</a></li>
     <li><a class="dropdown-item" href="../articles/scoring-algorithm.html">Alignment Scoring Algorithm</a></li>
   </ul>
 </li>
@@ -72,14 +73,14 @@
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://admarhi.github.io/fsmc/">fsmc</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">c1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">c2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
-<span><span class="va">alig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">c1</span>, <span class="va">c2</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">alig</span>, <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
-<p><img src="scoring-algorithm_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
-  </main>
+<p>The identity matrix is given as the non-redundant count of reactions
+in the given level of the alignment over the count of all reactions in
+the set of consortia.</p>
+<p>BM = binary matrix representing all edges in the set of consortia</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∑</mo><mtext mathvariant="normal">BM</mtext><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></munder><msup><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msup><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>N</mi><mo stretchy="true" form="postfix">)</mo></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><mrow><mo stretchy="true" form="prefix">(</mo><munder><mo>∑</mo><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi><mo>&lt;</mo><mi>k</mi></mrow></munder><msup><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mn>3</mn><mo stretchy="true" form="postfix">)</mo></mrow></msup><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo>,</mo><mi>k</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msup><mi>A</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>N</mi><mo stretchy="true" form="postfix">)</mo></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \sum \text{BM} - \left( \sum_{i &lt; j} A^{(2)}(i,j)  + A^{(N)} \right) - \left( \sum_{i &lt; j &lt; k} A^{(3)}(i,j,k)  + A^{(N)} \right) </annotation></semantics></math></p>
+<ul>
+<li>How does this score compare against the tanimoto coefficient?</li>
+</ul></main>
 </div>
 
 
