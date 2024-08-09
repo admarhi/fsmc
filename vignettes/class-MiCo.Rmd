@@ -20,7 +20,7 @@ library(fsmc)
 
 ## MiCo
 
-The `MiCo` class serves as the standard way to save and work with data on the metabolism of a microbial community. 
+The `MiCo` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community. 
 
 ## Creation 
 To create an object of type `MiCo`, the user must input the data listed below. This data can either be contained in a single tibble or data frame, saved in a CSV file, or input as separate vectors.

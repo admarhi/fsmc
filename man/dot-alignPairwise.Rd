@@ -13,7 +13,10 @@
 List of pairwise alignments.
 }
 \description{
-Pairwise Alignment of MiCo (Microbial Community) Objects
+\itemize{
+\item This method only allows for the alignment of edges which are present in both communities.
+\item 
+}
 }
 \examples{
 ###

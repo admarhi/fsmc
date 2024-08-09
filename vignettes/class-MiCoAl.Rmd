@@ -18,6 +18,9 @@ knitr::opts_chunk$set(
 library(fsmc)
 ```
 
+# Microbial Community Alignment Class
+
+
 
 - Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
 - The default is to align all communities against each other
@@ -26,8 +29,9 @@ library(fsmc)
 
 ### Methods
 
-- cluster: Takes a `MiCoAl` object as input and an additional argument to specify the clustering algorithm to be used.
-- only works on `MiCoAl` objects that have more than one alignment. 
+A variety of methods can be called on a `MiCoAl` object. The output of the methods has to be assigned back to the variable containing the object to persist. 
+
+- clusterAlignment: Takes a `MiCoAl` object as input and an additional argument to specify the clustering algorithm to be used, only works on `MiCoAl` objects that have undergone a pairwise alignment. 
 
 ### Identity
 A value which gives a scalar value to represent the identity between two communities. 
@@ -36,3 +40,13 @@ $$ \frac{\alpha}{\sum\limits_{i = 1}^{n}(\sum C_i - \alpha) + \alpha} $$
 
 
 
+## Contents
+
+- Communities hash/list containing the `MiCo` objects
+- Alignment hash:
+  - overall alignment matrix (binary)
+  - hash for each level calculated (### how many levels?)
+    - alignment matrix
+    - longest connected components for each level
+    - how to score alignments with more communities more highly?
+    - how to figure out the connecctedness for parts of the alignment in whicch there are less communities represented than in the overall alignment?

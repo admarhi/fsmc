@@ -18,13 +18,12 @@ knitr::opts_chunk$set(
 library(fsmc)
 ```
 
-```{r}
-c1 <- newMiCo(misosoup[[1]])
-c2 <- newMiCo(misosoup[[2]])
-alig <- newMiCoAl(c1, c2)
-```
+The identity matrix is given as the non-redundant count of reactions in the given level of the alignment over the count of all reactions in the set of consortia.
 
-```{r}
-plotAlignmentNetwork(alig, 1)
-```
+BM = binary matrix representing all edges in the set of consortia
 
+
+$$ \sum \text{BM} - \left( \sum_{i < j} A^{(2)}(i,j)  + A^{(N)} \right) - \left( \sum_{i < j < k} A^{(3)}(i,j,k)  + A^{(N)} \right) $$
+
+
+- How does this score compare against the tanimoto coefficient?
