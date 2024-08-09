@@ -23,21 +23,28 @@ plotAlignmentHeatmap <- function(object, frac) {
       cols = -"RowName",
       names_to = "ColName",
       values_to = "level") %>%
+
     dplyr::rename(
       met = "RowName",
       met2 = "ColName") %>%
     dplyr::filter(.data[["level"]] > min_weight) %>%
     ggplot2::ggplot(ggplot2::aes(
-      x = .data$met, y = .data$met2, fill = .data$level)) +
+      x = .data$met2, y = .data$met, fill = .data$level)) +
     ggplot2::geom_tile() +
-    ggplot2::scale_fill_gradient(low = "white", high = "red") +
+    ggplot2::coord_fixed() +
+    ggplot2::scale_fill_gradient(
+      low = "yellow",
+      high = "red",
+      breaks = scales::breaks_pretty()
+      ) +
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme_minimal() +
     ggplot2::theme(
-      axis.text.x = ggplot2::element_text(angle = 90, hjust = 0, vjust = 2),
+      axis.text.x = ggplot2::element_text(angle = 90, hjust = 0),
+      axis.text.y = ggplot2::element_text(vjust = 0.4),
       axis.title = ggplot2::element_blank(),
-      panel.grid = ggplot2::element_blank(),
-      legend.position = "bottom"
+      # panel.grid = ggplot2::element_blank(),
+      legend.position = "right"
     )
 
   gg

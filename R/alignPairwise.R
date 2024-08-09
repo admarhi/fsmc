@@ -1,5 +1,7 @@
 #' Pairwise Alignment of MiCo (Microbial Community) Objects
 #'
+#' - This method only allows for the alignment of edges which are present in both communities.
+#' -
 #'
 #' @param coms Named list of MiCo objects.
 #'
