@@ -5,60 +5,53 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="fsmc">
 <title>Example Workflow • fsmc</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Example Workflow">
-<meta property="og:description" content="fsmc">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Example Workflow">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">fsmc</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/class-MiCo.html">MiCo (Microbial Community) Class</a>
-    <a class="dropdown-item" href="../articles/class-MiCoAl.html">Microbial Community Alignment Class</a>
-    <a class="dropdown-item" href="../articles/classes.html">Classes</a>
-    <a class="dropdown-item" href="../articles/Conventions.html">Conventions</a>
-    <a class="dropdown-item" href="../articles/data-import.html">Data Import</a>
-    <a class="dropdown-item" href="../articles/data.html">Data</a>
-    <a class="dropdown-item" href="../articles/example_workflow.html">Example Workflow</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/class-MiCo.html">MiCo (Microbial Community) Class</a></li>
+    <li><a class="dropdown-item" href="../articles/class-MiCoAl.html">Microbial Community Alignment Class</a></li>
+    <li><a class="dropdown-item" href="../articles/classes.html">Classes</a></li>
+    <li><a class="dropdown-item" href="../articles/Conventions.html">Conventions</a></li>
+    <li><a class="dropdown-item" href="../articles/data-import.html">Data Import</a></li>
+    <li><a class="dropdown-item" href="../articles/data.html">Data</a></li>
+    <li><a class="dropdown-item" href="../articles/example_workflow.html">Example Workflow</a></li>
+    <li><a class="dropdown-item" href="../articles/scoring-algorithm.html">Alignment Scoring Algorithm</a></li>
+  </ul>
 </li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav"></ul>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+      </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -67,10 +60,11 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Example Workflow</h1>
+
+      <h1>Example Workflow</h1>
             
       
-      
+
       <div class="d-none name"><code>example_workflow.Rmd</code></div>
     </div>
 
@@ -100,144 +94,91 @@ or a data frame/tibble as input.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Inspect the data </span></span>
 <span><span class="va">ac_A1R12_1</span></span>
-<span><span class="co">#&gt;    species metabolites       fluxes</span></span>
-<span><span class="co">#&gt; 1    B3M02          ac   0.49108849</span></span>
-<span><span class="co">#&gt; 2   m_1A01          ac  -0.49108849</span></span>
-<span><span class="co">#&gt; 3    B3M02       acald   0.87344088</span></span>
-<span><span class="co">#&gt; 4   m_1A01       acald  -0.87344088</span></span>
-<span><span class="co">#&gt; 5    B3M02         ade   0.27355644</span></span>
-<span><span class="co">#&gt; 6   m_1A01         ade  -0.27355644</span></span>
-<span><span class="co">#&gt; 7    B3M02      ala__D  -0.96871853</span></span>
-<span><span class="co">#&gt; 8   m_1A01      ala__D   0.96871853</span></span>
-<span><span class="co">#&gt; 9    B3M02      ala__L  -1.16455079</span></span>
-<span><span class="co">#&gt; 10  m_1A01      ala__L   1.16455079</span></span>
-<span><span class="co">#&gt; 11   B3M02      arg__L  -0.14551263</span></span>
-<span><span class="co">#&gt; 12  m_1A01      arg__L   0.14551263</span></span>
-<span><span class="co">#&gt; 13   B3M02      asp__L  -1.29674806</span></span>
-<span><span class="co">#&gt; 14  m_1A01      asp__L   1.29674806</span></span>
-<span><span class="co">#&gt; 15   B3M02        cgly   0.43435784</span></span>
-<span><span class="co">#&gt; 16  m_1A01        cgly  -0.43435784</span></span>
-<span><span class="co">#&gt; 17   B3M02         co2  -4.14163205</span></span>
-<span><span class="co">#&gt; 18  m_1A01         co2   4.14576222</span></span>
-<span><span class="co">#&gt; 19   B3M02        etoh   3.07772312</span></span>
-<span><span class="co">#&gt; 20  m_1A01        etoh  -3.07772312</span></span>
-<span><span class="co">#&gt; 21  m_1A01         f6p -10.00000000</span></span>
-<span><span class="co">#&gt; 22   B3M02         for  -0.91648584</span></span>
-<span><span class="co">#&gt; 23  m_1A01         for   0.91648584</span></span>
-<span><span class="co">#&gt; 24   B3M02      glu__L  -0.33061332</span></span>
-<span><span class="co">#&gt; 25  m_1A01      glu__L   0.33061332</span></span>
-<span><span class="co">#&gt; 26   B3M02         gly   4.40598534</span></span>
-<span><span class="co">#&gt; 27  m_1A01         gly  -4.40598534</span></span>
-<span><span class="co">#&gt; 28   B3M02      glyald  -3.23595127</span></span>
-<span><span class="co">#&gt; 29  m_1A01      glyald   3.23595127</span></span>
-<span><span class="co">#&gt; 30   B3M02        glyc   1.72867460</span></span>
-<span><span class="co">#&gt; 31  m_1A01        glyc  -1.72867460</span></span>
-<span><span class="co">#&gt; 32   B3M02       gthrd  -0.43435784</span></span>
-<span><span class="co">#&gt; 33  m_1A01       gthrd   0.43435784</span></span>
-<span><span class="co">#&gt; 34   B3M02         h2s   0.22509962</span></span>
-<span><span class="co">#&gt; 35  m_1A01         h2s  -0.22509962</span></span>
-<span><span class="co">#&gt; 36   B3M02      ile__L   0.26577517</span></span>
-<span><span class="co">#&gt; 37  m_1A01      ile__L  -0.26577517</span></span>
-<span><span class="co">#&gt; 38   B3M02      leu__L  -0.22163530</span></span>
-<span><span class="co">#&gt; 39  m_1A01      leu__L   0.22163530</span></span>
-<span><span class="co">#&gt; 40   B3M02         orn   0.14551263</span></span>
-<span><span class="co">#&gt; 41  m_1A01         orn  -0.14551263</span></span>
-<span><span class="co">#&gt; 42   B3M02      phe__L  -0.09113971</span></span>
-<span><span class="co">#&gt; 43  m_1A01      phe__L   0.09113971</span></span>
-<span><span class="co">#&gt; 44   B3M02      pro__L   0.20222054</span></span>
-<span><span class="co">#&gt; 45  m_1A01      pro__L  -0.20222054</span></span>
-<span><span class="co">#&gt; 46   B3M02         pyr  -3.97562975</span></span>
-<span><span class="co">#&gt; 47  m_1A01         pyr   3.97562975</span></span>
-<span><span class="co">#&gt; 48   B3M02      ser__L  -0.58456109</span></span>
-<span><span class="co">#&gt; 49  m_1A01      ser__L   0.58456109</span></span>
-<span><span class="co">#&gt; 50   B3M02      thr__L   0.23207221</span></span>
-<span><span class="co">#&gt; 51  m_1A01      thr__L  -0.23207221</span></span>
-<span><span class="co">#&gt; 52   B3M02      trp__L  -0.02796348</span></span>
-<span><span class="co">#&gt; 53  m_1A01      trp__L   0.02796348</span></span>
-<span><span class="co">#&gt; 54   B3M02      tyr__L  -0.06783689</span></span>
-<span><span class="co">#&gt; 55  m_1A01      tyr__L   0.06783689</span></span>
-<span><span class="co">#&gt; 56   B3M02         ura  -0.16273209</span></span>
-<span><span class="co">#&gt; 57  m_1A01         ura   0.16273209</span></span>
-<span><span class="co">#&gt; 58   B3M02      val__L  -0.20845469</span></span>
-<span><span class="co">#&gt; 59  m_1A01      val__L   0.20845469</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">cit_A1R12_1</span></span>
-<span><span class="co">#&gt;    species metabolites       fluxes</span></span>
-<span><span class="co">#&gt; 1    B3M02          ac   0.49108849</span></span>
-<span><span class="co">#&gt; 2   m_1A01          ac  -0.49108849</span></span>
-<span><span class="co">#&gt; 3    B3M02       acald   0.87344088</span></span>
-<span><span class="co">#&gt; 4   m_1A01       acald  -0.87344088</span></span>
-<span><span class="co">#&gt; 5    B3M02         ade   0.27355644</span></span>
-<span><span class="co">#&gt; 6   m_1A01         ade  -0.27355644</span></span>
-<span><span class="co">#&gt; 7    B3M02      ala__D  -0.96871853</span></span>
-<span><span class="co">#&gt; 8   m_1A01      ala__D   0.96871853</span></span>
-<span><span class="co">#&gt; 9    B3M02      ala__L  -1.16455079</span></span>
-<span><span class="co">#&gt; 10  m_1A01      ala__L   1.16455079</span></span>
-<span><span class="co">#&gt; 11   B3M02      arg__L  -0.14551263</span></span>
-<span><span class="co">#&gt; 12  m_1A01      arg__L   0.14551263</span></span>
-<span><span class="co">#&gt; 13   B3M02      asp__L  -1.29674806</span></span>
-<span><span class="co">#&gt; 14  m_1A01      asp__L   1.29674806</span></span>
-<span><span class="co">#&gt; 15   B3M02        cgly   0.43435784</span></span>
-<span><span class="co">#&gt; 16  m_1A01        cgly  -0.43435784</span></span>
-<span><span class="co">#&gt; 17   B3M02         co2  -4.14163205</span></span>
-<span><span class="co">#&gt; 18  m_1A01         co2   4.14576222</span></span>
-<span><span class="co">#&gt; 19   B3M02        etoh   3.07772312</span></span>
-<span><span class="co">#&gt; 20  m_1A01        etoh  -3.07772312</span></span>
-<span><span class="co">#&gt; 21  m_1A01         f6p -10.00000000</span></span>
-<span><span class="co">#&gt; 22   B3M02         for  -0.91648584</span></span>
-<span><span class="co">#&gt; 23  m_1A01         for   0.91648584</span></span>
-<span><span class="co">#&gt; 24   B3M02      glu__L  -0.33061332</span></span>
-<span><span class="co">#&gt; 25  m_1A01      glu__L   0.33061332</span></span>
-<span><span class="co">#&gt; 26   B3M02         gly   4.40598534</span></span>
-<span><span class="co">#&gt; 27  m_1A01         gly  -4.40598534</span></span>
-<span><span class="co">#&gt; 28   B3M02      glyald  -3.23595127</span></span>
-<span><span class="co">#&gt; 29  m_1A01      glyald   3.23595127</span></span>
-<span><span class="co">#&gt; 30   B3M02        glyc   1.72867460</span></span>
-<span><span class="co">#&gt; 31  m_1A01        glyc  -1.72867460</span></span>
-<span><span class="co">#&gt; 32   B3M02       gthrd  -0.43435784</span></span>
-<span><span class="co">#&gt; 33  m_1A01       gthrd   0.43435784</span></span>
-<span><span class="co">#&gt; 34   B3M02         h2s   0.22509962</span></span>
-<span><span class="co">#&gt; 35  m_1A01         h2s  -0.22509962</span></span>
-<span><span class="co">#&gt; 36   B3M02      ile__L   0.26577517</span></span>
-<span><span class="co">#&gt; 37  m_1A01      ile__L  -0.26577517</span></span>
-<span><span class="co">#&gt; 38   B3M02      leu__L  -0.22163530</span></span>
-<span><span class="co">#&gt; 39  m_1A01      leu__L   0.22163530</span></span>
-<span><span class="co">#&gt; 40   B3M02         orn   0.14551263</span></span>
-<span><span class="co">#&gt; 41  m_1A01         orn  -0.14551263</span></span>
-<span><span class="co">#&gt; 42   B3M02      phe__L  -0.09113971</span></span>
-<span><span class="co">#&gt; 43  m_1A01      phe__L   0.09113971</span></span>
-<span><span class="co">#&gt; 44   B3M02      pro__L   0.20222054</span></span>
-<span><span class="co">#&gt; 45  m_1A01      pro__L  -0.20222054</span></span>
-<span><span class="co">#&gt; 46   B3M02         pyr  -3.97562975</span></span>
-<span><span class="co">#&gt; 47  m_1A01         pyr   3.97562975</span></span>
-<span><span class="co">#&gt; 48   B3M02      ser__L  -0.58456109</span></span>
-<span><span class="co">#&gt; 49  m_1A01      ser__L   0.58456109</span></span>
-<span><span class="co">#&gt; 50   B3M02      thr__L   0.23207221</span></span>
-<span><span class="co">#&gt; 51  m_1A01      thr__L  -0.23207221</span></span>
-<span><span class="co">#&gt; 52   B3M02      trp__L  -0.02796348</span></span>
-<span><span class="co">#&gt; 53  m_1A01      trp__L   0.02796348</span></span>
-<span><span class="co">#&gt; 54   B3M02      tyr__L  -0.06783689</span></span>
-<span><span class="co">#&gt; 55  m_1A01      tyr__L   0.06783689</span></span>
-<span><span class="co">#&gt; 56   B3M02         ura  -0.16273209</span></span>
-<span><span class="co">#&gt; 57  m_1A01         ura   0.16273209</span></span>
-<span><span class="co">#&gt; 58   B3M02      val__L  -0.20845469</span></span>
-<span><span class="co">#&gt; 59  m_1A01      val__L   0.20845469</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span><span class="co">#&gt;    metabolites species       fluxes</span></span>
+<span><span class="co">#&gt; 1           ac   A1R12   0.77292503</span></span>
+<span><span class="co">#&gt; 2           ac   I2R16 -10.76733455</span></span>
+<span><span class="co">#&gt; 3        acald   A1R12  -1.12096390</span></span>
+<span><span class="co">#&gt; 4        acald   I2R16   1.12096390</span></span>
+<span><span class="co">#&gt; 5       ala__D   A1R12   0.76031357</span></span>
+<span><span class="co">#&gt; 6       ala__D   I2R16  -0.76031357</span></span>
+<span><span class="co">#&gt; 7       ala__L   A1R12   1.21684157</span></span>
+<span><span class="co">#&gt; 8       ala__L   I2R16  -1.21684157</span></span>
+<span><span class="co">#&gt; 9       asp__L   A1R12  -0.58268031</span></span>
+<span><span class="co">#&gt; 10      asp__L   I2R16   0.58268031</span></span>
+<span><span class="co">#&gt; 11         co2   A1R12   0.61840930</span></span>
+<span><span class="co">#&gt; 12         co2   I2R16  12.12608512</span></span>
+<span><span class="co">#&gt; 13        etoh   A1R12  -0.18475279</span></span>
+<span><span class="co">#&gt; 14        etoh   I2R16   0.18475279</span></span>
+<span><span class="co">#&gt; 15      glu__L   A1R12   0.50682546</span></span>
+<span><span class="co">#&gt; 16      glu__L   I2R16  -0.50682546</span></span>
+<span><span class="co">#&gt; 17         gly   A1R12  -0.02158742</span></span>
+<span><span class="co">#&gt; 18         gly   I2R16   0.02158742</span></span>
+<span><span class="co">#&gt; 19       gthox   A1R12   1.45273848</span></span>
+<span><span class="co">#&gt; 20       gthox   I2R16  -1.45273848</span></span>
+<span><span class="co">#&gt; 21       gthrd   A1R12  -2.90547696</span></span>
+<span><span class="co">#&gt; 22       gthrd   I2R16   2.90547696</span></span>
+<span><span class="co">#&gt; 23        h2o2   A1R12  -1.45273848</span></span>
+<span><span class="co">#&gt; 24        h2o2   I2R16   1.45273848</span></span>
+<span><span class="co">#&gt; 25         h2s   A1R12  -0.00238294</span></span>
+<span><span class="co">#&gt; 26         h2s   I2R16   0.00238294</span></span>
+<span><span class="co">#&gt; 27         pyr   A1R12  -2.01918234</span></span>
+<span><span class="co">#&gt; 28         pyr   I2R16   2.01918234</span></span>
+<span><span class="va">cit_A1R12_1</span></span>
+<span><span class="co">#&gt;    metabolites species        fluxes</span></span>
+<span><span class="co">#&gt; 1           ac   A1R12  10.072387832</span></span>
+<span><span class="co">#&gt; 2           ac  m_1A01 -10.072387832</span></span>
+<span><span class="co">#&gt; 3        acald   A1R12   8.313282235</span></span>
+<span><span class="co">#&gt; 4        acald  m_1A01  -8.313282235</span></span>
+<span><span class="co">#&gt; 5       ala__D   A1R12   1.296902243</span></span>
+<span><span class="co">#&gt; 6       ala__D  m_1A01  -1.296902243</span></span>
+<span><span class="co">#&gt; 7       ala__L   A1R12   1.895352540</span></span>
+<span><span class="co">#&gt; 8       ala__L  m_1A01  -1.895352540</span></span>
+<span><span class="co">#&gt; 9       arg__L   A1R12  -0.002864506</span></span>
+<span><span class="co">#&gt; 10      arg__L  m_1A01   0.002864506</span></span>
+<span><span class="co">#&gt; 11      asp__L   A1R12  -1.208257612</span></span>
+<span><span class="co">#&gt; 12      asp__L  m_1A01   1.208257612</span></span>
+<span><span class="co">#&gt; 13         cit   A1R12  -9.984232514</span></span>
+<span><span class="co">#&gt; 14         cit  m_1A01  -0.015767486</span></span>
+<span><span class="co">#&gt; 15         co2   A1R12   5.025755125</span></span>
+<span><span class="co">#&gt; 16         co2  m_1A01  11.498625545</span></span>
+<span><span class="co">#&gt; 17        etoh   A1R12 -10.022199622</span></span>
+<span><span class="co">#&gt; 18        etoh  m_1A01  10.022199622</span></span>
+<span><span class="co">#&gt; 19      glu__L   A1R12   1.144004523</span></span>
+<span><span class="co">#&gt; 20      glu__L  m_1A01  -1.144004523</span></span>
+<span><span class="co">#&gt; 21         gly   A1R12  -1.094858850</span></span>
+<span><span class="co">#&gt; 22         gly  m_1A01   1.094858850</span></span>
+<span><span class="co">#&gt; 23         h2s   A1R12   0.248451996</span></span>
+<span><span class="co">#&gt; 24         h2s  m_1A01  -0.248451996</span></span>
+<span><span class="co">#&gt; 25      ile__L   A1R12   0.293347327</span></span>
+<span><span class="co">#&gt; 26      ile__L  m_1A01  -0.293347327</span></span>
+<span><span class="co">#&gt; 27      leu__L   A1R12   0.454901455</span></span>
+<span><span class="co">#&gt; 28      leu__L  m_1A01  -0.454901455</span></span>
+<span><span class="co">#&gt; 29         pyr   A1R12  -5.293129303</span></span>
+<span><span class="co">#&gt; 30         pyr  m_1A01   5.293129303</span></span>
+<span><span class="co">#&gt; 31      ser__L   A1R12  -0.003532705</span></span>
+<span><span class="co">#&gt; 32      ser__L  m_1A01   0.003532705</span></span>
+<span><span class="co">#&gt; 33        succ   A1R12   9.984081286</span></span>
+<span><span class="co">#&gt; 34        succ  m_1A01  -9.984081286</span></span>
+<span><span class="co">#&gt; 35      thr__L   A1R12  -0.297725162</span></span>
+<span><span class="co">#&gt; 36      thr__L  m_1A01   0.297725162</span></span>
+<span><span class="co">#&gt; 37      val__L   A1R12   0.427848544</span></span>
+<span><span class="co">#&gt; 38      val__L  m_1A01  -0.427848544</span></span>
+<span></span>
 <span><span class="co"># Create MiCo objects</span></span>
-<span><span class="va">mc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MiCo.html">MiCo</a></span><span class="op">(</span><span class="va">ac_A1R12_1</span><span class="op">)</span></span>
-<span><span class="va">mc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MiCo.html">MiCo</a></span><span class="op">(</span><span class="va">cit_A1R12_1</span><span class="op">)</span></span>
+<span><span class="va">mc1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">ac_A1R12_1</span><span class="op">)</span></span>
+<span><span class="va">mc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">cit_A1R12_1</span><span class="op">)</span></span>
+<span><span class="va">mc3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">ac_A1R12_2</span><span class="op">)</span></span>
+<span><span class="va">mc4</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCo.html">newMiCo</a></span><span class="op">(</span><span class="va">cit_A1R12_2</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspect MiCo Objects</span></span>
 <span><span class="va">mc1</span></span>
 <span><span class="co">#&gt; ac_A1R12_1: MiCo (MicrobialCommunity) Object</span></span>
 <span><span class="co">#&gt; - Unique microorganisms (MO): 2</span></span>
-<span><span class="co">#&gt; - Unique metabolites (met): 30</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mc1</span></span>
+<span><span class="co">#&gt; - Unique metabolites (met): 14</span></span>
+<span><span class="va">mc1</span></span>
 <span><span class="co">#&gt; ac_A1R12_1: MiCo (MicrobialCommunity) Object</span></span>
 <span><span class="co">#&gt; - Unique microorganisms (MO): 2</span></span>
-<span><span class="co">#&gt; - Unique metabolites (met): 30</span></span></code></pre></div>
+<span><span class="co">#&gt; - Unique metabolites (met): 14</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="align-mico-objects">Align MiCo Objects<a class="anchor" aria-label="anchor" href="#align-mico-objects"></a>
@@ -245,20 +186,25 @@ or a data frame/tibble as input.</p>
 <p>Two <code>MiCo</code> objects can be aligned by creating a
 <code>MiCoAl</code> object. The <code>MiCoAl</code> creator function can
 take any number of <code>MiCo</code> objects as input.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Align the MiCo objects by creating a MiCoAl object</span></span>
-<span><span class="va">alignment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MiCoAl.html">MiCoAl</a></span><span class="op">(</span><span class="va">mc1</span>, <span class="va">mc2</span><span class="op">)</span></span>
+<span><span class="va">alignment</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">mc1</span>, <span class="va">mc2</span>, <span class="va">mc3</span>, <span class="va">mc4</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Inspect the alignment</span></span>
 <span><span class="va">alignment</span></span>
 <span><span class="co">#&gt; Microbial Community Alignment Object (MiCoAl)</span></span>
-<span><span class="co">#&gt; Alignment of 2 communities with an overall score of 5.</span></span></code></pre></div>
+<span><span class="co">#&gt; Alignment of 4 communities with an overall score of ### ToDo ###.</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="analysis-of-the-alignment">Analysis of the Alignment<a class="anchor" aria-label="anchor" href="#analysis-of-the-alignment"></a>
 </h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># alignmentNetwork(alignment, 0.8)</span></span>
+<span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">alignment</span>, <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="example_workflow_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -269,15 +215,15 @@ take any number of <code>MiCo</code> objects as input.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

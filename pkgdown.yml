@@ -1,5 +1,5 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   class-MiCo: class-MiCo.html
@@ -9,8 +9,8 @@ articles:
   data-import: data-import.html
   data: data.html
   example_workflow: example_workflow.html
-last_built: 2024-07-01T11:20Z
+  scoring-algorithm: scoring-algorithm.html
+last_built: 2024-08-09T16:07Z
 urls:
   reference: https://admarhi.github.io/fsmc/reference
   article: https://admarhi.github.io/fsmc/articles
-
