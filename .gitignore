@@ -2,7 +2,7 @@
 dev*
 .DS_Store
 inst/doc
-.Rhistory
+fsmc.Rproj
 docs
 /doc/
 /Meta/
