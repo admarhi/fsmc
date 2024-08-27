@@ -48,7 +48,7 @@ f6p <- keep(misosoup, str_starts(names(misosoup), "f6p")) %>% imap(newMiCo)
 ```
 
 ```{r}
-# discard beccause the only solution with this focal strain
+# discard because the only solution with this focal strain
 ac <- discard(ac, names(ac) %in% "ac_A3R04_1")
 ```
 
@@ -64,7 +64,7 @@ plotAlignmentHeatmap(cit_alig, 0.8)
 plotAlignmentHeatmap(f6p_alig, 0.5)
 ```
 ```{r}
-plotAlignmentNetwork(ac_alig, 0.8)
+plotAlignmentNetwork(ac_alig, 0.95)
 plotAlignmentNetwork(cit_alig, 0.8)
 plotAlignmentNetwork(f6p_alig, 0.5)
 ```
@@ -87,61 +87,10 @@ plotAlignmentHeatmap(A1R12_alig, 0.5)
 plotAlignmentHeatmap(A1R12_alig, 0.2)
 ```
 
-
 ```{r}
 plotAlignmentNetwork(A1R12_alig, 0.8)
 plotAlignmentNetwork(A1R12_alig, 0.5)
 plotAlignmentNetwork(A1R12_alig, 0.2)
 ```
 
-
-
-
-
-
-
-
-
-### This can go in another vignette.
-## Create a MiCo Object
-`fsmc` contains a set of example data that can be used for the analysis of microbial communities. For this example, we will use data created by [MiSoS(oup)](https://github.com/sirno/misosoup). Two example communities are provided in the package `ac_A1R12_1` and `cit_A1R12_1`.
-
-The `MiCo` function can take either a path to a .csv file or a data frame/tibble as input.
-
-
-```{r}
-# Inspect the data 
-ac_A1R12_1
-cit_A1R12_1
-
-# Create MiCo objects
-mc1 <- newMiCo(ac_A1R12_1)
-mc2 <- newMiCo(cit_A1R12_1)
-mc3 <- newMiCo(ac_A1R12_2)
-mc4 <- newMiCo(cit_A1R12_2)
-
-# Inspect MiCo Objects
-mc1
-mc1
-```
-
-## Align MiCo Objects
-Two `MiCo` objects can be aligned by creating a `MiCoAl` object. The `MiCoAl` creator function can take any number of `MiCo` objects as input.
-
-```{r}
-# Align the MiCo objects by creating a MiCoAl object
-alignment <- newMiCoAl(mc1, mc2, mc3, mc4)
-
-# Inspect the alignment
-alignment
-```
-
-### Analysis of the Alignment
-
-```{r}
-
-# alignmentNetwork(alignment, 0.8)
-plotAlignmentHeatmap(alignment, 0.2)
-
-```
 
