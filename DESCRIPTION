@@ -17,7 +17,7 @@ Imports:
     igraph,
     magrittr,
     methods,
-    purrr,
+    readr,
     rlang,
     scales,
     stats,
@@ -27,6 +27,7 @@ Imports:
     utils
 Suggests: 
     knitr,
+    purrr,
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 
