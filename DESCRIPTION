@@ -17,7 +17,6 @@ Imports:
     igraph,
     magrittr,
     methods,
-    readr,
     rlang,
     scales,
     stats,
@@ -27,6 +26,7 @@ Imports:
     utils
 Suggests: 
     knitr,
+    readr,
     purrr,
     rmarkdown,
     testthat (>= 3.0.0)

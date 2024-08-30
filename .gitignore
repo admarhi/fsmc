@@ -6,3 +6,6 @@ fsmc.Rproj
 docs
 /doc/
 /Meta/
+.RData
+.Rhistory
+
