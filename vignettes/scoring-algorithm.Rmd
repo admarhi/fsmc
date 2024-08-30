@@ -2,7 +2,7 @@
 title: "Alignment Scoring Algorithm"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{scoring-algorithm}
+  %\VignetteIndexEntry{Alignment Scoring Algorithm}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

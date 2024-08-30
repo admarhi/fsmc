@@ -1,8 +1,8 @@
 ---
-title: "Experiment 1"
+title: "Alignment of Communities on Different Substrates"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Experiment 1}
+  %\VignetteIndexEntry{Alignment of Communities on Different Substrates}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

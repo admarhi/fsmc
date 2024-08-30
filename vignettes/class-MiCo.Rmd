@@ -2,7 +2,7 @@
 title: "MiCo (Microbial Community) Class"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{MiCo-(Microbial-Community)-Class}
+  %\VignetteIndexEntry{MiCo (Microbial Community) Class}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

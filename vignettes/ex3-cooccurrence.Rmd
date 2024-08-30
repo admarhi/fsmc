@@ -1,8 +1,8 @@
 ---
-title: "Cooccurrence"
+title: "Alignment of Cooperative and Competitive Communities"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Cooccurrence}
+  %\VignetteIndexEntry{Alignment of Cooperative and Competitive Communities}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

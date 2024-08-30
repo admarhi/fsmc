@@ -2,7 +2,7 @@
 title: "Microbial Community Alignment Class"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Microbial-Community-Alignment-Class}
+  %\VignetteIndexEntry{Microbial Community Alignment Class}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
