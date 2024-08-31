@@ -92,9 +92,9 @@ plotAlignmentHeatmap(ac_alig, 0.8)
 plotAlignmentHeatmap(cit_alig, 0.8)
 plotAlignmentHeatmap(f6p_alig, 0.8)
 
-# plotAlignmentHeatmap(ac_alig, 0.95)
-# plotAlignmentHeatmap(cit_alig, 0.95)
-# plotAlignmentHeatmap(f6p_alig, 0.95)
+plotAlignmentHeatmap(ac_alig, 0.95)
+plotAlignmentHeatmap(cit_alig, 0.95)
+plotAlignmentHeatmap(f6p_alig, 0.95)
 ```
 
 

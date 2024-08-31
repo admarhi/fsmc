@@ -36,7 +36,7 @@ coop_tb <- readr::read_csv(coop_url)
 ```
 
 ```{r}
-glimpse(cooperative)
+glimpse(coop_tb)
 
 coop_tb %>% 
   group_by(community) %>% 

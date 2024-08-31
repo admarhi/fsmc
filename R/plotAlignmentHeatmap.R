@@ -17,6 +17,8 @@ plotAlignmentHeatmap <- function(object, frac) {
 
   levels_mat[levels_mat <= min_weight] <- 0
 
+  if (min_weight > max(levels_mat)) return("No Alignment at this level.")
+
   gg <- levels_mat %>%
     tibble::as_tibble(rownames = "RowName") %>%
     tidyr::pivot_longer(

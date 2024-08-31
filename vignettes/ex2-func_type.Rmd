@@ -68,11 +68,16 @@ facilitation_alig <- newMiCoAl(facilitation)
 ```{r}
 plotAlignmentHeatmap(selection_alig, 0.5)
 plotAlignmentHeatmap(facilitation_alig, 0.5)
+```
 
+
+```{r}
 plotAlignmentHeatmap(selection_alig, 0.8)
 plotAlignmentHeatmap(facilitation_alig, 0.8)
+```
 
-# plotAlignmentHeatmap(selection_alig, 0.8)
+```{r}
+plotAlignmentHeatmap(selection_alig, 0.95)
 plotAlignmentHeatmap(facilitation_alig, 0.95)
 ```
 
