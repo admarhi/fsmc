@@ -12,11 +12,14 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+options(tibble.print_max = 10)
 ```
 
 ```{r setup}
-library(fsmc)
 library(dplyr)
+library(fsmc)
+library(tidyr)
+library(purrr)
 ```
 
 
@@ -28,24 +31,25 @@ The set of competitve and cooperative communities both contain 100 communities.
 In the cooperative dataset there are 100 communities, made up from a total of 50 species. Each community consists of 10 species.
 
 ```{r}
-cooperative <- readr::read_csv("../inst/extdata/cooperative.csv")
+coop_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/cooccurrence/cooperative.csv"
+coop_tb <- readr::read_csv(coop_url)
+```
+
+```{r}
 glimpse(cooperative)
 
-cooperative %>% 
+coop_tb %>% 
   group_by(community) %>% 
-  summarise(
-    n_species = length(unique(species)),
-    species = list(unique(species))
-  )
+  summarise(n_species = length(unique(species)))
 ```
 
 *Bacillus_humi_DSM_16318* is the only species that only acts as a donor, all 49 other species are both donors and receivers.
 
 ```{r}
-cooperative %>% 
+coop_tb %>% 
   group_by(species) %>% 
   filter(all(fluxes > 0)) %>% 
-  dplyr::pull(species) %>% 
+  pull(species) %>% 
   unique()
 ```
 
@@ -54,19 +58,19 @@ cooperative %>%
 Create `MiCo` objects from the data. 
 
 ```{r}
-coop_MiCo_list <- 
-  cooperative %>% 
-  dplyr::mutate(species = as.character(species)) %>% 
-  tidyr::nest(.by = community) %>% 
-  dplyr::pull(data) %>% 
-  setNames(unique(cooperative$community)) %>% 
-  purrr::imap(~newMiCo(data = .x, name = .y))
+coop <- 
+  coop_tb %>% 
+  mutate(species = as.character(species)) %>% 
+  nest(.by = community) %>% 
+  pull(data) %>% 
+  setNames(unique(coop_tb$community)) %>% 
+  imap(~newMiCo(data = .x, name = .y))
 ```
 
 Create an alignment of all cooperative communities.
 
 ```{r}
-coop_alignment <- newMiCoAl(coop_MiCo_list)
+coop_alig <- newMiCoAl(coop)
 ```
 
 
@@ -75,16 +79,16 @@ coop_alignment <- newMiCoAl(coop_MiCo_list)
 In the competitive dataset there are 50 species in total, with *Bacillus_humi_DSM_16318* being the only species that only acts as a donor, all 49 other species are both donors and receivers. 
 
 ```{r}
-competitive <- readr::read_csv("../inst/extdata/competitive.csv")
+comp_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/cooccurrence/competitive.csv"
+comp_tb <- readr::read_csv(comp_url)
+```
 
-glimpse(competitive)
+```{r}
+glimpse(comp_tb)
 
-competitive %>% 
+comp_tb %>% 
   group_by(community) %>% 
-  summarise(
-    n_species = length(unique(species)),
-    species = list(unique(species))
-  )
+  summarise(n_species = length(unique(species)))
 ```
 
 
@@ -92,20 +96,19 @@ competitive %>%
 Create `MiCo` objects from the data. 
 
 ```{r}
-competitive_MiCo_list <- 
-  competitive %>% 
-  dplyr::rename(metabolites = "compound", fluxes = "flux") %>% 
-  dplyr::mutate(species = as.character(species)) %>% 
-  tidyr::nest(.by = community) %>% 
-  dplyr::pull(data) %>% 
-  setNames(unique(competitive$community)) %>% 
-  purrr::imap(~newMiCo(data = .x, name = .y))
+comp <- 
+  comp_tb %>% 
+  rename(metabolites = "compound", fluxes = "flux") %>% 
+  nest(.by = community) %>% 
+  pull(data) %>% 
+  setNames(unique(comp_tb$community)) %>% 
+  imap(~newMiCo(data = .x, name = .y))
 ```
 
 Create an alignment of all competitive communities.
 
 ```{r}
-comp_alignment <- newMiCoAl(competitive_MiCo_list)
+comp_alig <- newMiCoAl(comp)
 ```
 
 
@@ -115,22 +118,22 @@ The heatmaps below show metabolic functions that were aligned in at least `frac`
 
 ### Cooperative Communities 50%
 ```{r}
-plotAlignmentHeatmap(coop_alignment, frac = 0.5)
+plotAlignmentHeatmap(coop_alig, frac = 0.5)
 ```
 
 ### Competitive Communities 50%
 ```{r}
-plotAlignmentHeatmap(comp_alignment, frac = 0.5)
+plotAlignmentHeatmap(comp_alig, frac = 0.5)
 ```
 
 ### Cooperative Communities 80%
 ```{r}
-plotAlignmentHeatmap(coop_alignment, frac = 0.8)
+plotAlignmentHeatmap(coop_alig, frac = 0.8)
 ```
 
 ### Competitive Communities 80%
 ```{r}
-plotAlignmentHeatmap(comp_alignment, frac = 0.8)
+plotAlignmentHeatmap(comp_alig, frac = 0.8)
 ```
 
 These results indicate that cooperative communities are functionally more similar to each other than competitive communities. With the minimum alignment set to 50% there is a great discrepancy between the extent of the alignment of cooperative and competitive communities. This becomes even more pronounced in the alignment >80%, here only the glycerol -> glycerol edge is present in competitive communities, while in the cooperative communities the production of hydrogen sulfide and ammonia from a variety of compounds are present.
