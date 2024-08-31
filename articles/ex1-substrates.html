@@ -37,10 +37,8 @@
     <li><a class="dropdown-item" href="../articles/class-MiCoAl.html">Microbial Community Alignment Class</a></li>
     <li><a class="dropdown-item" href="../articles/classes.html">Classes</a></li>
     <li><a class="dropdown-item" href="../articles/Conventions.html">Conventions</a></li>
-    <li><a class="dropdown-item" href="../articles/data-import.html">Data Import</a></li>
-    <li><a class="dropdown-item" href="../articles/data.html">Data</a></li>
     <li><a class="dropdown-item" href="../articles/ex1-substrates.html">Alignment of Communities on Different Substrates</a></li>
-    <li><a class="dropdown-item" href="../articles/ex2-func_groups.html">Alignment of Communities with Different Functional Types</a></li>
+    <li><a class="dropdown-item" href="../articles/ex2-func_type.html">Alignment of Communities with Different Functional Types</a></li>
     <li><a class="dropdown-item" href="../articles/ex3-cooccurrence.html">Alignment of Cooperative and Competitive Communities</a></li>
     <li><a class="dropdown-item" href="../articles/scoring-algorithm.html">Alignment Scoring Algorithm</a></li>
   </ul>
@@ -73,11 +71,33 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://admarhi.github.io/fsmc/">fsmc</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://admarhi.github.io/fsmc/">fsmc</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'purrr'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:magrittr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     set_names</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'tidyr'</span></span>
+<span><span class="co">#&gt; The following object is masked from 'package:magrittr':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     extract</span></span></code></pre></div>
 <div class="section level2">
-<h2 id="experiment-1">Experiment 1<a class="anchor" aria-label="anchor" href="#experiment-1"></a>
+<h2 id="alignment-of-communities-on-different-substrates">Alignment of Communities on Different Substrates<a class="anchor" aria-label="anchor" href="#alignment-of-communities-on-different-substrates"></a>
 </h2>
 <p>This vignette outlines a full workflow for the <code>fsmc</code>
 package. This includes the following steps:</p>
@@ -86,81 +106,104 @@ package. This includes the following steps:</p>
 <li>Community alignment</li>
 <li>Analysis of the alignment</li>
 </ul>
-<div class="section level3">
-<h3 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
-</h3>
 <p>The data analysed here was generated with <code>misosoup</code>, a
 command line tool designed to identify minimum viable communities in
 which each member is essential for the community to function. The data
-is provide with the <code>fsmc</code> package and can be used to test
-its functionality.</p>
-<p>The data set consists of 56 different microbial consortia, including
-26 with acetate as the carbon source, 26 with citrate as the carbon
-source, and 4 with fructose 6-phosphate (f6p) as the carbon source.</p>
-</div>
-<div class="section level3">
-<h3 id="analysis-per-substrate">Analysis per Substrate<a class="anchor" aria-label="anchor" href="#analysis-per-substrate"></a>
-</h3>
+is provided in the <code>fsmc-data</code> repository on GitHub and can
+be used to test the package’s functionality.</p>
+<p>The data set consists of 386 different microbial communities,
+including 272 with acetate as the carbon source, 219 with citrate as the
+carbon source, and 24 with fructose 6-phosphate (f6p) as the carbon
+source.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">### Could provide this in the data</span></span>
-<span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">misosoup</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">)</span>, <span class="st">"ac"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span>
-<span><span class="va">cit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">misosoup</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">)</span>, <span class="st">"cit"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span>
-<span><span class="va">f6p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">misosoup</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">)</span>, <span class="st">"f6p"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sbs_url</span> <span class="op">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/admarhi/fsmc-data/main/misosoup/substrate.csv"</span></span>
+<span></span>
+<span><span class="va">sbs_tb</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="va">sbs_url</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">substrate</span>, <span class="va">focal_strain</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">solution</span> <span class="op">&lt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">nest</a></span><span class="op">(</span>.by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"substrate"</span>, <span class="st">"focal_strain"</span>, <span class="st">"solution"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">substrate</span>, <span class="va">focal_strain</span>, <span class="va">solution</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="st">"name"</span>, <span class="st">"data"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Rows: </span><span style="color: #0000BB;">51630</span> <span style="font-weight: bold;">Columns: </span><span style="color: #0000BB;">6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">#&gt; <span style="font-weight: bold;">Delimiter:</span> ","</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">chr</span> (4): substrate, focal_strain, species, metabolite</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">dbl</span> (2): solution, flux</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># discard because the only solution with this focal strain</span></span>
-<span><span class="va">ac</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">discard</a></span><span class="op">(</span><span class="va">ac</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">ac</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"ac_A3R04_1"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sbs_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html" class="external-link">set_names</a></span><span class="op">(</span><span class="va">sbs_tb</span><span class="op">$</span><span class="va">data</span>, <span class="va">sbs_tb</span><span class="op">$</span><span class="va">name</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ac</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">sbs_list</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sbs_list</span><span class="op">)</span>, <span class="st">"ac"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cit</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">sbs_list</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sbs_list</span><span class="op">)</span>, <span class="st">"cit"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">f6p</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">sbs_list</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_starts.html" class="external-link">str_starts</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">sbs_list</span><span class="op">)</span>, <span class="st">"f6p"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ac_alig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">ac</span><span class="op">)</span></span>
 <span><span class="va">cit_alig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">cit</span><span class="op">)</span></span>
 <span><span class="va">f6p_alig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">f6p</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-3.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-2.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-6-1.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-3.png" width="700"></p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-6-2.png" width="700"></p>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-4.png" width="700"></p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-6-3.png" width="700"></p>
-</div>
-<div class="section level3">
-<h3 id="analysis-per-focal-strain">Analysis per Focal Strain<a class="anchor" aria-label="anchor" href="#analysis-per-focal-strain"></a>
-</h3>
-<p>Only A1R12 in two substrates.</p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-5.png" width="700"></p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">A1R12</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/keep.html" class="external-link">keep</a></span><span class="op">(</span><span class="va">misosoup</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html" class="external-link">str_detect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">misosoup</span><span class="op">)</span>, <span class="st">"A1R12"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/imap.html" class="external-link">imap</a></span><span class="op">(</span><span class="va">newMiCo</span><span class="op">)</span></span>
-<span><span class="va">A1R12_alig</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/newMiCoAl.html">newMiCoAl</a></span><span class="op">(</span><span class="va">A1R12</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-4-6.png" width="700"></p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<code class="sourceCode R"><span></span>
+<span><span class="co"># plotAlignmentHeatmap(ac_alig, 0.95)</span></span>
+<span><span class="co"># plotAlignmentHeatmap(cit_alig, 0.95)</span></span>
+<span><span class="co"># plotAlignmentHeatmap(f6p_alig, 0.95)</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-8-2.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-1.png" width="700"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-8-3.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-2.png" width="700"></p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-3.png" width="700"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-9-2.png" width="700"></p>
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-4.png" width="700"></p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">A1R12_alig</span>, <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-9-3.png" width="700"></p>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-5.png" width="700"></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-6.png" width="700"></p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">ac_alig</span>, <span class="fl">0.95</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">cit_alig</span>, <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex1-substrates_files/figure-html/unnamed-chunk-5-7.png" width="700"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentNetwork.html">plotAlignmentNetwork</a></span><span class="op">(</span><span class="va">f6p_alig</span>, <span class="fl">0.95</span><span class="op">)</span></span></code></pre></div>
 </div>
-</div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
+  </main>
 </div>
 
 

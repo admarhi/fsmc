@@ -37,10 +37,8 @@
     <li><a class="dropdown-item" href="../articles/class-MiCoAl.html">Microbial Community Alignment Class</a></li>
     <li><a class="dropdown-item" href="../articles/classes.html">Classes</a></li>
     <li><a class="dropdown-item" href="../articles/Conventions.html">Conventions</a></li>
-    <li><a class="dropdown-item" href="../articles/data-import.html">Data Import</a></li>
-    <li><a class="dropdown-item" href="../articles/data.html">Data</a></li>
     <li><a class="dropdown-item" href="../articles/ex1-substrates.html">Alignment of Communities on Different Substrates</a></li>
-    <li><a class="dropdown-item" href="../articles/ex2-func_groups.html">Alignment of Communities with Different Functional Types</a></li>
+    <li><a class="dropdown-item" href="../articles/ex2-func_type.html">Alignment of Communities with Different Functional Types</a></li>
     <li><a class="dropdown-item" href="../articles/ex3-cooccurrence.html">Alignment of Cooperative and Competitive Communities</a></li>
     <li><a class="dropdown-item" href="../articles/scoring-algorithm.html">Alignment Scoring Algorithm</a></li>
   </ul>
@@ -82,7 +80,7 @@ work with data on the metabolism, the function, of a microbial
 community.</p>
 </div>
 <div class="section level2">
-<h2 id="creation">Creation<a class="anchor" aria-label="anchor" href="#creation"></a>
+<h2 id="creation-from-data">Creation from data<a class="anchor" aria-label="anchor" href="#creation-from-data"></a>
 </h2>
 <p>To create an object of type <code>MiCo</code>, the user must input
 the data listed below. This data can either be contained in a single
@@ -119,6 +117,17 @@ parameters.</p>
 <span><span class="co">#&gt; example_syn_MiCo: MiCo (MicrobialCommunity) Object</span></span>
 <span><span class="co">#&gt; - Unique microorganisms (MO): 8</span></span>
 <span><span class="co">#&gt; - Unique metabolites (met): 10</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="create-a-mico-object-from-a-tibble">Create a MiCo Object from a tibble<a class="anchor" aria-label="anchor" href="#create-a-mico-object-from-a-tibble"></a>
+</h2>
+<p><code>fsmc</code> contains a set of example data that can be used for
+the analysis of microbial communities. For this example, we will use
+data created by <a href="https://github.com/sirno/misosoup" class="external-link">MiSoS(oup)</a>. Two example
+communities are provided in the package <code>ac_A1R12_1</code> and
+<code>cit_A1R12_1</code>.</p>
+<p>The <code>MiCo</code> function can take either a path to a .csv file
+or a data frame/tibble as input.</p>
 </div>
 <div class="section level2">
 <h2 id="contents">Contents<a class="anchor" aria-label="anchor" href="#contents"></a>
