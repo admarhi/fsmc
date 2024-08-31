@@ -31,12 +31,12 @@ newMiCo <- function(
       if (is.null(name)) name <- deparse(substitute(data))
     }
     stopifnot(exprs = {
-      all(c("species", "metabolites", "fluxes") %in% names(data))
+      # all(c("species", "metabolite", "flux") %in% names(data))
       !is.null(name) ### Should be obsolete
     })
-    species <- data$species
-    metabolites <- data$metabolites
-    fluxes <- data$fluxes
+    species <- data %>% dplyr::select(dplyr::matches("^spec")) %>% dplyr::pull()
+    metabolites <- data %>% dplyr::select(dplyr::matches("^met")) %>% dplyr::pull()
+    fluxes <- data %>% dplyr::select(dplyr::matches("^flu")) %>% dplyr::pull()
   } else if (
       is.null(species) |
       is.null(metabolites) |
