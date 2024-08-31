@@ -22,7 +22,8 @@ library(fsmc)
 
 The `MiCo` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community. 
 
-## Creation 
+## Creation from data
+
 To create an object of type `MiCo`, the user must input the data listed below. This data can either be contained in a single tibble or data frame, saved in a CSV file, or input as separate vectors.
 
 - `species`: A character vector specifying the species present in the community.
@@ -44,6 +45,10 @@ newMiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
 makeSynMiCo(n_species = 8, max_met = 10, name = "example_syn_MiCo")
 ```
 
+## Create a MiCo Object from a tibble
+`fsmc` contains a set of example data that can be used for the analysis of microbial communities. For this example, we will use data created by [MiSoS(oup)](https://github.com/sirno/misosoup). Two example communities are provided in the package `ac_A1R12_1` and `cit_A1R12_1`.
+
+The `MiCo` function can take either a path to a .csv file or a data frame/tibble as input.
 
 ## Contents
 

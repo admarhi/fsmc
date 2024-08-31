@@ -21,12 +21,9 @@ library(fsmc)
 
 # Conventions
 
-## Overview
-
 - Classes: `UpperCamelCase`
 - Methods: `lowerCamelCase`
 - functions: `snake_case`
-- file names: identical to function/method/class name. If it is not representing anything in particular, `use-this-naming`.
 
 
-## Documentation
+
