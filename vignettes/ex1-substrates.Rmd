@@ -14,16 +14,19 @@ knitr::opts_chunk$set(
 )
 
 options(tibble.print_max = 10)
-
 ```
 
 ```{r setup}
+library(dplyr)
 library(fsmc)
-library(stringr)
+library(magrittr)
 library(purrr)
+library(readr)
+library(stringr)
+library(tidyr)
 ```
 
-# Experiment 1
+# Alignment of Communities on Different Substrates
 
 
 This vignette outlines a full workflow for the `fsmc` package. This includes the following steps:
@@ -32,25 +35,45 @@ This vignette outlines a full workflow for the `fsmc` package. This includes the
 - Community alignment 
 - Analysis of the alignment
 
-## Motivation
 
-The data analysed here was generated with `misosoup`, a command line tool designed to identify minimum viable communities in which each member is essential for the community to function. The data is provide with the `fsmc` package and can be used to test its functionality. 
+The data analysed here was generated with `misosoup`, a command line tool designed to identify minimum viable communities in which each member is essential for the community to function. The data is provided in the `fsmc-data` repository on GitHub and can be used to test the package's functionality. 
 
-The data set consists of 56 different microbial consortia, including 26 with acetate as the carbon source, 26 with citrate as the carbon source, and 4 with fructose 6-phosphate (f6p) as the carbon source. 
+The data set consists of 386 different microbial communities, including 272 with acetate as the carbon source, 219 with citrate as the carbon source, and 24 with fructose 6-phosphate (f6p) as the carbon source. 
 
 
-## Analysis per Substrate
-```{r}
-### Could provide this in the data
-ac <- keep(misosoup, str_starts(names(misosoup), "ac")) %>% imap(newMiCo)
-cit <- keep(misosoup, str_starts(names(misosoup), "cit")) %>% imap(newMiCo)
-f6p <- keep(misosoup, str_starts(names(misosoup), "f6p")) %>% imap(newMiCo)
+```{r load-data}
+sbs_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/misosoup/substrate.csv"
+
+sbs_tb <- 
+  read_csv(sbs_url) %>%
+  group_by(substrate, focal_strain) %>% 
+  filter(solution <= 5) %>% 
+  ungroup() %>% 
+  nest(.by = c("substrate", "focal_strain", "solution")) %>% 
+  mutate(name = paste(substrate, focal_strain, solution, sep = "_")) %>% 
+  select("name", "data")
 ```
 
+
 ```{r}
-# discard because the only solution with this focal strain
-ac <- discard(ac, names(ac) %in% "ac_A3R04_1")
+sbs_list <- set_names(sbs_tb$data, sbs_tb$name)
 ```
+
+
+```{r create-MiCo, eval=FALSE}
+ac <- 
+  keep(sbs_list, str_starts(names(sbs_list), "ac")) %>%
+  imap(newMiCo)
+
+cit <- 
+  keep(sbs_list, str_starts(names(sbs_list), "cit")) %>% 
+  imap(newMiCo)
+
+f6p <- 
+  keep(sbs_list, str_starts(names(sbs_list), "f6p")) %>%
+  imap(newMiCo)
+```
+
 
 ```{r}
 ac_alig <- newMiCoAl(ac)
@@ -58,39 +81,35 @@ cit_alig <- newMiCoAl(cit)
 f6p_alig <- newMiCoAl(f6p)
 ```
 
+
+
 ```{r}
+plotAlignmentHeatmap(ac_alig, 0.5)
+plotAlignmentHeatmap(cit_alig, 0.5)
+plotAlignmentHeatmap(f6p_alig, 0.5)
+
 plotAlignmentHeatmap(ac_alig, 0.8)
 plotAlignmentHeatmap(cit_alig, 0.8)
-plotAlignmentHeatmap(f6p_alig, 0.5)
+plotAlignmentHeatmap(f6p_alig, 0.8)
+
+plotAlignmentHeatmap(ac_alig, 0.95)
+plotAlignmentHeatmap(cit_alig, 0.95)
+plotAlignmentHeatmap(f6p_alig, 0.95)
 ```
+
+
 ```{r}
-plotAlignmentNetwork(ac_alig, 0.95)
-plotAlignmentNetwork(cit_alig, 0.8)
+plotAlignmentNetwork(ac_alig, 0.5)
+plotAlignmentNetwork(cit_alig, 0.5)
 plotAlignmentNetwork(f6p_alig, 0.5)
-```
 
+plotAlignmentNetwork(ac_alig, 0.8)
+plotAlignmentNetwork(cit_alig, 0.8)
+plotAlignmentNetwork(f6p_alig, 0.8)
 
-
-
-## Analysis per Focal Strain
-
-Only A1R12 in two substrates.
-
-```{r}
-A1R12 <- keep(misosoup, str_detect(names(misosoup), "A1R12")) %>% imap(newMiCo)
-A1R12_alig <- newMiCoAl(A1R12)
-```
-
-```{r}
-plotAlignmentHeatmap(A1R12_alig, 0.8)
-plotAlignmentHeatmap(A1R12_alig, 0.5)
-plotAlignmentHeatmap(A1R12_alig, 0.2)
-```
-
-```{r}
-plotAlignmentNetwork(A1R12_alig, 0.8)
-plotAlignmentNetwork(A1R12_alig, 0.5)
-plotAlignmentNetwork(A1R12_alig, 0.2)
+plotAlignmentNetwork(ac_alig, 0.95)
+plotAlignmentNetwork(cit_alig, 0.95)
+plotAlignmentNetwork(f6p_alig, 0.95)
 ```
 
 
