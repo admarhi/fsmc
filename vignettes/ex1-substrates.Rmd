@@ -60,7 +60,7 @@ sbs_list <- set_names(sbs_tb$data, sbs_tb$name)
 ```
 
 
-```{r create-MiCo, eval=FALSE}
+```{r create-MiCo}
 ac <- 
   keep(sbs_list, str_starts(names(sbs_list), "ac")) %>%
   imap(newMiCo)
@@ -92,9 +92,9 @@ plotAlignmentHeatmap(ac_alig, 0.8)
 plotAlignmentHeatmap(cit_alig, 0.8)
 plotAlignmentHeatmap(f6p_alig, 0.8)
 
-plotAlignmentHeatmap(ac_alig, 0.95)
-plotAlignmentHeatmap(cit_alig, 0.95)
-plotAlignmentHeatmap(f6p_alig, 0.95)
+# plotAlignmentHeatmap(ac_alig, 0.95)
+# plotAlignmentHeatmap(cit_alig, 0.95)
+# plotAlignmentHeatmap(f6p_alig, 0.95)
 ```
 
 
