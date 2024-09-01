@@ -3,11 +3,14 @@
 \name{getMet}
 \alias{getMet}
 \alias{getMet,MiCo-method}
+\alias{getMet,MiCoAl-method}
 \title{Get Metabolites from MiCo object}
 \usage{
 getMet(object, unique = FALSE)
 
 \S4method{getMet}{MiCo}(object, unique = FALSE)
+
+\S4method{getMet}{MiCoAl}(object)
 }
 \arguments{
 \item{object}{An object of class MiCo}
