@@ -17,5 +17,7 @@ setMethod("getMet", "MiCo", function(object, unique) {
 })
 
 
-### Method to get mets from an alignment
-###
+#' @rdname getMet
+setMethod("getMet", "MiCoAl", function(object) {
+  object@alignment$levels_mat %>% rownames()
+})
