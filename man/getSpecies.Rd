@@ -3,16 +3,17 @@
 \name{getSpecies}
 \alias{getSpecies}
 \alias{getSpecies,MiCo-method}
+\alias{getSpecies,MiCoAl-method}
 \title{Get Species From a MiCo (Microbial Community) Object}
 \usage{
-getSpecies(object, unique = FALSE)
+getSpecies(object)
 
-\S4method{getSpecies}{MiCo}(object, unique = FALSE)
+\S4method{getSpecies}{MiCo}(object)
+
+\S4method{getSpecies}{MiCoAl}(object)
 }
 \arguments{
-\item{object}{An object of class MiCo}
-
-\item{unique}{Logical to toggle unique output.}
+\item{object}{An object of class MiCoAl}
 }
 \value{
 A character vector representing the microorganisms.
@@ -25,5 +26,7 @@ Get Species From a MiCo (Microbial Community) Object
 \section{Functions}{
 \itemize{
 \item \code{getSpecies(MiCo)}: Get Species From a MiCo (Microbial Community) Object
+
+\item \code{getSpecies(MiCoAl)}: Get Species From a MiCo (Microbial Community) Object
 
 }}

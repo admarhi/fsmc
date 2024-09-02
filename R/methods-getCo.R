@@ -1,12 +1,17 @@
 #' Get the Community
 #'
-#' @param object An object of class MiCo or MiCoAl
+#' Returns the community of a single MiCo object in a tibble format or a list
+#' of communities in tibble format for MiCoAl objects.
 #'
-#' @return A tibble with the community data.
 #' @export
 #'
 #' @examples
-#' ### Write examples for both classes
+#' c1 <- newMiCo(ac_A1R12_1)
+#' c2 <- newMiCo(ac_A1R12_2)
+#' a <- newMiCoAl(c1, c2)
+#'
+#' getCo(c1)
+#' getCo(a)
 setGeneric("getCo", function(object) {
   standardGeneric("getCo")
 })
@@ -16,9 +21,6 @@ setGeneric("getCo", function(object) {
 #' @describeIn getCo Get the Community
 #' @return A tibble with the community data.
 #' @export
-#'
-#' @examples
-#' ### Write examples for both classes
 setMethod("getCo", "MiCo", function(object) {
   tibble::tibble(
     species = object@species,
@@ -26,3 +28,12 @@ setMethod("getCo", "MiCo", function(object) {
     fluxes = object@fluxes
   )
 })
+
+#' @param object An object of class MiCoAl
+#' @describeIn getCo Get the Community
+#' @return A list with the community data.
+#' @export
+setMethod("getCo", "MiCoAl", function(object) {
+  object@communities %>% purrr::map(getCo)
+})
+

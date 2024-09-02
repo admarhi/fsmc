@@ -3,29 +3,39 @@
 \name{getCo}
 \alias{getCo}
 \alias{getCo,MiCo-method}
+\alias{getCo,MiCoAl-method}
 \title{Get the Community}
 \usage{
 getCo(object)
 
 \S4method{getCo}{MiCo}(object)
+
+\S4method{getCo}{MiCoAl}(object)
 }
 \arguments{
-\item{object}{An object of class MiCo}
+\item{object}{An object of class MiCoAl}
 }
 \value{
 A tibble with the community data.
 
-A tibble with the community data.
+A list with the community data.
 }
 \description{
-Get the Community
+Returns the community of a single MiCo object in a tibble format or a list
+of communities in tibble format for MiCoAl objects.
 }
 \section{Functions}{
 \itemize{
 \item \code{getCo(MiCo)}: Get the Community
 
+\item \code{getCo(MiCoAl)}: Get the Community
+
 }}
 \examples{
-### Write examples for both classes
-### Write examples for both classes
+c1 <- newMiCo(ac_A1R12_1)
+c2 <- newMiCo(ac_A1R12_2)
+a <- newMiCoAl(c1, c2)
+
+getCo(c1)
+getCo(a)
 }

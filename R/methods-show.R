@@ -17,16 +17,16 @@ setMethod("show", "MiCo", function(object) {
 #' @export
 setMethod("show", "MiCoAl", function(object) {
   alig_score <- "### ToDo ###"
-  max_alig <- max(object@alignment$levels)
+  max <- max(object@alignment$levels)
   x <- object@alignment
   x$levels <- x$levels_mat <- NULL
   aligned_rxns <- x %>%
-    purrr::keep(~.x$count == max_alig) %>%
+    purrr::keep(~.x$count == max) %>%
     names()
 
   stringr::str_glue(
     "Microbial Community Alignment Object (MiCoAl)\n",
-    "Max. alignment ({max_alig}/{length(object@communities)} communities) in:\n",
+    "Max. alignment ({max}/{length(object@communities)} communities) in:\n",
     "{paste('-', aligned_rxns, collapse = '\n')}"
   ) %>% cat()
 })
