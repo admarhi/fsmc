@@ -6,7 +6,7 @@
 #' @param ... MiCoAl objects
 #' @param names Character vector supplying names to be used as labels in plot
 #' @param smooth Boolean to toggle a smooth line
-#' @param smooth Boolean to toggle std. error bands
+#' @param se Boolean to toggle std. error bands
 #' @param min_frac Numerical value specifying minimum fraction in alignment
 #' @param max_frac Numerical value specifying maximum fraction in alignment
 #'
@@ -35,7 +35,7 @@ compareAlignments <- function(
     dplyr::mutate(
       frac = .data$level / .data$n_comms
     ) %>%
-    dplyr::filter(level > 1 & frac > {{ min_frac }} & frac < {{ max_frac }})
+    dplyr::filter("level" > 1 & "frac" > {{ min_frac }} & "frac" < {{ max_frac }})
 
   gg <- tb %>%
     ggplot2::ggplot(ggplot2::aes(

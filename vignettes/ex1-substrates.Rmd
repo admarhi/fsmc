@@ -86,7 +86,7 @@ compareAlignments(
   ac_alig, cit_alig, f6p_alig,
   names = c("Acetate", "Citrate", "Fructose"),
   smooth = TRUE
-)
+) %>% plotly::ggplotly()
 ```
 
 
@@ -99,9 +99,9 @@ plotAlignmentHeatmap(ac_alig, 0.8)
 plotAlignmentHeatmap(cit_alig, 0.8)
 plotAlignmentHeatmap(f6p_alig, 0.8)
 
-plotAlignmentHeatmap(ac_alig, 0.95)
-plotAlignmentHeatmap(cit_alig, 0.95)
-plotAlignmentHeatmap(f6p_alig, 0.95)
+plotAlignmentHeatmap(ac_alig, 0.88)
+plotAlignmentHeatmap(cit_alig, 0.88)
+plotAlignmentHeatmap(f6p_alig, 0.88)
 ```
 
 

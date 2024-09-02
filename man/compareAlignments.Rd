@@ -18,7 +18,9 @@ compareAlignments(
 
 \item{names}{Character vector supplying names to be used as labels in plot}
 
-\item{smooth}{Boolean to toggle std. error bands}
+\item{smooth}{Boolean to toggle a smooth line}
+
+\item{se}{Boolean to toggle std. error bands}
 
 \item{min_frac}{Numerical value specifying minimum fraction in alignment}
 

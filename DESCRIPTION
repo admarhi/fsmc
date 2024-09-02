@@ -29,7 +29,8 @@ Suggests:
     readr,
     purrr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    plotly
 VignetteBuilder: 
     knitr
 Depends: 
