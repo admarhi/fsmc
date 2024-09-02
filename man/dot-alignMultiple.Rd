@@ -15,6 +15,3 @@ A list containing the alignment data.
 \description{
 Multiple Alignment of MiCo (Microbial Community) Objects
 }
-\examples{
-###
-}
