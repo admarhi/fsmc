@@ -1,11 +1,11 @@
-#' Get Metabolites from MiCo object
+#' Get Metabolites
 #'
-#' @param object An object of class MiCo
+#' @param object An object of class MiCo or MiCoAl
 #' @param unique Logical to toggle unique output.
 #'
 #' @return A character vector representing the metabolites.
 #' @export
-setGeneric("getMet", function(object, unique = FALSE) {
+setGeneric("getMet", function(object, unique = TRUE) {
   standardGeneric("getMet")
 })
 
@@ -21,3 +21,4 @@ setMethod("getMet", "MiCo", function(object, unique = TRUE) {
 setMethod("getMet", "MiCoAl", function(object) {
   object@alignment$levels_mat %>% rownames()
 })
+

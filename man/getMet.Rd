@@ -4,16 +4,16 @@
 \alias{getMet}
 \alias{getMet,MiCo-method}
 \alias{getMet,MiCoAl-method}
-\title{Get Metabolites from MiCo object}
+\title{Get Metabolites}
 \usage{
-getMet(object, unique = FALSE)
+getMet(object, unique = TRUE)
 
-\S4method{getMet}{MiCo}(object, unique = FALSE)
+\S4method{getMet}{MiCo}(object, unique = TRUE)
 
 \S4method{getMet}{MiCoAl}(object)
 }
 \arguments{
-\item{object}{An object of class MiCo}
+\item{object}{An object of class MiCo or MiCoAl}
 
 \item{unique}{Logical to toggle unique output.}
 }
@@ -21,5 +21,5 @@ getMet(object, unique = FALSE)
 A character vector representing the metabolites.
 }
 \description{
-Get Metabolites from MiCo object
+Get Metabolites
 }
