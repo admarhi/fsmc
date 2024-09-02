@@ -27,7 +27,6 @@ compareAlignments <- function(
   alig_list <- list(...)
 
   rxns_per_level <- purrr::map2_df(alig_list, names, .rxnsPerLevel)
-
   tb <- tibble::tibble(
       alignment = names,
       n_comms = unlist(lapply(alig_list, function(x) length(x@communities)))
@@ -79,7 +78,7 @@ compareAlignments <- function(
 
   levels = object@alignment$levels
   mat <- object@alignment$levels_mat
-  rxns <- purrr::map_dbl(levels, ~sum(mat == .x))
+  rxns <- purrr::map_dbl(levels, ~sum(mat >= .x))
 
   tibble::tibble(
     level = levels,
