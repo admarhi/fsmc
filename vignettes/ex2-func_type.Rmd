@@ -82,6 +82,7 @@ plotAlignmentHeatmap(facilitation_alig, 0.95)
 ```
 
 
+
 ```{r}
 plotAlignmentNetwork(selection_alig, 0.5)
 plotAlignmentNetwork(facilitation_alig, 0.5)

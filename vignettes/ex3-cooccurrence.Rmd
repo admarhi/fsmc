@@ -137,3 +137,42 @@ plotAlignmentHeatmap(comp_alig, frac = 0.8)
 ```
 
 These results indicate that cooperative communities are functionally more similar to each other than competitive communities. With the minimum alignment set to 50% there is a great discrepancy between the extent of the alignment of cooperative and competitive communities. This becomes even more pronounced in the alignment >80%, here only the glycerol -> glycerol edge is present in competitive communities, while in the cooperative communities the production of hydrogen sulfide and ammonia from a variety of compounds are present.
+
+We can use the `compareAlignments` function to compare the alignments and find values, at which the alignments contain the same number of reactions. 
+
+```{r}
+gg <- compareAlignments(
+  coop_alig, comp_alig,
+  names = c("cooperative", "competitive"),
+  smooth = TRUE)
+gg
+```
+
+We can use `plotly` to make the plot interactive in order to easily find relevant values for further analysis. 
+
+```{r}
+plotly::ggplotly(gg)
+```
+
+From the interactive version of the plot we decide to compare alignments that align ~250 reactions in both, at a fraction of 0.51 (245 reactions) for cooperative and 0.31 (244 reactions) for competitive. The same for 130 reactions, 0.63 and 0.39 for cooperative and competitive respectively. 
+
+
+
+### Comparison of alignments that share 30 reactions
+```{r}
+plotAlignmentHeatmap(coop_alig, 0.51)
+plotAlignmentHeatmap(comp_alig, 0.31)
+```
+
+### Comparison of alignments that share 20 reactions
+```{r}
+plotAlignmentHeatmap(coop_alig, 0.63)
+plotAlignmentHeatmap(comp_alig, 0.39)
+```
+
+
+### Comparison of alignments that share 20 reactions
+```{r}
+plotAlignmentHeatmap(comp_alig, 0.36)
+plotAlignmentHeatmap(coop_alig, 0.6)
+```
