@@ -35,7 +35,10 @@ compareAlignments <- function(
     dplyr::mutate(
       frac = .data$level / .data$n_comms
     ) %>%
-    dplyr::filter("level" > 1 & "frac" > {{ min_frac }} & "frac" < {{ max_frac }})
+    dplyr::filter(
+      .data$level > 1 &
+        .data$frac > {{ min_frac }} &
+        .data$frac < {{ max_frac }})
 
   gg <- tb %>%
     ggplot2::ggplot(ggplot2::aes(
