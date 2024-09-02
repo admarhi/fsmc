@@ -57,8 +57,10 @@
 
 
 
-
-<div class="row">
+<link href="ex3-cooccurrence_files/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="ex3-cooccurrence_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="ex3-cooccurrence_files/plotly-binding-4.10.4/plotly.js"></script><script src="ex3-cooccurrence_files/typedarray-0.1/typedarray.min.js"></script><link href="ex3-cooccurrence_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="ex3-cooccurrence_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="ex3-cooccurrence_files/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="ex3-cooccurrence_files/plotly-main-2.11.1/plotly-latest.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Alignment of Cooperative and Competitive Communities</h1>
@@ -256,6 +258,56 @@ becomes even more pronounced in the alignment &gt;80%, here only the
 glycerol -&gt; glycerol edge is present in competitive communities,
 while in the cooperative communities the production of hydrogen sulfide
 and ammonia from a variety of compounds are present.</p>
+<p>We can use the <code>compareAlignments</code> function to compare the
+alignments and find values, at which the alignments contain the same
+number of reactions.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gg</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/compareAlignments.html">compareAlignments</a></span><span class="op">(</span></span>
+<span>  <span class="va">coop_alig</span>, <span class="va">comp_alig</span>,</span>
+<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cooperative"</span>, <span class="st">"competitive"</span><span class="op">)</span>,</span>
+<span>  smooth <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">gg</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-15-1.png" width="700"></p>
+<p>We can use <code>plotly</code> to make the plot interactive in order
+to easily find relevant values for further analysis.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html" class="external-link">ggplotly</a></span><span class="op">(</span><span class="va">gg</span><span class="op">)</span></span></code></pre></div>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:700px;height:432.632880098888px;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"data":[{"visible":false,"showlegend":false,"xaxis":null,"yaxis":null,"hoverinfo":"text","mode":"","frame":null}],"layout":{"margin":{"t":27.824636418824401,"r":7.3059360730593621,"b":41.778974318367787,"l":25.570776255707766},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.02,1.02],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Fraction Aligned Communities","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.050000000000000003,1.05],"tickmode":"array","ticktext":[],"tickvals":[],"categoryorder":"array","categoryarray":[],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Number of Reactions","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"rgba(0,0,0,1)","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1b0a1a0dd307":{"x":{},"y":{},"colour":{},"fill":{},"type":"scatter"},"1b0a2b0e8aed":{"x":{},"y":{},"colour":{},"fill":{}}},"cur_data":"1b0a1a0dd307","visdat":{"1b0a1a0dd307":["function (y) ","x"],"1b0a2b0e8aed":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p>From the interactive version of the plot we decide to compare
+alignments that align ~250 reactions in both, at a fraction of 0.51 (245
+reactions) for cooperative and 0.31 (244 reactions) for competitive. The
+same for 130 reactions, 0.63 and 0.39 for cooperative and competitive
+respectively.</p>
+</div>
+<div class="section level3">
+<h3 id="comparison-of-alignments-that-share-30-reactions">Comparison of alignments that share 30 reactions<a class="anchor" aria-label="anchor" href="#comparison-of-alignments-that-share-30-reactions"></a>
+</h3>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">coop_alig</span>, <span class="fl">0.51</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-17-1.png" width="700"></p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">comp_alig</span>, <span class="fl">0.31</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-17-2.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="comparison-of-alignments-that-share-20-reactions">Comparison of alignments that share 20 reactions<a class="anchor" aria-label="anchor" href="#comparison-of-alignments-that-share-20-reactions"></a>
+</h3>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">coop_alig</span>, <span class="fl">0.63</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-18-1.png" width="700"></p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">comp_alig</span>, <span class="fl">0.39</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-18-2.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="comparison-of-alignments-that-share-20-reactions-1">Comparison of alignments that share 20 reactions<a class="anchor" aria-label="anchor" href="#comparison-of-alignments-that-share-20-reactions-1"></a>
+</h3>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">comp_alig</span>, <span class="fl">0.36</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-19-1.png" width="700"></p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plotAlignmentHeatmap.html">plotAlignmentHeatmap</a></span><span class="op">(</span><span class="va">coop_alig</span>, <span class="fl">0.6</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ex3-cooccurrence_files/figure-html/unnamed-chunk-19-2.png" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
