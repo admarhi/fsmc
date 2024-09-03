@@ -15,7 +15,7 @@ plotAlignmentHeatmap <- function(object, frac) {
   max_weight <- length(object@communities)
   min_weight <- max_weight * frac
 
-  levels_mat[levels_mat <= min_weight] <- 0
+  levels_mat[levels_mat < min_weight] <- 0
 
   if (min_weight > max(levels_mat)) return("No Alignment at this level.")
 
@@ -29,7 +29,7 @@ plotAlignmentHeatmap <- function(object, frac) {
     dplyr::rename(
       met = "RowName",
       met2 = "ColName") %>%
-    dplyr::filter(.data[["level"]] > min_weight) %>%
+    dplyr::filter(.data[["level"]] >= min_weight) %>%
     ggplot2::ggplot(ggplot2::aes(
       x = .data$met2, y = .data$met, fill = .data$level)) +
     ggplot2::geom_tile() +
