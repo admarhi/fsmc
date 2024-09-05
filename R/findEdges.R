@@ -5,7 +5,6 @@
 #' between species.
 #'
 #' @param tb Tibble describing a microbial community
-#' @param silent Logical to toggle output
 #'
 #' @return A list of two hashs, one for edges between metabolites and one for
 #' species.
@@ -13,11 +12,16 @@
 #'
 #' @examples
 #' findEdges(ac_A1R12_1)
-findEdges <- function(tb, silent = FALSE) {
+findEdges <- function(tb) {
 
-  ### Could delete the silent option
-  ### Check that the columns are in the right order and correct names
-  ### Checks that the columns are of the expected types
+  ### ToDo ---------------------------------------------------------------------
+  ### - Replace with option to either get the species or the metabolite edges
+  ### - Check that the columns are in the right order and correct names
+  ### - Checks that the columns are of the expected types
+  ### - Turn the above two into a general `checkValidMiCoTibble()` function
+  ### - Ensure the downstream effects of changing the output are addressed
+  ### - Behaviour for only directional fluxes
+  ### --------------------------------------------------------------------------
 
   names(tb) <- c("species", "met", "flux")
 
@@ -34,11 +38,7 @@ findEdges <- function(tb, silent = FALSE) {
     cons_fluxes <- tb$flux[tb$met == m & tb$flux < 0]
     names(prod_fluxes) <- producers
     names(cons_fluxes) <- consumers
-    if (!silent) {
-      cat("--------", m, "--------\n")
-      cat("Producers:", producers, "\n")
-      cat("Consumers:", consumers, "\n")
-    }
+
     met_hash[[m]] <- hash::hash(
       producers = producers,
       consumers = consumers,
@@ -60,12 +60,6 @@ findEdges <- function(tb, silent = FALSE) {
 
     for (m in metabolites_out) {
       species_to <- c(species_to, met_hash[[m]]$consumers)
-    }
-
-    if (!silent) {
-      cat("--------", s, "--------\n")
-      cat("From:", species_from, "\n")
-      cat("To:", species_to, "\n")
     }
 
     species_hash[[s]] <- hash::hash(from = species_from, to = species_to)

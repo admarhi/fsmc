@@ -4,12 +4,10 @@
 \alias{findEdges}
 \title{Get All Edges of a Community}
 \usage{
-findEdges(tb, silent = FALSE)
+findEdges(tb)
 }
 \arguments{
 \item{tb}{Tibble describing a microbial community}
-
-\item{silent}{Logical to toggle output}
 }
 \value{
 A list of two hashs, one for edges between metabolites and one for
