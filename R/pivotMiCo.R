@@ -1,7 +1,7 @@
 #' Functions to Change the orientation of MiCo Input Data
 #' 
-#' wrapper function around tidyr's `pivot_longer()` function to facilitate
-#' the easy transformation between community data types. 
+#' Wrapper function around tidyr's `pivot_longer()` function to facilitate
+#' the easy transformation into the correct data format for MiCo construction. 
 #' 
 #' @param tb Tibble with data on a microbial community in 
 #' long or short format to be 
