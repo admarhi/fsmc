@@ -1,16 +1,57 @@
-tb_set1 <- 
-  tibble::tribble(
+tibble::tribble(
+  ~uptake, ~secretion, ~flux, ~species,
+  "m1", "m2", 1, "s1",
+  "m2", "m3", 1, "s2",
+  "m3", "m4", 1, "s3",
+  "m4", "m1", 1, "s4"
+) %>%
+  pivotMiCo(
+    species = "species",
+    from = "uptake",
+    to = "secretion",
+    flux = "flux"
+  ) %>%
+  readr::write_rds("tests/testthat/fixtures/aligment_test_set1.rds")
+
+# Set2
+list(
+  c1 = tibble::tribble(
     ~uptake, ~secretion, ~flux, ~species,
     "m1", "m2", 1, "s1",
     "m2", "m3", 1, "s2",
     "m3", "m4", 1, "s3",
-    "m4", "m1", 1, "s4"
-  ) %>% pivotMiCo( 
-  species = "species", 
-  from = "uptake", 
-  to = "secretion", 
-  flux = "flux")
-readr::write_rds(tb_set1, "tests/testthat/fixtures/alig_test_set1.rds")
-
-
-
+    "m4", "m1", 1, "s4",
+    "m1", "m4", 1, "s5",
+  ),
+  c2 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m3", 1, "s2",
+    "m3", "m4", 1, "s3",
+    "m4", "m1", 1, "s4",
+    "m4", "m3", 1, "s5",
+  ),
+  c3 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m3", 1, "s2",
+    "m3", "m4", 1, "s3",
+    "m4", "m1", 1, "s4",
+    "m3", "m2", 1, "s5",
+  ),
+  c4 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m3", 1, "s2",
+    "m3", "m4", 1, "s3",
+    "m4", "m1", 1, "s4",
+    "m2", "m1", 1, "s5",
+  )
+) %>%
+  purrr::map(pivotMiCo,
+    species = "species",
+    from = "uptake",
+    to = "secretion",
+    flux = "flux"
+  ) %>%
+  readr::write_rds("tests/testthat/fixtures/aligment_test_set2.rds")
