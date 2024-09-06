@@ -23,6 +23,17 @@ newMiCo <- function(
     metabolites = character(),
     fluxes = numeric()) {
 
+  ### ToDo ---------------------------------------------------------------------
+  ### - Clean up and organise the input validation
+  ### - Extract validation logic to `checkValidMiCoData()`
+  ### - Toggle directional or weighted edges
+  ### - Organise the output list and check how that will affect downstream
+  ### - Calculate connectivity metrics for the community
+  ### - Document the class and creation
+  ### - add constructor function from different sources
+  ### - Function/toggle to make the fluxes directional
+  ### --------------------------------------------------------------------------
+
   if (!is.null(data)) {
     if (is.character(data) && file.exists(data)) {
       if (is.null(name)) name <- sub(".csv", "", basename(data))
@@ -50,7 +61,7 @@ newMiCo <- function(
   edges <- findEdges(tibble::tibble(
     species = species,
     metabolites = metabolites,
-    fluxes = fluxes), silent = TRUE)
+    fluxes = fluxes))
 
   # Init the matrices
   mets <- unique(metabolites)
@@ -71,6 +82,9 @@ newMiCo <- function(
   for (m1 in mets) {
     # Get the consumers of m1 as char vector
     cons_m1 <- edges$metabolites[[m1]]$consumers
+
+    ### Skip if cons_m1 is empty (benchmark to check performance)
+
     for (m2 in mets) {
       # Get the producers of m2 as char vector
       prods_m2 <- edges$metabolites[[m2]]$producers

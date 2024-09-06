@@ -3,9 +3,6 @@
 #' @param coms Named list of MiCo objects.
 #'
 #' @return A list containing the alignment data.
-#'
-#' @examples
-#' ###
 .alignMultiple <- function(coms) {
   ### Check that all communities are named
   # Get all unique metabolites
@@ -59,13 +56,6 @@
 
   al$levels <- levels
   al$levels_mat <- levels_mat
-
-  #### Alignment Score ####
-  # The overall score of the alignment gives the non-redundant count of aligned
-  # reactions in each level of the alignment.
-
-
-
 
   return(al)
 }

@@ -7,15 +7,16 @@
 #' @export
 newMiCoAl <- function(..., pairwise = FALSE, comment = NULL) {
 
-  ### Make check that it is either multiple MiCo or a list of MiCo
-
   if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
     coms <- list(...)[[1]]
   } else {
     coms <- list(...)
   }
-  # Make list of communities
-  # coms <- list(...)
+
+  # Check that all list entries are MiCo objects
+  stopifnot(exprs = {
+    all(lapply(coms, class) == "MiCo")
+  })
 
   # Name the communities
   names(coms) <- sapply(coms, function(x) x@name)
@@ -28,8 +29,9 @@ newMiCoAl <- function(..., pairwise = FALSE, comment = NULL) {
 
   # Perform the alignment
   alignment <- align_func(coms)
+  ### Add type of the type to the alignment
 
-  ### Add name of the type to the alignment
+  ### Alignment score here
 
   methods::new(
     "MiCoAl",
