@@ -19,6 +19,6 @@ long or short format to be}
 \item{flux}{Column name of the flux column}
 }
 \description{
-wrapper function around tidyr's \code{pivot_longer()} function to facilitate
-the easy transformation between community data types.
+Wrapper function around tidyr's \code{pivot_longer()} function to facilitate
+the easy transformation into the correct data format for MiCo construction.
 }
