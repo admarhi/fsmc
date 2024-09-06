@@ -143,8 +143,7 @@ We can use the `compareAlignments` function to compare the alignments and find v
 ```{r}
 gg <- compareAlignments(
   coop_alig, comp_alig,
-  names = c("cooperative", "competitive"),
-  smooth = TRUE)
+  names = c("cooperative", "competitive"))
 gg
 ```
 

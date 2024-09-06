@@ -84,8 +84,7 @@ f6p_alig <- newMiCoAl(f6p)
 ```{r}
 compareAlignments(
   ac_alig, cit_alig, f6p_alig,
-  names = c("Acetate", "Citrate", "Fructose"),
-  smooth = TRUE
+  names = c("Acetate", "Citrate", "Fructose")
 ) %>% plotly::ggplotly()
 ```
 
