@@ -30,7 +30,8 @@ tb <- tibble::tribble(
   "m3", "m4", 1, "s3",
   "m4", "m1", 1, "s4")
 
-tb \%>\% pivotMiCo(
+pivotMiCo(
+    tb = tb,
     species = "species",
     from = "uptake",
     to = "secretion",
