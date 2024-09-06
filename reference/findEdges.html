@@ -54,7 +54,7 @@ between species.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">findEdges</span><span class="op">(</span><span class="va">tb</span>, silent <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">findEdges</span><span class="op">(</span><span class="va">tb</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -63,10 +63,6 @@ between species.</p>
 
 <dl><dt id="arg-tb">tb<a class="anchor" aria-label="anchor" href="#arg-tb"></a></dt>
 <dd><p>Tibble describing a microbial community</p></dd>
-
-
-<dt id="arg-silent">silent<a class="anchor" aria-label="anchor" href="#arg-silent"></a></dt>
-<dd><p>Logical to toggle output</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -78,54 +74,6 @@ species.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">findEdges</span><span class="op">(</span><span class="va">ac_A1R12_1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- A1R12 --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Producers: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Consumers: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- I2R16 --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Producers: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Consumers: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- ac --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- acald --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- ala__D --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- ala__L --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- asp__L --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- co2 --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From:  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- etoh --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- glu__L --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- gly --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- gthox --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: acald asp__L co2 etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: acald asp__L etoh gly gthrd h2o2 h2s pyr </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- gthrd --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- h2o2 --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- h2s --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -------- pyr --------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> From: ac ala__D ala__L co2 glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> To: ac ala__D ala__L glu__L gthox </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $metabolites</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hash&gt; containing 2 key-value pair(s).</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   A1R12 : &lt;hash&gt; containing 4 key-value pair(s).</span>

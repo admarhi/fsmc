@@ -24,6 +24,7 @@
 <url><loc>https://admarhi.github.io/fsmc/reference/dot-alignMultiple.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/dot-alignPairwise.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/dot-rxnsPerLevel.html</loc></url>
+<url><loc>https://admarhi.github.io/fsmc/reference/dot-scoreAlignment.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/findEdges.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/fsmc-package.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/getCo.html</loc></url>
@@ -36,6 +37,7 @@
 <url><loc>https://admarhi.github.io/fsmc/reference/misosoup.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/newMiCo.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/newMiCoAl.html</loc></url>
+<url><loc>https://admarhi.github.io/fsmc/reference/pivotMiCo.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/plotAlignmentHeatmap.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/plotAlignmentNetwork.html</loc></url>
 <url><loc>https://admarhi.github.io/fsmc/reference/show-MiCo-method.html</loc></url>
