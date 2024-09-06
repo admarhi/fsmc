@@ -22,3 +22,17 @@ long or short format to be}
 Wrapper function around tidyr's \code{pivot_longer()} function to facilitate
 the easy transformation into the correct data format for MiCo construction.
 }
+\examples{
+tb <- tibble::tribble(
+  ~uptake, ~secretion, ~flux, ~species,
+  "m1", "m2", 1, "s1",
+  "m2", "m3", 1, "s2",
+  "m3", "m4", 1, "s3",
+  "m4", "m1", 1, "s4")
+
+tb \%>\% pivotMiCo(
+    species = "species",
+    from = "uptake",
+    to = "secretion",
+    flux = "flux")
+}
