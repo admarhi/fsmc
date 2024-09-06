@@ -99,3 +99,44 @@ list(
     flux = "flux"
   ) %>%
   readr::write_rds("tests/testthat/fixtures/aligment_test_set3.rds")
+
+# Set 4
+list(
+  c1 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m4", 1, "s2",
+    "m3", "m1", 1, "s4",
+  ),
+  c2 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m4", 1, "s2",
+    "m4", "m3", 1, "s3",
+    "m3", "m1", 1, "s4",
+  ),
+  c3 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m4", 1, "s2",
+    "m4", "m3", 1, "s3",
+    "m3", "m1", 1, "s4",
+    "m1", "m4", 1, "s5",
+  ),
+  c4 = tibble::tribble(
+    ~uptake, ~secretion, ~flux, ~species,
+    "m1", "m2", 1, "s1",
+    "m2", "m4", 1, "s2",
+    "m4", "m3", 1, "s3",
+    "m3", "m1", 1, "s4",
+    "m3", "m2", 1, "s4",
+    "m1", "m4", 1, "s5",
+  )
+) %>%
+  purrr::map(pivotMiCo,
+    species = "species",
+    from = "uptake",
+    to = "secretion",
+    flux = "flux"
+  ) %>%
+  readr::write_rds("tests/testthat/fixtures/aligment_test_set4.rds")

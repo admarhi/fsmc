@@ -20,7 +20,7 @@ test_that("alignment scoring produces expected results", {
   l3 <- 
     readr::read_rds(test_path("fixtures", "aligment_test_set3.rds")) %>% 
     purrr::imap(newMiCo) 
-  
+
   a3 <- newMiCoAl(l3)
   s3 <- .scoreAlignment(a3@alignment)
   expect_equal(nrow(s3), 2)
@@ -30,4 +30,13 @@ test_that("alignment scoring produces expected results", {
   s3.1 <- .scoreAlignment(a3.1@alignment)
   expect_equal(nrow(s3.1), 1)
   expect_equal(s3.1$score, 4/6)
+
+  # Set 4
+  a4 <- 
+    readr::read_rds(test_path("fixtures", "aligment_test_set4.rds")) %>% 
+    purrr::imap(newMiCo) %>% 
+    newMiCoAl()
+  s4 <- .scoreAlignment(a4@alignment)
+  expect_equal(nrow(s4), 3)
+  expect_equal(s4$score, c(1/2, 1/2, 5/6*2/4))
 })
