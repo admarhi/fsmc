@@ -4,7 +4,7 @@
 #'
 #' @return A list containing the alignment data.
 .alignMultiple <- function(coms) {
-  ### Check that all communities are named
+  
   # Get all unique metabolites
   mets <- unique(unlist(lapply(coms, getMet)))
 

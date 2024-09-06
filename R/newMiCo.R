@@ -32,6 +32,7 @@ newMiCo <- function(
   ### - Document the class and creation
   ### - add constructor function from different sources
   ### - Function/toggle to make the fluxes directional
+  ### - MiCo needs to have a name
   ### --------------------------------------------------------------------------
 
   if (!is.null(data)) {
