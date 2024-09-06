@@ -80,6 +80,23 @@ long or short format to be</p></dd>
 
 </dl></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">tb</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tribble.html" class="external-link">tribble</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="op">~</span><span class="va">uptake</span>, <span class="op">~</span><span class="va">secretion</span>, <span class="op">~</span><span class="va">flux</span>, <span class="op">~</span><span class="va">species</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"m1"</span>, <span class="st">"m2"</span>, <span class="fl">1</span>, <span class="st">"s1"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"m2"</span>, <span class="st">"m3"</span>, <span class="fl">1</span>, <span class="st">"s2"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"m3"</span>, <span class="st">"m4"</span>, <span class="fl">1</span>, <span class="st">"s3"</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"m4"</span>, <span class="st">"m1"</span>, <span class="fl">1</span>, <span class="st">"s4"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">tb</span> <span class="op">%&gt;%</span> <span class="fu">pivotMiCo</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    species <span class="op">=</span> <span class="st">"species"</span>,</span></span>
+<span class="r-in"><span>    from <span class="op">=</span> <span class="st">"uptake"</span>,</span></span>
+<span class="r-in"><span>    to <span class="op">=</span> <span class="st">"secretion"</span>,</span></span>
+<span class="r-in"><span>    flux <span class="op">=</span> <span class="st">"flux"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in tb %&gt;% pivotMiCo(species = "species", from = "uptake", to = "secretion",     flux = "flux"):</span> could not find function "%&gt;%"</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
