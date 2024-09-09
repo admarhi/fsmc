@@ -74,64 +74,7 @@ species.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">findEdges</span><span class="op">(</span><span class="va">ac_A1R12_1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $metabolites</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   A1R12 : &lt;hash&gt; containing 4 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cons_fluxes : -1.12096390 -0.58268031 -0.18475279 -0.02158742 -2.90547696 -1.45273848 -0.00238294 -2.01918234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       consumers : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       prod_fluxes : 0.7729250 0.7603136 1.2168416 0.6184093 0.5068255 1.4527385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       producers : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   I2R16 : &lt;hash&gt; containing 4 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cons_fluxes : -10.7673345  -0.7603136  -1.2168416  -0.5068255  -1.4527385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       consumers : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       prod_fluxes :  1.12096390  0.58268031 12.12608512  0.18475279  0.02158742  2.90547696  1.45273848  0.00238294  2.01918234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       producers : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $species</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;hash&gt; containing 14 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ac : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   acald : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ala__D : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ala__L : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   asp__L : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   co2 : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr    ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   etoh : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   glu__L : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   gly : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   gthox : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : acald  asp__L co2    etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : acald  asp__L etoh   gly    gthrd  h2o2   h2s    pyr   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   gthrd : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   h2o2 : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   h2s : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   pyr : &lt;hash&gt; containing 2 key-value pair(s).</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       from : ac     ala__D ala__L co2    glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       to : ac     ala__D ala__L glu__L gthox </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'ac_A1R12_1' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
