@@ -37,3 +37,4 @@ Depends:
     R (>= 4.4.0)
 URL: https://admarhi.github.io/fsmc/
 Config/testthat/edition: 3
+LazyData: true

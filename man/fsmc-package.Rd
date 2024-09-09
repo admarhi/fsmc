@@ -6,7 +6,7 @@
 \alias{fsmc-package}
 \title{fsmc: Functional Similarity of Microbial Communities}
 \description{
-What the package does (one paragraph).
+Analysis of the functional (dis-) similarity of microbial communities.
 }
 \seealso{
 Useful links:
