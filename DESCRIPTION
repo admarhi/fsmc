@@ -4,7 +4,7 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Adrian", "Hirt", , "am.hirt@pm.me", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0008-1929-6629"))
-Description: What the package does (one paragraph).
+Description: Analysis of the functional (dis-) similarity of microbial communities.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -34,7 +34,6 @@ Suggests:
 VignetteBuilder: 
     knitr
 Depends: 
-    R (>= 2.10)
-LazyData: true
+    R (>= 4.4.0)
 URL: https://admarhi.github.io/fsmc/
 Config/testthat/edition: 3
