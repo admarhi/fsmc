@@ -94,3 +94,8 @@ setClass(
     TRUE
   }
 )
+
+#' @export
+#' @import methods
+#' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
+.miaFunc <- setClass("miaFunc", contains = "TreeSummarizedExperiment")
