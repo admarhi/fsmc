@@ -10,8 +10,8 @@ findEdges(tb)
 \item{tb}{Tibble describing a microbial community}
 }
 \value{
-A list of two hashs, one for edges between metabolites and one for
-species.
+A hash containing the edges of the community. Returns a list of
+two hashs, one for edges between metabolites and one for species.
 }
 \description{
 Takes a tibble describing a microbial community as input and returns a
