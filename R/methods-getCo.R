@@ -1,20 +1,7 @@
-#' @param object An object of class MiCo
-#' @describeIn getCo Get the Community
-#' @return A tibble with the community data.
-#' @export
-setMethod("getCo", "MiCo", function(object) {
-  tibble::tibble(
-    species = object@species,
-    metabolites = object@metabolites,
-    fluxes = object@fluxes
-  )
-})
-
-#' @param object An object of class MiCoAl
+#' @param object An object of class \code{MicrobiomeFunction}
 #' @describeIn getCo Get the Community
 #' @return A list with the community data.
 #' @export
-setMethod("getCo", "MiCoAl", function(object) {
-  object@communities %>% purrr::map(getCo)
+setMethod("getCo", "MicrobiomeFunction", function(object) {
+  object@InputData
 })
-

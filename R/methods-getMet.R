@@ -1,12 +1,11 @@
 #' @rdname getMet
-setMethod("getMet", "MiCo", function(object, unique = TRUE) {
-  if (unique) return(unique(object@metabolites))
-  object@metabolites
+setMethod("getMet", "MicrobiomeFunction", function(object) {
+  object@Metabolites
 })
 
 
 #' @rdname getMet
-setMethod("getMet", "MiCoAl", function(object) {
-  object@alignment$levels_mat %>% rownames()
+setMethod("getMet", "MicrobiomeFunctionAlignment", function(object) {
+  ### ToDo
 })
 

@@ -1,4 +1,4 @@
-#' Get Species From a \code{MicrobiomeFunction} Object
+#' Return Species in a Microbiome
 #'
 #' @export
 setGeneric("getSpecies", function(object) {
@@ -7,41 +7,30 @@ setGeneric("getSpecies", function(object) {
 
 #' Get Metabolites
 #'
-#' @param object An object of class MiCo or MiCoAl
-#' @param unique Logical to toggle unique output.
+#' @param object a \code{MicrobiomeFunction} or 
+#' \code{MicrobiomeFunctionAlignment} object
 #'
 #' @return A character vector representing the metabolites.
 #' @export
-setGeneric("getMet", function(object, unique = TRUE) {
+setGeneric("getMet", function(object) {
   standardGeneric("getMet")
-})
-
-#' Get Fluxes from \code{MicrobiomeFunction} Object
-#'
-#' @param object An object of class MiCo.
-#' @return A numeric vector representing the fluxes.
-#' @export
-setGeneric("getFlux", function(object) {
-  standardGeneric("getFlux")
 })
 
 #' Get Edges From a \code{MicrobiomeFunction} Object
 #'
-#' @param object An object of class MiCo
-#' @param type Character string indicating which type of edges to return. Can
-#' be either of `c("species", "metabolites")`, and defaults to `NULL.`
-#' If `NULL`, both types of edges are returned.
+#' @param object a \code{MicrobiomeFunction} object
 #'
 #' @return A list of edges in the community.
 #' @export
-setGeneric("getEdges", function(object, type = NULL) {
+setGeneric("getEdges", function(object) {
   standardGeneric("getEdges")
 })
 
 #' Get the Community
 #'
-#' Returns the community of a single MiCo object in a tibble format or a list
-#' of communities in tibble format for MiCoAl objects.
+#' Returns the community of a single \code{MicrobiomeFunction} object in a \
+#' tibble format or a list of communities in tibble format for 
+#' \code{MicrobiomeFunctionAlignment} objects.
 #'
 #' @export
 #'
