@@ -2,18 +2,18 @@
 % Please edit documentation in R/AllGenerics.R, R/methods-getSpecies.R
 \name{getSpecies}
 \alias{getSpecies}
-\alias{getSpecies,MiCo-method}
-\alias{getSpecies,MiCoAl-method}
-\title{Get Species From a \code{MicrobiomeFunction} Object}
+\alias{getSpecies,MicrobiomeFunction-method}
+\alias{getSpecies,MicrobiomeFunctionAlignment-method}
+\title{Return Species in a Microbiome}
 \usage{
 getSpecies(object)
 
-\S4method{getSpecies}{MiCo}(object)
+\S4method{getSpecies}{MicrobiomeFunction}(object)
 
-\S4method{getSpecies}{MiCoAl}(object)
+\S4method{getSpecies}{MicrobiomeFunctionAlignment}(object)
 }
 \arguments{
-\item{object}{An object of class MiCoAl}
+\item{object}{a \code{MicrobiomeFunctionAlignment} Object}
 }
 \value{
 A character vector representing the microorganisms.
@@ -21,12 +21,12 @@ A character vector representing the microorganisms.
 A character vector representing the microorganisms.
 }
 \description{
-Get Species From a \code{MicrobiomeFunction} Object
+Return Species in a Microbiome
 }
 \section{Functions}{
 \itemize{
-\item \code{getSpecies(MiCo)}: Get Species From a \code{MicrobiomeFunction} Object
+\item \code{getSpecies(MicrobiomeFunction)}: Return Species in a Microbiome
 
-\item \code{getSpecies(MiCoAl)}: Get Species From a \code{MicrobiomeFunction} Object
+\item \code{getSpecies(MicrobiomeFunctionAlignment)}: Return Species in a Microbiome
 
 }}

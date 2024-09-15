@@ -2,33 +2,27 @@
 % Please edit documentation in R/AllGenerics.R, R/methods-getCo.R
 \name{getCo}
 \alias{getCo}
-\alias{getCo,MiCo-method}
-\alias{getCo,MiCoAl-method}
+\alias{getCo,MicrobiomeFunction-method}
 \title{Get the Community}
 \usage{
 getCo(object)
 
-\S4method{getCo}{MiCo}(object)
-
-\S4method{getCo}{MiCoAl}(object)
+\S4method{getCo}{MicrobiomeFunction}(object)
 }
 \arguments{
-\item{object}{An object of class MiCoAl}
+\item{object}{An object of class \code{MicrobiomeFunction}}
 }
 \value{
-A tibble with the community data.
-
 A list with the community data.
 }
 \description{
-Returns the community of a single MiCo object in a tibble format or a list
-of communities in tibble format for MiCoAl objects.
+Returns the community of a single \code{MicrobiomeFunction} object in a \
+tibble format or a list of communities in tibble format for
+\code{MicrobiomeFunctionAlignment} objects.
 }
 \section{Functions}{
 \itemize{
-\item \code{getCo(MiCo)}: Get the Community
-
-\item \code{getCo(MiCoAl)}: Get the Community
+\item \code{getCo(MicrobiomeFunction)}: Get the Community
 
 }}
 \examples{

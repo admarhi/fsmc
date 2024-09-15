@@ -2,19 +2,15 @@
 % Please edit documentation in R/AllGenerics.R, R/methods-getEdges.R
 \name{getEdges}
 \alias{getEdges}
-\alias{getEdges,MiCo-method}
+\alias{getEdges,MicrobiomeFunction-method}
 \title{Get Edges From a \code{MicrobiomeFunction} Object}
 \usage{
-getEdges(object, type = NULL)
+getEdges(object)
 
-\S4method{getEdges}{MiCo}(object, type = NULL)
+\S4method{getEdges}{MicrobiomeFunction}(object)
 }
 \arguments{
-\item{object}{An object of class MiCo}
-
-\item{type}{Character string indicating which type of edges to return. Can
-be either of \code{c("species", "metabolites")}, and defaults to \code{NULL.}
-If \code{NULL}, both types of edges are returned.}
+\item{object}{a \code{MicrobiomeFunction} object}
 }
 \value{
 A list of edges in the community.
@@ -24,6 +20,6 @@ Get Edges From a \code{MicrobiomeFunction} Object
 }
 \section{Functions}{
 \itemize{
-\item \code{getEdges(MiCo)}: Get Edges From a \code{MicrobiomeFunction} Object
+\item \code{getEdges(MicrobiomeFunction)}: Get Edges From a \code{MicrobiomeFunction} Object
 
 }}

@@ -2,20 +2,19 @@
 % Please edit documentation in R/AllGenerics.R, R/methods-getMet.R
 \name{getMet}
 \alias{getMet}
-\alias{getMet,MiCo-method}
-\alias{getMet,MiCoAl-method}
+\alias{getMet,MicrobiomeFunction-method}
+\alias{getMet,MicrobiomeFunctionAlignment-method}
 \title{Get Metabolites}
 \usage{
-getMet(object, unique = TRUE)
+getMet(object)
 
-\S4method{getMet}{MiCo}(object, unique = TRUE)
+\S4method{getMet}{MicrobiomeFunction}(object)
 
-\S4method{getMet}{MiCoAl}(object)
+\S4method{getMet}{MicrobiomeFunctionAlignment}(object)
 }
 \arguments{
-\item{object}{An object of class MiCo or MiCoAl}
-
-\item{unique}{Logical to toggle unique output.}
+\item{object}{a \code{MicrobiomeFunction} or
+\code{MicrobiomeFunctionAlignment} object}
 }
 \value{
 A character vector representing the metabolites.
