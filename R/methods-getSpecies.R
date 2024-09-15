@@ -1,11 +1,3 @@
-#' Get Species From a MiCo (Microbial Community) Object
-#'
-#' @export
-setGeneric("getSpecies", function(object) {
-  standardGeneric("getSpecies")
-})
-
-
 #' @param object An object of class MiCo
 #' @describeIn getSpecies Get Species From a MiCo (Microbial Community) Object
 #' @return A character vector representing the microorganisms.

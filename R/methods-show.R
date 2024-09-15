@@ -10,6 +10,16 @@ setMethod("show", "MiCo", function(object) {
   ) %>% cat()
 })
 
+#' Show Method for \code{MicrobiomeFunction} Object
+#'
+#' @param object An object of class \code{MicrobiomeFunction}
+#' @export
+setMethod("show", "MicrobiomeFunction", function(object) {
+  stringr::str_glue(
+    "{object@Name}: MicrobiomeFunction Object\n"
+  ) %>% cat()
+})
+
 
 #' Show method for Microbial Community Alignment Objects
 #'

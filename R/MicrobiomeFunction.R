@@ -4,13 +4,18 @@
 #' @param data a DataFrame-like object that includes columns specfiying
 #' the species, metabolites and fluxes in the microbiome. The fluxes can 
 #' either be directional (all of magnitude 1)
-#' 
+#' @param name a \code{character scalar} specifying the name of the Microbiome
 #' 
 #' @export
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom dplyr filter
-MicrobiomeFunction <- function(data, ...) {
+MicrobiomeFunction <- function(data, name, ...) {
+  
+  stopifnot(exprs = {
+    all(c("species", "met", "flux") %in% names(data))
+  })
+
   directional <- all(data$flux**2 == 1)
   edges <- findEdges(data)
   consumed <- sort(unique(data$met[data$flux < 0]))
@@ -67,7 +72,9 @@ MicrobiomeFunction <- function(data, ...) {
   md <- list(directional = directional)
   metadata(tse) <- list(Edges = findEdges(data))
 
-  .MicrobiomeFunction(tse)
+  .MicrobiomeFunction(
+    tse,
+    Name = name)
 }
 
 # Helper Function to get the fluxes from edges if !directional

@@ -3,7 +3,7 @@
 #' @param coms Named list of MiCo objects.
 #'
 #' @return A list containing the alignment data.
-.alignMultiple <- function(coms) {
+.multipleAlignment <- function(coms) {
   
   # Get all unique metabolites
   mets <- unique(unlist(lapply(coms, getMet)))

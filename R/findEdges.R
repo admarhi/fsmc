@@ -13,6 +13,10 @@
 #' @examples
 #' findEdges(ac_A1R12_1)
 findEdges <- function(tb) {
+
+  stopifnot(exprs = {
+    all(c("species", "met", "flux") %in% names(tb))
+  })
   
   metabolites <- unique(tb$met)
   met_hash <- hash::hash()
@@ -47,5 +51,5 @@ findEdges <- function(tb) {
     species_hash[[s]] <- hash::hash(from = species_from, to = species_to)
   }
 
-  return(list(met_edges = met_hash, species_edges = species_hash))
+  list(met_edges = met_hash, species_edges = species_hash)
 }

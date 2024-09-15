@@ -100,7 +100,11 @@ setClass(
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
 .MicrobiomeFunction <- setClass(
   Class = "MicrobiomeFunction", 
-  contains = "TreeSummarizedExperiment")
+  contains = "TreeSummarizedExperiment",
+  slots = list(
+    Name = "character"
+  )
+)
 
 #' @export
 #' @import methods
