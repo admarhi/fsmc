@@ -1,4 +1,4 @@
-#' Multiple Alignment of MiCo (Microbial Community) Objects
+#' Multiple Alignment of \code{MicrobiomeFunction} Objects
 #'
 #' @param coms Named list of MiCo objects.
 #'

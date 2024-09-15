@@ -2,7 +2,7 @@
 % Please edit documentation in R/newMiCo.R
 \name{newMiCo}
 \alias{newMiCo}
-\title{Constructor Function for MiCo (Microbial Community) Objects}
+\title{Constructor Function for \code{MicrobiomeFunction} Objects}
 \usage{
 newMiCo(
   data = NULL,

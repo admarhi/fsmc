@@ -1,4 +1,4 @@
-#' @title Constructor Function for MiCo (Microbial Community) Objects
+#' @title Constructor Function for \code{MicrobiomeFunction} Objects
 #'
 #' @description Constructor function for MiCo objects. This function can be
 #' used to create a new MiCo object from a CSV file or from vectors of

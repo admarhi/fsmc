@@ -1,4 +1,4 @@
-#' Get Species From a MiCo (Microbial Community) Object
+#' Get Species From a \code{MicrobiomeFunction} Object
 #'
 #' @export
 setGeneric("getSpecies", function(object) {
@@ -16,7 +16,7 @@ setGeneric("getMet", function(object, unique = TRUE) {
   standardGeneric("getMet")
 })
 
-#' Get Fluxes from MiCo (Microbial Community) Object
+#' Get Fluxes from \code{MicrobiomeFunction} Object
 #'
 #' @param object An object of class MiCo.
 #' @return A numeric vector representing the fluxes.
@@ -25,7 +25,7 @@ setGeneric("getFlux", function(object) {
   standardGeneric("getFlux")
 })
 
-#' Get Edges From a MiCo (Microbial Community) Object
+#' Get Edges From a \code{MicrobiomeFunction} Object
 #'
 #' @param object An object of class MiCo
 #' @param type Character string indicating which type of edges to return. Can

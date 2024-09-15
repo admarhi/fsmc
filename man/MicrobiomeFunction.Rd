@@ -5,12 +5,14 @@
 \title{Functional Microbiome Representation based on
 \code{TreeSummarizedExperiment}}
 \usage{
-MicrobiomeFunction(data, ...)
+MicrobiomeFunction(data, name, ...)
 }
 \arguments{
 \item{data}{a DataFrame-like object that includes columns specfiying
 the species, metabolites and fluxes in the microbiome. The fluxes can
 either be directional (all of magnitude 1)}
+
+\item{name}{a \code{character scalar} specifying the name of the Microbiome}
 }
 \description{
 Functional Microbiome Representation based on

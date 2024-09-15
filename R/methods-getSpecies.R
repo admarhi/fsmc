@@ -1,5 +1,5 @@
 #' @param object An object of class MiCo
-#' @describeIn getSpecies Get Species From a MiCo (Microbial Community) Object
+#' @describeIn getSpecies Get Species From a \code{MicrobiomeFunction} Object
 #' @return A character vector representing the microorganisms.
 setMethod("getSpecies", "MiCo", function(object) {
   cat(
@@ -11,7 +11,7 @@ setMethod("getSpecies", "MiCo", function(object) {
 
 
 #' @param object An object of class MiCoAl
-#' @describeIn getSpecies Get Species From a MiCo (Microbial Community) Object
+#' @describeIn getSpecies Get Species From a \code{MicrobiomeFunction} Object
 #' @return A character vector representing the microorganisms.
 setMethod("getSpecies", "MiCoAl", function(object) {
   species <- getCo(object) %>% purrr::map(~.x$species) %>% unlist() %>% unique()
