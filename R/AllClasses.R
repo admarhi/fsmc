@@ -98,4 +98,15 @@ setClass(
 #' @export
 #' @import methods
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
-.miaFunc <- setClass("miaFunc", contains = "TreeSummarizedExperiment")
+.MicrobiomeFunction <- setClass(
+  Class = "MicrobiomeFunction", 
+  contains = "TreeSummarizedExperiment")
+
+#' @export
+#' @import methods
+#' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
+.MicrobiomeFunctionAlignment <- setClass(
+  Class = "MicrobiomeFunctionAlignment", 
+  contains = "TreeSummarizedExperiment"
+  ### Add slots for similarity levels 
+)

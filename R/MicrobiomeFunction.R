@@ -1,8 +1,16 @@
+#' @title Functional Microbiome Representation based on 
+#' \code{TreeSummarizedExperiment}
+#' 
+#' @param data a DataFrame-like object that includes columns specfiying
+#' the species, metabolites and fluxes in the microbiome. The fluxes can 
+#' either be directional (all of magnitude 1)
+#' 
+#' 
 #' @export
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom dplyr filter
-miaFunc <- function(data, ...) {
+MicrobiomeFunction <- function(data, ...) {
   directional <- all(data$flux**2 == 1)
   edges <- findEdges(data)
   consumed <- sort(unique(data$met[data$flux < 0]))
@@ -57,9 +65,9 @@ miaFunc <- function(data, ...) {
   )
     
   md <- list(directional = directional)
-  metadata(tse) <- list(edge_hash = findEdges(data))
+  metadata(tse) <- list(Edges = findEdges(data))
 
-  .miaFunc(tse)
+  .MicrobiomeFunction(tse)
 }
 
 # Helper Function to get the fluxes from edges if !directional
