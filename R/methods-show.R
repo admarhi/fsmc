@@ -16,7 +16,9 @@ setMethod("show", "MiCo", function(object) {
 #' @export
 setMethod("show", "MicrobiomeFunction", function(object) {
   stringr::str_glue(
-    "{object@Name}: MicrobiomeFunction Object\n"
+    "{object@Name}: MicrobiomeFunction Object\n",
+    "{ifelse(object@Weighted, 'Weighted', 'Unweighted')} ",
+    "metabolic network with {length(object@Metabolites)} metabolites."
   ) %>% cat()
 })
 

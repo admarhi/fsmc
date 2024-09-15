@@ -102,7 +102,11 @@ setClass(
   Class = "MicrobiomeFunction", 
   contains = "TreeSummarizedExperiment",
   slots = list(
-    Name = "character"
+    Name = "character",
+    Edges = "list",
+    Weighted = "logical",
+    InputData = "data.frame",
+    Metabolites = "character"
   )
 )
 

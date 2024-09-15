@@ -3,7 +3,7 @@
 #' 
 #' @param data a DataFrame-like object that includes columns specfiying
 #' the species, metabolites and fluxes in the microbiome. The fluxes can 
-#' either be directional (all of magnitude 1)
+#' either be weighted or unweighted (all of magnitude 1).
 #' @param name a \code{character scalar} specifying the name of the Microbiome
 #' 
 #' @export
@@ -16,7 +16,7 @@ MicrobiomeFunction <- function(data, name, ...) {
     all(c("species", "met", "flux") %in% names(data))
   })
 
-  directional <- all(data$flux**2 == 1)
+  weighted <- !all(data$flux**2 == 1)
   edges <- findEdges(data)
   consumed <- sort(unique(data$met[data$flux < 0]))
   produced <- sort(unique(data$met[data$flux > 0]))
@@ -32,7 +32,7 @@ MicrobiomeFunction <- function(data, name, ...) {
       if (length(curr_edges) == 0) next
       bin_mat[c,p] <- 1
       n_edges[c,p] <- length(curr_edges)
-      if (!directional) {
+      if (weighted) {
         mats <- c("c_mat", "p_mat", "c_eff", "p_eff")
         for (i in mats) assign(i, bin_mat)
         c_flux <- edges$met_edges[[consumed[c]]]$cons_fluxes
@@ -56,7 +56,7 @@ MicrobiomeFunction <- function(data, name, ...) {
   }
 
   
-  if (directional) assays <- list(Binary = bin_mat, nEdges = n_edges)
+  if (!weighted) assays <- list(Binary = bin_mat, nEdges = n_edges)
     
   rownames(assays$Binary) <- consumed
   colnames(assays$Binary) <- produced
@@ -68,13 +68,15 @@ MicrobiomeFunction <- function(data, name, ...) {
     rowData = row_data,
     colData = col_data
   )
-    
-  md <- list(directional = directional)
-  metadata(tse) <- list(Edges = findEdges(data))
-
+  
   .MicrobiomeFunction(
     tse,
-    Name = name)
+    Name = name,
+    Edges = edges,
+    Weighted = weighted,
+    InputData = data,
+    Metabolites = unique(data$met)
+  )
 }
 
 # Helper Function to get the fluxes from edges if !directional
