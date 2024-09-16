@@ -1,8 +1,8 @@
 ---
-title: "Microbial Community Alignment Class"
+title: "MicrobiomeFunctionAlignment Class"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Microbial Community Alignment Class}
+  %\VignetteIndexEntry{MicrobiomeFunctionAlignment Class}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,18 +20,16 @@ library(fsmc)
 
 # Microbial Community Alignment Class
 
-
-
-- Takes a number of `MiCo` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
+- Takes a number of `MicrobiomeFunction` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
 - The default is to align all communities against each other
 - if `pairwise = TRUE` all unique pairwise combinations are aligned. 
 - Should the alignment be calculated upon the creation of the object or should it be calculated on demand?
 
 ### Methods
 
-A variety of methods can be called on a `MiCoAl` object. The output of the methods has to be assigned back to the variable containing the object to persist. 
+A variety of methods can be called on a `MicrobiomeFunctionAlignment` object. The output of the methods has to be assigned back to the variable containing the object to persist. 
 
-- clusterAlignment: Takes a `MiCoAl` object as input and an additional argument to specify the clustering algorithm to be used, only works on `MiCoAl` objects that have undergone a pairwise alignment. 
+- clusterAlignment: Takes a `MicrobiomeFunctionAlignment` object as input and an additional argument to specify the clustering algorithm to be used, only works on `MicrobiomeFunctionAlignment` objects that have undergone a pairwise alignment. 
 
 ### Identity
 A value which gives a scalar value to represent the identity between two communities. 
@@ -42,7 +40,7 @@ $$ \frac{\alpha}{\sum\limits_{i = 1}^{n}(\sum C_i - \alpha) + \alpha} $$
 
 ## Contents
 
-- Communities hash/list containing the `MiCo` objects
+- Communities hash/list containing the `MicrobiomeFunction` objects
 - Alignment hash:
   - overall alignment matrix (binary)
   - hash for each level calculated (### how many levels?)
