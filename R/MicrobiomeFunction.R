@@ -11,7 +11,8 @@
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom dplyr filter
 MicrobiomeFunction <- function(data, name, ...) {
-  
+  ### Include for all columns and use str_detect
+  # data <- dplyr::rename(data, met = "metabolite")
   stopifnot(exprs = {
     all(c("species", "met", "flux") %in% names(data))
   })
@@ -76,7 +77,7 @@ MicrobiomeFunction <- function(data, name, ...) {
     rowData = row_data,
     colData = col_data
   )
-  
+
   graphs <- list(igraph::graph_from_adjacency_matrix(
     adjmatrix = bin_mat,
     mode = "directed"

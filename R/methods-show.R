@@ -17,18 +17,23 @@ setMethod("show", "MicrobiomeFunction", function(object) {
 #' @export
 setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
   # alig_score <- "### ToDo ###"
-  # max <- max(object@alignment$levels)
-  # x <- object@alignment
-  # x$levels <- x$levels_mat <- NULL
-  # aligned_rxns <- x %>%
-  #   purrr::keep(~.x$count == max) %>%
-  #   names()
+  x <- hash::as.list.hash(object@Alignment)
+  max <- max(x$levels)
+  x$levels <- x$levels_mat <- NULL
+  aligned_rxns <- x %>%
+    purrr::keep(~.x$count == max) %>%
+    names()
 
-  # stringr::str_glue(
-  #   "Microbial Community Alignment Object (MiCoAl)\n",
-  #   "Max. alignment ({max}/{length(object@communities)} communities) in:\n",
-  #   "{paste('-', aligned_rxns, collapse = '\n')}"
-  # ) %>% cat()
+  if (length(aligned_rxns) > 5) aligned_rxns <- c(aligned_rxns[1:5], "...")
+  
+  stringr::str_glue(
+    "Functional Alignment of {length(object@Communities)} Microbiomes\n\n",
+    "- Identity: {round(object@Score$score, 4)}\n",
+    "- Depth: {round(object@Score$depth, 4)}\n",
+    "- Breadth: {round(object@Score$breadth, 4)}\n\n",
+    "Max. alignment ({max}/{length(object@Communities)} communities) in:\n",
+    "{paste('-', aligned_rxns, collapse = '\n')}"
+  ) %>% cat()
 })
 
 

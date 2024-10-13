@@ -22,6 +22,8 @@
   contains = "TreeSummarizedExperiment",
   slots = list(
     Name = "character",
-    Alignments = "list"
+    Alignment = "hash",
+    Communities = "list",
+    Score = "list"
   )
 )

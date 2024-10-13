@@ -11,8 +11,8 @@
 plotAlignmentHeatmap <- function(object, frac) {
 
   # Filter the adjacency matrix for desired levels for visualization.
-  levels_mat <- object@alignment$levels_mat
-  max_weight <- length(object@communities)
+  levels_mat <- object@Alignment$levels_mat
+  max_weight <- length(object@Communities)
   min_weight <- max_weight * frac
 
   levels_mat[levels_mat < min_weight] <- 0

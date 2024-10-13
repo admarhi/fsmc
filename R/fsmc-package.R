@@ -4,6 +4,7 @@
 ## usethis namespace: start
 #' @importFrom magrittr %>%
 #' @importFrom methods show
+#' @importFrom MultiAssayExperiment assays
 #' @importFrom rlang .data
 #' @importFrom SummarizedExperiment assay
 #' @importFrom SummarizedExperiment assays

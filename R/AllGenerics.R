@@ -44,3 +44,4 @@ setGeneric("getEdges", function(object) {
 setGeneric("getCo", function(object) {
   standardGeneric("getCo")
 })
+

@@ -3,6 +3,7 @@
 #' @param coms Named list of MiCo objects.
 #'
 #' @return A list containing the alignment data.
+#' @importFrom MultiAssayExperiment assays
 .multipleAlignment <- function(coms) {
   
   # Get all unique metabolites
@@ -30,9 +31,9 @@
       for (co in hash::keys(coms)) {
         # Check if the edge exists
         if (
-          m1 %in% coms[[co]]@metabolites &&
-          m2 %in% coms[[co]]@metabolites &&
-          coms[[co]]@bin_matrix[m1, m2] > 0
+          m1 %in% coms[[co]]@Metabolites &&
+          m2 %in% coms[[co]]@Metabolites &&
+          assays(coms[[co]])$Binary[m1, m2] > 0
         ) {
           # Increment counter
           levels_mat[m1, m2] <- al[[edge]]$count <- al[[edge]]$count + 1
