@@ -20,14 +20,19 @@ MicrobiomeFunction <- function(data, name, ...) {
   edges <- findEdges(data)
   consumed <- sort(unique(data$met[data$flux < 0]))
   produced <- sort(unique(data$met[data$flux > 0]))
+  all_mets <- sort(unique(data$met))
   dims <- c(length(consumed), length(produced))
-  bin_mat <- matrix(rep(0, dims[1] * dims[2]), nrow = dims[1])
+  bin_mat <- matrix(rep(0, length(all_mets)**2), nrow = length(all_mets))
   n_edges <- bin_mat
   
-  for (c in seq(consumed)) {
-    consumers <- edges$met_edges[[consumed[c]]]$consumers
-    for (p in seq(produced)) {
-      producers <- edges$met_edges[[produced[p]]]$producers
+  for (c in seq(all_mets)) {
+
+    if (!all_mets[c] %in% consumed) next
+    consumers <- edges$met_edges[[all_mets[c]]]$consumers
+
+    for (p in seq(all_mets)) {
+      if (!all_mets[p] %in% produced) next
+      producers <- edges$met_edges[[all_mets[p]]]$producers
       curr_edges <- intersect(producers, consumers)
       if (length(curr_edges) == 0) next
       bin_mat[c,p] <- 1
@@ -35,8 +40,8 @@ MicrobiomeFunction <- function(data, name, ...) {
       if (weighted) {
         mats <- c("c_mat", "p_mat", "c_eff", "p_eff")
         for (i in mats) assign(i, bin_mat)
-        c_flux <- edges$met_edges[[consumed[c]]]$cons_fluxes
-        p_flux <- edges$met_edges[[produced[c]]]$prod_fluxes
+        c_flux <- edges$met_edges[[all_mets[c]]]$cons_fluxes
+        p_flux <- edges$met_edges[[all_mets[c]]]$prod_fluxes
         c_mat[c,p] <- sum(c_flux[names(c_flux) %in% curr_edges])
         p_mat[c,p] <- sum(p_flux[names(p_flux) %in% curr_edges])
         c_prob <- c_flux / sum(c_flux)
@@ -54,14 +59,17 @@ MicrobiomeFunction <- function(data, name, ...) {
       }
     }
   }
-
   
   if (!weighted) assays <- list(Binary = bin_mat, nEdges = n_edges)
-    
-  rownames(assays$Binary) <- consumed
-  colnames(assays$Binary) <- produced
-  row_data <- tibble::tibble(metabolite = consumed)
-  col_data <- tibble::tibble(metabolite = produced)
+  
+  ### Filter all rows and columns where all() == 0 from the assays
+  ### Check that the expected number of cols/rows were filtered 
+  ### and all match the expected dimensions
+
+  rownames(assays$Binary) <- all_mets
+  colnames(assays$Binary) <- all_mets
+  row_data <- tibble::tibble(metabolite = all_mets)
+  col_data <- tibble::tibble(metabolite = all_mets)
   
   tse <- TreeSummarizedExperiment(
     assays = assays,
@@ -69,18 +77,22 @@ MicrobiomeFunction <- function(data, name, ...) {
     colData = col_data
   )
   
+  graphs <- list(igraph::graph_from_adjacency_matrix(
+    adjmatrix = bin_mat,
+    mode = "directed"
+  )
+  )
+
   .MicrobiomeFunction(
     tse,
     Name = name,
     Edges = edges,
     Weighted = weighted,
     InputData = data,
-    Metabolites = unique(data$met)
+    Metabolites = unique(data$met),
+    Graphs = graphs
   )
 }
 
-# Helper Function to get the fluxes from edges if !directional
-.getFlux <- function(e) {
-  e
-}
+
 
