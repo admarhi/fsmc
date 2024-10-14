@@ -88,9 +88,9 @@ We can visualise individual microbiomes in multiple ways. Firstly, the graph rep
 
 ## Alignment of \code{MicrobiomeFunction} Objects 
 ```{r}
-ac_alig <- newMiCoAl(ac)
-cit_alig <- newMiCoAl(cit)
-f6p_alig <- newMiCoAl(f6p)
+ac_alig <- MicrobiomeFunctionAlignment(ac, name = "acetate")
+cit_alig <- MicrobiomeFunctionAlignment(cit, name = "citrate")
+f6p_alig <- MicrobiomeFunctionAlignment(f6p, name = "f6p")
 ```
 
 ```{r}

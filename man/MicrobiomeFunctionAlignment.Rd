@@ -4,7 +4,13 @@
 \alias{MicrobiomeFunctionAlignment}
 \title{Alignment of \code{MicrobiomeFunction} objects}
 \usage{
-MicrobiomeFunctionAlignment(..., name, pairwise = FALSE)
+MicrobiomeFunctionAlignment(
+  ...,
+  name = NA,
+  min_rxn = 1,
+  min_mb = 2,
+  pairwise = FALSE
+)
 }
 \arguments{
 \item{...}{A minimum of two \code{Microbiome Function} objects.}
