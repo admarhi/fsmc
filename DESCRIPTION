@@ -18,6 +18,7 @@ Imports:
     magrittr,
     methods,
     MultiAssayExperiment,
+    purrr,
     rlang,
     scales,
     stats,
@@ -30,7 +31,6 @@ Imports:
 Suggests: 
     knitr,
     readr,
-    purrr,
     rmarkdown,
     testthat (>= 3.0.0),
     plotly
