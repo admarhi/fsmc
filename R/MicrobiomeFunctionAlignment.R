@@ -8,7 +8,12 @@
 #' @export
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
-MicrobiomeFunctionAlignment <- function(..., name, pairwise = FALSE) {
+MicrobiomeFunctionAlignment <- function(
+  ..., 
+  name = NA,
+  min_rxn = 1,
+  min_mb = 2,
+  pairwise = FALSE) {
   if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
     coms <- list(...)[[1]]
   } else {
@@ -36,7 +41,11 @@ MicrobiomeFunctionAlignment <- function(..., name, pairwise = FALSE) {
   ### Add type of the type to the alignment
 
   # Scoring
-  score <- .scoreAlignment(hash::as.list.hash(alignment))
+  score <- .scoreAlignment(
+    hash::as.list.hash(alignment),
+    min_rxn = min_rxn,
+    min_mb = min_mb
+  )
 
   tse <- TreeSummarizedExperiment(
     assays = list(Levels = alignment$levels_mat)

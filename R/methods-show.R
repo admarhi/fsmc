@@ -26,11 +26,14 @@ setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
 
   if (length(aligned_rxns) > 5) aligned_rxns <- c(aligned_rxns[1:5], "...")
   
+  max_score <- object@Score %>% 
+    dplyr::slice_max(.data$score)
+
   stringr::str_glue(
     "Functional Alignment of {length(object@Communities)} Microbiomes\n\n",
-    "- Identity: {round(object@Score$score, 4)}\n",
-    "- Depth: {round(object@Score$depth, 4)}\n",
-    "- Breadth: {round(object@Score$breadth, 4)}\n\n",
+    "- Max. identity: {round(max_score$score, 4)}\n",
+    "- Depth at max. identity: {round(max_score$depth, 4)}\n",
+    "- Breadth at max. identity: {round(max_score$breadth, 4)}\n\n",
     "Max. alignment ({max}/{length(object@Communities)} communities) in:\n",
     "{paste('-', aligned_rxns, collapse = '\n')}"
   ) %>% cat()

@@ -24,6 +24,6 @@
     Name = "character",
     Alignment = "hash",
     Communities = "list",
-    Score = "list"
+    Score = "data.frame"
   )
 )

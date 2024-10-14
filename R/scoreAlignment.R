@@ -3,9 +3,11 @@
 #' Takes an alignment object and calculates the overall alignment score. 
 #' 
 #' @param a alignment list 
-#' 
+#' @param min_rxn Numeric scalar giving the minimum fraction of reactions
+#' @param min_mb Numeric scalar giving the minimum fraction of microbiomes
+#' @importFrom purrr map keep
 #' @return Tibble containing scores for every level of alignment
-.scoreAlignment <- function(a) {
+.scoreAlignment <- function(a, min_rxn, min_mb) {
 
   # Get levels vec
   l <- a$levels
@@ -16,15 +18,16 @@
   a$levels_mat <- a$levels <- NULL
   # Get total n reactions
   nr <- length(a)
+  
   # Get unique sets of aligned communities
-  comms <- purrr::map(a, ~sort(names(.x$communities))) %>% unique()
+  comms <- map(a, ~sort(names(.x$communities))) %>% unique()
   # Order them by descending length
   ordered_comms <- comms[order(-sapply(comms, length))]
   # Get total n communities
   nc <- length(unique(unlist(comms)))
 
   # Get the total number of alignments
-  na <- length(purrr::map(ordered_comms, ~length(.x) > 1) %>% purrr::keep(~.x))
+  na <- length(map(ordered_comms, ~length(.x) > 1) %>% keep(~.x))
 
   out_tb <- tibble::tibble(
     # n aligned communities
@@ -45,11 +48,11 @@
     # Get the edges in the current set
     edges <- a %>%
       # Filter those with few count
-      purrr::keep(~.x$count >= n) %>%
+      keep(~.x$count >= n) %>%
       # Check whether all communities have this edge
-      purrr::map(~all(vec %in% names(.x$communities))) %>%
+      map(~all(vec %in% names(.x$communities))) %>%
       # Filter those for which it is not true
-      purrr::keep(~.x)
+      keep(~.x)
 
     out_tb[i,] <-
       list(n, list(ordered_comms[[i]]), length(edges), list(names(edges))[1])
