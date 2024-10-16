@@ -17,17 +17,20 @@ Imports:
     igraph,
     magrittr,
     methods,
+    MultiAssayExperiment,
+    purrr,
     rlang,
     scales,
     stats,
     stringr,
+    SummarizedExperiment,
     tibble,
     tidyr,
+    TreeSummarizedExperiment,
     utils
 Suggests: 
     knitr,
     readr,
-    purrr,
     rmarkdown,
     testthat (>= 3.0.0),
     plotly

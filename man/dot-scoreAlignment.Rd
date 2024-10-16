@@ -4,10 +4,14 @@
 \alias{.scoreAlignment}
 \title{Scoring Algorithm for MiCoAl Objects}
 \usage{
-.scoreAlignment(a)
+.scoreAlignment(a, min_rxn, min_mb)
 }
 \arguments{
 \item{a}{alignment list}
+
+\item{min_rxn}{Numeric scalar giving the minimum fraction of reactions}
+
+\item{min_mb}{Numeric scalar giving the minimum fraction of microbiomes}
 }
 \value{
 Tibble containing scores for every level of alignment

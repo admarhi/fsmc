@@ -31,12 +31,12 @@ pivotMiCo <- function(tb, species, from, to, flux) {
   tb %>% 
     tidyr::pivot_longer(cols = c(from, to)) %>% 
     dplyr::rename(
-      metabolite = "value",
+      met = "value",
       species = {{ species }},
       flux = {{ flux }}
     ) %>% 
     dplyr::mutate(
       flux = dplyr::if_else(.data$name == from, .data$flux * -1, .data$flux)
     ) %>% 
-    dplyr::select("species", "metabolite", "flux")
+    dplyr::select("species", "met", "flux")
 }

@@ -40,12 +40,15 @@ The data analysed here was generated with `misosoup`, a command line tool design
 
 The data set consists of 386 different microbial communities, including 272 with acetate as the carbon source, 219 with citrate as the carbon source, and 24 with fructose 6-phosphate (f6p) as the carbon source. 
 
+## Data Import
+Given the size of the data set it is not provided with the package but hosted in a seperate repository on GitHub. We can read the csv file from the url and clean it for the use in our further workflow. 
 
 ```{r load-data}
 sbs_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/misosoup/substrate.csv"
 
 sbs_tb <- 
   read_csv(sbs_url) %>%
+  rename(met = "metabolite") %>% 
   group_by(substrate, focal_strain) %>% 
   filter(solution <= 5) %>% 
   ungroup() %>% 
@@ -54,31 +57,40 @@ sbs_tb <-
   select("name", "data")
 ```
 
+The `MicrobiomeFunction` class requires a name for each microbiome to easily identify the individual microbiomes during later stages of the analysis workflow. We can use the `set_names` function fromt the purrr package to create a named list from two columns of input tibble.
 
 ```{r}
 sbs_list <- set_names(sbs_tb$data, sbs_tb$name)
 ```
 
+## Creating \code{MicrobiomeFunction} Objects
+
+As the first two letters of each list entry name correspond to the substrate on which the microbiome was simulated we can use this to easily filter and then apply the `MicrobiomeFunction` constructor with the `imap` function from `purrr` which maps names and contents of a list to another function. 
 
 ```{r create-MiCo}
 ac <- 
   keep(sbs_list, str_starts(names(sbs_list), "ac")) %>%
-  imap(newMiCo)
+  imap(MicrobiomeFunction)
 
 cit <- 
   keep(sbs_list, str_starts(names(sbs_list), "cit")) %>% 
-  imap(newMiCo)
+  imap(MicrobiomeFunction)
 
 f6p <- 
   keep(sbs_list, str_starts(names(sbs_list), "f6p")) %>%
-  imap(newMiCo)
+  imap(MicrobiomeFunction)
 ```
 
+## Data Analysis of \code{MicrobiomeFunction} Objects
 
+We can visualise individual microbiomes in multiple ways. Firstly, the graph representation which gives us an overview of the metabolic network. Secondly 
+
+
+## Alignment of \code{MicrobiomeFunction} Objects 
 ```{r}
-ac_alig <- newMiCoAl(ac)
-cit_alig <- newMiCoAl(cit)
-f6p_alig <- newMiCoAl(f6p)
+ac_alig <- MicrobiomeFunctionAlignment(ac, name = "acetate")
+cit_alig <- MicrobiomeFunctionAlignment(cit, name = "citrate")
+f6p_alig <- MicrobiomeFunctionAlignment(f6p, name = "f6p")
 ```
 
 ```{r}

@@ -27,9 +27,10 @@ compareAlignments <- function(
   alig_list <- list(...)
 
   rxns_per_level <- purrr::map2_df(alig_list, names, .rxnsPerLevel)
+
   tb <- tibble::tibble(
       alignment = names,
-      n_comms = unlist(lapply(alig_list, function(x) length(x@communities)))
+      n_comms = unlist(lapply(alig_list, function(x) length(x@Communities)))
     ) %>%
     dplyr::left_join(rxns_per_level, by = "alignment") %>%
     dplyr::mutate(
@@ -79,8 +80,8 @@ compareAlignments <- function(
 #' @return A tibble with levels and count of reaction
 .rxnsPerLevel <- function(object, name) {
 
-  levels = object@alignment$levels
-  mat <- object@alignment$levels_mat
+  levels = object@Alignment$levels
+  mat <- object@Alignment$levels_mat
   rxns <- purrr::map_dbl(levels, ~sum(mat >= .x))
 
   tibble::tibble(

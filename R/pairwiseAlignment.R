@@ -1,4 +1,4 @@
-#' Pairwise Alignment of MiCo (Microbial Community) Objects
+#' Pairwise Alignment of \code{MicrobiomeFunction} Objects
 #'
 #' - This method only allows for the alignment of edges which are present in both communities.
 #' -
@@ -8,7 +8,7 @@
 #' @return List of pairwise alignments.
 #' @examples
 #' ###
-.alignPairwise <- function(coms) {
+.pairwiseAlignment <- function(coms) {
   combs <- utils::combn(seq(length(coms)), 2)
   for (i in seq(ncol(combs))) {
     ### Simply call a multiple alignment for each pair?

@@ -1,8 +1,8 @@
 ---
-title: "MiCo (Microbial Community) Class"
+title: "MicrobiomeFunction Class"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{MiCo (Microbial Community) Class}
+  %\VignetteIndexEntry{MicrobiomeFunction Class}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,17 +18,17 @@ knitr::opts_chunk$set(
 library(fsmc)
 ```
 
-## MiCo
+## \code{MicrobiomeFunction} Class
 
-The `MiCo` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community. 
+The `MicrobiomeFunction` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community.
 
 ## Creation from data
 
 To create an object of type `MiCo`, the user must input the data listed below. This data can either be contained in a single tibble or data frame, saved in a CSV file, or input as separate vectors.
 
 - `species`: A character vector specifying the species present in the community.
-- `metabolites`: A character vector specifying the metabolites present in the community.
-- `fluxes`: A numeric vector specifying the fluxes of each metabolite in the community.
+- `met`: A character vector specifying the metabolites present in the community.
+- `flux`: A numeric vector specifying the fluxes of each metabolite in the community.
 - `name`: Character string giving the name of the community.
 
 ```{r}
@@ -52,7 +52,7 @@ The `MiCo` function can take either a path to a .csv file or a data frame/tibble
 
 ## Contents
 
-Upon the creation of a `MiCo` class based on a three column input, additional information is calculated:
+Upon the creation of a `MicrobiomeFunction` class based on a three column input, additional information is calculated:
 
 - species
 - metabolites
@@ -66,7 +66,7 @@ Upon the creation of a `MiCo` class based on a three column input, additional in
 - effective_flux_consumption
 - effective_flux_production
 
-Each of these slots is described in the `MiCo-class()` class documentation.
+Each of these slots is described in the `MicrobiomeFunction-class()` class documentation.
 
 
 ## Methods 
