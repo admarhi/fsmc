@@ -18,7 +18,7 @@ setMethod("show", "MicrobiomeFunction", function(object) {
 setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
   # alig_score <- "### ToDo ###"
   x <- hash::as.list.hash(object@Alignment)
-  max <- max(x$levels)
+  max <- unique(max(x$levels))
   x$levels <- x$levels_mat <- NULL
   aligned_rxns <- x %>%
     purrr::keep(~.x$count == max) %>%
@@ -31,11 +31,10 @@ setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
 
   stringr::str_glue(
     "Functional Alignment of {length(object@Communities)} Microbiomes\n\n",
-    "- Max. identity: {round(max_score$score, 4)}\n",
-    "- Depth at max. identity: {round(max_score$depth, 4)}\n",
-    "- Breadth at max. identity: {round(max_score$breadth, 4)}\n\n",
-    "Max. alignment ({max}/{length(object@Communities)} communities) in:\n",
-    "{paste('-', aligned_rxns, collapse = '\n')}"
+    "- Max. identity {round(max_score$score[[1]], 4)}",
+    " for {nrow(max_score)} set(s) of communities\n",
+    "- Depth at max. identity: {paste(round(max_score$depth, 4), collapse = ', ')}\n",
+    "- Breadth at max. identity: {paste(round(max_score$breadth, 4), collapse = ', ')}\n\n"
   ) %>% cat()
 })
 

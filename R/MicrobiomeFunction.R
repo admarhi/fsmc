@@ -17,7 +17,10 @@ MicrobiomeFunction <- function(data, name, ...) {
     all(c("species", "met", "flux") %in% names(data))
   })
 
+  # Determine whether or not the fluxes are weighted or not
   weighted <- !all(data$flux**2 == 1)
+
+  
   edges <- findEdges(data)
   consumed <- sort(unique(data$met[data$flux < 0]))
   produced <- sort(unique(data$met[data$flux > 0]))

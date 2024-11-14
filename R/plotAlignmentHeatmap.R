@@ -24,14 +24,16 @@ plotAlignmentHeatmap <- function(object, frac) {
     tidyr::pivot_longer(
       cols = -"RowName",
       names_to = "ColName",
-      values_to = "level") %>%
-
+      values_to = "level"
+    ) %>%
     dplyr::rename(
       met = "RowName",
-      met2 = "ColName") %>%
+      met2 = "ColName"
+    ) %>%
     dplyr::filter(.data[["level"]] >= min_weight) %>%
-    ggplot2::ggplot(ggplot2::aes(
-      x = .data$met2, y = .data$met, fill = .data$level)) +
+    ggplot2::ggplot(
+      ggplot2::aes(x = .data$met2, y = .data$met, fill = .data$level)
+    ) +
     ggplot2::geom_tile() +
     ggplot2::coord_fixed() +
     ggplot2::scale_fill_gradient(

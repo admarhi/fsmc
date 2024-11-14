@@ -10,10 +10,11 @@
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 MicrobiomeFunctionAlignment <- function(
   ..., 
-  name = NA,
+  name = NULL,
   min_rxn = 1,
   min_mb = 2,
-  pairwise = FALSE) {
+  pairwise = FALSE
+) {
   if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
     coms <- list(...)[[1]]
   } else {
@@ -25,8 +26,12 @@ MicrobiomeFunctionAlignment <- function(
     all(lapply(coms, class) == "MicrobiomeFunction")
   })
 
+  # Set empty string as name if not provided
+  if (is.null(name)) name <- ""
+
   # Name the communities
   names(coms) <- sapply(coms, function(x) x@Name)
+
   # Turn list into hash for quicker access
   coms <- hash::hash(coms)
 
@@ -38,7 +43,7 @@ MicrobiomeFunctionAlignment <- function(
 
   # Perform the alignment
   alignment <- align_func(coms)
-  ### Add type of the type to the alignment
+  ### Add type to the alignment
 
   # Scoring
   score <- .scoreAlignment(

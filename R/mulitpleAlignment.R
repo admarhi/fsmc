@@ -11,8 +11,13 @@
 
   # Init the level matrix
   levels_mat <- matrix(
-    data = 0, nrow = length(mets), ncol = length(mets),
-    dimnames = list(mets, mets))
+    data = 0, 
+    nrow = length(mets), 
+    ncol = length(mets),
+    dimnames = list(mets, mets)
+  )
+
+  ### Instead of naming the matrix could code metabolites to index to inc speed
 
   # Init the alignment hash
   al <- hash::hash()
@@ -26,18 +31,21 @@
       al[[edge]] <-
         hash::hash(
           count = 0,
-          communities = hash::hash())
+          communities = hash::hash()
+        )
       # Iterate over all communities
       for (co in hash::keys(coms)) {
         # Check if the edge exists
         if (
           m1 %in% coms[[co]]@Metabolites &&
-          m2 %in% coms[[co]]@Metabolites &&
-          assays(coms[[co]])$Binary[m1, m2] > 0
+            m2 %in% coms[[co]]@Metabolites &&
+            assays(coms[[co]])$Binary[m1, m2] > 0
         ) {
           # Increment counter
           levels_mat[m1, m2] <- al[[edge]]$count <- al[[edge]]$count + 1
+
           ### Benefit of having the matrix in addition to hash?
+          
           # Add the community name to communities hash
           al[[edge]]$communities[[co]] <- hash::hash()
           ### Retrieve all additional relevant data
