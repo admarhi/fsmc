@@ -6,18 +6,17 @@
 #'
 #' @param tb Tibble describing a microbial community
 #'
-#' @return A hash containing the edges of the community. Returns a list of 
+#' @return A hash containing the edges of the community. Returns a list of
 #' two hashs, one for edges between metabolites and one for species.
 #' @export
 #'
 #' @examples
 #' findEdges(ac_A1R12_1)
 findEdges <- function(tb) {
-
   stopifnot(exprs = {
     all(c("species", "met", "flux") %in% names(tb))
   })
-  
+
   metabolites <- unique(tb$met)
   met_hash <- hash::hash()
   for (m in metabolites) {
@@ -34,7 +33,7 @@ findEdges <- function(tb) {
       cons_fluxes = cons_fluxes
     )
   }
-  
+
   species <- unique(tb$species)
   species_hash <- hash::hash()
   for (s in species) {

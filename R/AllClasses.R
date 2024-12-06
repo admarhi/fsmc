@@ -2,7 +2,7 @@
 #' @import methods
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
 .MicrobiomeFunction <- setClass(
-  Class = "MicrobiomeFunction", 
+  Class = "MicrobiomeFunction",
   contains = "TreeSummarizedExperiment",
   slots = list(
     Name = "character",
@@ -18,7 +18,7 @@
 #' @import methods
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
 .MicrobiomeFunctionAlignment <- setClass(
-  Class = "MicrobiomeFunctionAlignment", 
+  Class = "MicrobiomeFunctionAlignment",
   contains = "TreeSummarizedExperiment",
   slots = list(
     Name = "character",

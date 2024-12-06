@@ -9,7 +9,6 @@
 #' @examples
 #' ###
 plotAlignmentHeatmap <- function(object, frac) {
-
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@Alignment$levels_mat
   max_weight <- length(object@Communities)
@@ -17,7 +16,9 @@ plotAlignmentHeatmap <- function(object, frac) {
 
   levels_mat[levels_mat < min_weight] <- 0
 
-  if (min_weight > max(levels_mat)) return("No Alignment at this level.")
+  if (min_weight > max(levels_mat)) {
+    return("No Alignment at this level.")
+  }
 
   gg <- levels_mat %>%
     tibble::as_tibble(rownames = "RowName") %>%
@@ -40,7 +41,7 @@ plotAlignmentHeatmap <- function(object, frac) {
       low = "yellow",
       high = "red",
       breaks = scales::breaks_pretty()
-      ) +
+    ) +
     ggplot2::scale_x_discrete(position = "top") +
     ggplot2::theme_minimal() +
     ggplot2::theme(

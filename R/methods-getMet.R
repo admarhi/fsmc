@@ -8,4 +8,3 @@ setMethod("getMet", "MicrobiomeFunction", function(object) {
 setMethod("getMet", "MicrobiomeFunctionAlignment", function(object) {
   ### ToDo
 })
-

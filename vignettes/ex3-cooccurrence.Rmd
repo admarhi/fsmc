@@ -38,18 +38,18 @@ coop_tb <- readr::read_csv(coop_url)
 ```{r}
 glimpse(coop_tb)
 
-coop_tb %>% 
-  group_by(community) %>% 
+coop_tb %>%
+  group_by(community) %>%
   summarise(n_species = length(unique(species)))
 ```
 
 *Bacillus_humi_DSM_16318* is the only species that only acts as a donor, all 49 other species are both donors and receivers.
 
 ```{r}
-coop_tb %>% 
-  group_by(species) %>% 
-  filter(all(fluxes > 0)) %>% 
-  pull(species) %>% 
+coop_tb %>%
+  group_by(species) %>%
+  filter(all(fluxes > 0)) %>%
+  pull(species) %>%
   unique()
 ```
 
@@ -58,13 +58,13 @@ coop_tb %>%
 Create `MiCo` objects from the data. 
 
 ```{r}
-coop <- 
-  coop_tb %>% 
-  mutate(species = as.character(species)) %>% 
-  nest(.by = community) %>% 
-  pull(data) %>% 
-  setNames(unique(coop_tb$community)) %>% 
-  imap(~newMiCo(data = .x, name = .y))
+coop <-
+  coop_tb %>%
+  mutate(species = as.character(species)) %>%
+  nest(.by = community) %>%
+  pull(data) %>%
+  setNames(unique(coop_tb$community)) %>%
+  imap(~ newMiCo(data = .x, name = .y))
 ```
 
 Create an alignment of all cooperative communities.
@@ -86,8 +86,8 @@ comp_tb <- readr::read_csv(comp_url)
 ```{r}
 glimpse(comp_tb)
 
-comp_tb %>% 
-  group_by(community) %>% 
+comp_tb %>%
+  group_by(community) %>%
   summarise(n_species = length(unique(species)))
 ```
 
@@ -96,13 +96,13 @@ comp_tb %>%
 Create `MiCo` objects from the data. 
 
 ```{r}
-comp <- 
-  comp_tb %>% 
-  rename(metabolites = "compound", fluxes = "flux") %>% 
-  nest(.by = community) %>% 
-  pull(data) %>% 
-  setNames(unique(comp_tb$community)) %>% 
-  imap(~newMiCo(data = .x, name = .y))
+comp <-
+  comp_tb %>%
+  rename(metabolites = "compound", fluxes = "flux") %>%
+  nest(.by = community) %>%
+  pull(data) %>%
+  setNames(unique(comp_tb$community)) %>%
+  imap(~ newMiCo(data = .x, name = .y))
 ```
 
 Create an alignment of all competitive communities.
@@ -143,7 +143,8 @@ We can use the `compareAlignments` function to compare the alignments and find v
 ```{r}
 gg <- compareAlignments(
   coop_alig, comp_alig,
-  names = c("cooperative", "competitive"))
+  names = c("cooperative", "competitive")
+)
 gg
 ```
 

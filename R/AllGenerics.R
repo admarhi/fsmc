@@ -7,7 +7,7 @@ setGeneric("getSpecies", function(object) {
 
 #' Get Metabolites
 #'
-#' @param object a \code{MicrobiomeFunction} or 
+#' @param object a \code{MicrobiomeFunction} or
 #' \code{MicrobiomeFunctionAlignment} object
 #'
 #' @return A character vector representing the metabolites.
@@ -29,7 +29,7 @@ setGeneric("getEdges", function(object) {
 #' Get the Community
 #'
 #' Returns the community of a single \code{MicrobiomeFunction} object in a \
-#' tibble format or a list of communities in tibble format for 
+#' tibble format or a list of communities in tibble format for
 #' \code{MicrobiomeFunctionAlignment} objects.
 #'
 #' @export
@@ -44,4 +44,3 @@ setGeneric("getEdges", function(object) {
 setGeneric("getCo", function(object) {
   standardGeneric("getCo")
 })
-

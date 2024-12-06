@@ -20,7 +20,6 @@ compareAlignments <- function(
     se = FALSE,
     min_frac = NULL,
     max_frac = NULL) {
-
   if (is.null(min_frac)) min_frac <- 0
   if (is.null(max_frac)) max_frac <- 1
 
@@ -29,9 +28,9 @@ compareAlignments <- function(
   rxns_per_level <- purrr::map2_df(alig_list, names, .rxnsPerLevel)
 
   tb <- tibble::tibble(
-      alignment = names,
-      n_comms = unlist(lapply(alig_list, function(x) length(x@Communities)))
-    ) %>%
+    alignment = names,
+    n_comms = unlist(lapply(alig_list, function(x) length(x@Communities)))
+  ) %>%
     dplyr::left_join(rxns_per_level, by = "alignment") %>%
     dplyr::mutate(
       frac = .data$level / .data$n_comms
@@ -39,16 +38,18 @@ compareAlignments <- function(
     dplyr::filter(
       .data$level > 1 &
         .data$frac > {{ min_frac }} &
-        .data$frac < {{ max_frac }})
+        .data$frac < {{ max_frac }}
+    )
 
   gg <- tb %>%
     ggplot2::ggplot(ggplot2::aes(
       x = .data$frac,
       y = .data$rxns,
       color = .data$alignment,
-      fill = .data$alignment)) +
+      fill = .data$alignment
+    )) +
     ggplot2::scale_x_continuous(
-      limits = c(min_frac, max_frac), expand = c(0,0.02)
+      limits = c(min_frac, max_frac), expand = c(0, 0.02)
     ) +
     ggplot2::labs(
       x = "Fraction Aligned Communities",
@@ -79,10 +80,9 @@ compareAlignments <- function(
 #'
 #' @return A tibble with levels and count of reaction
 .rxnsPerLevel <- function(object, name) {
-
-  levels = object@Alignment$levels
+  levels <- object@Alignment$levels
   mat <- object@Alignment$levels_mat
-  rxns <- purrr::map_dbl(levels, ~sum(mat >= .x))
+  rxns <- purrr::map_dbl(levels, ~ sum(mat >= .x))
 
   tibble::tibble(
     level = levels,

@@ -21,12 +21,12 @@ setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
   max <- unique(max(x$levels))
   x$levels <- x$levels_mat <- NULL
   aligned_rxns <- x %>%
-    purrr::keep(~.x$count == max) %>%
+    purrr::keep(~ .x$count == max) %>%
     names()
 
   if (length(aligned_rxns) > 5) aligned_rxns <- c(aligned_rxns[1:5], "...")
-  
-  max_score <- object@Score %>% 
+
+  max_score <- object@Score %>%
     dplyr::slice_max(.data$score)
 
   stringr::str_glue(
@@ -37,5 +37,3 @@ setMethod("show", "MicrobiomeFunctionAlignment", function(object) {
     "- Breadth at max. identity: {paste(round(max_score$breadth, 4), collapse = ', ')}\n\n"
   ) %>% cat()
 })
-
-

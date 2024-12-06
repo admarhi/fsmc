@@ -1,20 +1,19 @@
-# Save individual microbiomes with their name and bin mat 
+# Save individual microbiomes with their name and bin mat
 # Store the metadata in a tibble containing all info
 
 #' @title Alignment of \code{MicrobiomeFunction} objects
-#' 
-#' @param ... A minimum of two \code{Microbiome Function} objects. 
+#'
+#' @param ... A minimum of two \code{Microbiome Function} objects.
 #' @param name Character scaler specifying a name or ID for the Alignment
 #' @export
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 MicrobiomeFunctionAlignment <- function(
-  ..., 
-  name = NULL,
-  min_rxn = 1,
-  min_mb = 2,
-  pairwise = FALSE
-) {
+    ...,
+    name = NULL,
+    min_rxn = 1,
+    min_mb = 2,
+    pairwise = FALSE) {
   if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
     coms <- list(...)[[1]]
   } else {
@@ -57,7 +56,7 @@ MicrobiomeFunctionAlignment <- function(
   )
 
   .MicrobiomeFunctionAlignment(
-    tse, 
+    tse,
     Name = name,
     Alignment = alignment,
     Score = score,

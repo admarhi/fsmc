@@ -9,7 +9,6 @@
 #' @examples
 #' ###
 plotAlignmentNetwork <- function(object, frac) {
-
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@Alignment$levels_mat
   max_weight <- length(object@Communities)
@@ -20,7 +19,8 @@ plotAlignmentNetwork <- function(object, frac) {
   g <- igraph::graph_from_adjacency_matrix(
     levels_mat,
     mode = "directed",
-    weighted = TRUE)
+    weighted = TRUE
+  )
 
   # Identify isolated vertices (those with degree 0)
   isolated_vertices <- igraph::V(g)[igraph::degree(g) == 0]
@@ -38,7 +38,8 @@ plotAlignmentNetwork <- function(object, frac) {
     edge.curved = 0.5,
     vertex.label.color = "black",
     vertex.color = "lightblue",
-    main = glue::glue("Microbial Community Alignment"))
+    main = glue::glue("Microbial Community Alignment")
+  )
 
   invisible(g)
 }

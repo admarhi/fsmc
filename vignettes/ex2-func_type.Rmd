@@ -34,28 +34,28 @@ facilitation <- c("E3M17", "D2R05", "E3R18")
 ```{r}
 ft_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/misosoup/func_type.csv"
 
-ft_tb <- 
-  read_csv(ft_url) %>% 
-  group_by(func_type, substrate, focal_strain) %>% 
-  filter(solution <= 2) %>% 
+ft_tb <-
+  read_csv(ft_url) %>%
+  group_by(func_type, substrate, focal_strain) %>%
+  filter(solution <= 2) %>%
   ungroup() %>%
-  nest(.by = c("func_type", "substrate", "focal_strain", "solution")) %>% 
+  nest(.by = c("func_type", "substrate", "focal_strain", "solution")) %>%
   mutate(name = paste(substrate, focal_strain, solution, sep = "_"))
 ```
 
 ```{r}
-selection_tb <- ft_tb %>% 
+selection_tb <- ft_tb %>%
   filter(func_type == "selection")
 
-selection <- 
-  set_names(selection_tb$data, selection_tb$name) %>% 
+selection <-
+  set_names(selection_tb$data, selection_tb$name) %>%
   imap(newMiCo)
 
-facilitation_tb <- ft_tb %>% 
+facilitation_tb <- ft_tb %>%
   filter(func_type == "facilitation")
 
-facilitation <- 
-  set_names(facilitation_tb$data, facilitation_tb$name) %>% 
+facilitation <-
+  set_names(facilitation_tb$data, facilitation_tb$name) %>%
   imap(newMiCo)
 ```
 

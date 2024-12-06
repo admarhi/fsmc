@@ -5,14 +5,13 @@
 #' @return A list containing the alignment data.
 #' @importFrom MultiAssayExperiment assays
 .multipleAlignment <- function(coms) {
-  
   # Get all unique metabolites
   mets <- unique(unlist(lapply(coms, getMet)))
 
   # Init the level matrix
   levels_mat <- matrix(
-    data = 0, 
-    nrow = length(mets), 
+    data = 0,
+    nrow = length(mets),
     ncol = length(mets),
     dimnames = list(mets, mets)
   )
@@ -45,7 +44,7 @@
           levels_mat[m1, m2] <- al[[edge]]$count <- al[[edge]]$count + 1
 
           ### Benefit of having the matrix in addition to hash?
-          
+
           # Add the community name to communities hash
           al[[edge]]$communities[[co]] <- hash::hash()
           ### Retrieve all additional relevant data

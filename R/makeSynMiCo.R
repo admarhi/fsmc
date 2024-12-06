@@ -23,13 +23,12 @@ makeSynMiCo <- function(
     seed = FALSE,
     dead_ends = FALSE,
     MiCo = TRUE) {
-
   r_names <- function(n = 5000) {
     a <- do.call(paste0, replicate(3, sample(LETTERS, n, TRUE), FALSE))
     paste0(a, sprintf("%03d", sample(9999, n, TRUE)), sample(LETTERS, n, TRUE))
   }
 
-  species_names <- r_names(n_species*scale_fac)
+  species_names <- r_names(n_species * scale_fac)
   met_vec <- paste0("met", 1:max_met)
 
   if (!seed) seed <- sample(1:1000, 1)
@@ -61,15 +60,17 @@ makeSynMiCo <- function(
   community <- tibble::tibble(
     species = species,
     metabolites = mets,
-    fluxes = fluxes)
+    fluxes = fluxes
+  )
 
-  if (!MiCo) return(community)
+  if (!MiCo) {
+    return(community)
+  }
 
   newMiCo(
     species = species,
     metabolites = mets,
     fluxes = fluxes,
-    name = name)
+    name = name
+  )
 }
-
-

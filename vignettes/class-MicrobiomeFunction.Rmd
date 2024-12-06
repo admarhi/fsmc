@@ -34,7 +34,7 @@ To create an object of type `MiCo`, the user must input the data listed below. T
 ```{r}
 s <- c("RQR9693L", "RQR9693L", "RQR9693L", "RQR9693L", "MEV1152G", "MEV1152G", "MEV1152G", "XIQ2234Q", "XIQ2234Q", "XIQ2234Q")
 m <- c("met3", "met1", "met4", "met4", "met3", "met2", "met2", "met3", "met4", "met1")
-f <- c(-0.3023640,  0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769,  0.6027292)
+f <- c(-0.3023640, 0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769, 0.6027292)
 
 newMiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
 ```

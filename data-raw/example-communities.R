@@ -26,9 +26,10 @@ usethis::use_data(ac_A3R04_1, overwrite = TRUE)
 
 misosoup <- list()
 for (f in fs::dir_ls("inst/extdata/misosoup")) {
-  name <- f %>% fs::path_file() %>% fs::path_ext_remove()
+  name <- f %>%
+    fs::path_file() %>%
+    fs::path_ext_remove()
   tb <- read.csv(f) %>% tibble::as_tibble()
   misosoup[[name]] <- tb
 }
 usethis::use_data(misosoup, overwrite = TRUE)
-

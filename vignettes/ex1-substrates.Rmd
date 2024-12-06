@@ -46,14 +46,14 @@ Given the size of the data set it is not provided with the package but hosted in
 ```{r load-data}
 sbs_url <- "https://raw.githubusercontent.com/admarhi/fsmc-data/main/misosoup/substrate.csv"
 
-sbs_tb <- 
+sbs_tb <-
   read_csv(sbs_url) %>%
-  rename(met = "metabolite") %>% 
-  group_by(substrate, focal_strain) %>% 
-  filter(solution <= 5) %>% 
-  ungroup() %>% 
-  nest(.by = c("substrate", "focal_strain", "solution")) %>% 
-  mutate(name = paste(substrate, focal_strain, solution, sep = "_")) %>% 
+  rename(met = "metabolite") %>%
+  group_by(substrate, focal_strain) %>%
+  filter(solution <= 5) %>%
+  ungroup() %>%
+  nest(.by = c("substrate", "focal_strain", "solution")) %>%
+  mutate(name = paste(substrate, focal_strain, solution, sep = "_")) %>%
   select("name", "data")
 ```
 
@@ -68,15 +68,15 @@ sbs_list <- set_names(sbs_tb$data, sbs_tb$name)
 As the first two letters of each list entry name correspond to the substrate on which the microbiome was simulated we can use this to easily filter and then apply the `MicrobiomeFunction` constructor with the `imap` function from `purrr` which maps names and contents of a list to another function. 
 
 ```{r create-MiCo}
-ac <- 
+ac <-
   keep(sbs_list, str_starts(names(sbs_list), "ac")) %>%
   imap(MicrobiomeFunction)
 
-cit <- 
-  keep(sbs_list, str_starts(names(sbs_list), "cit")) %>% 
+cit <-
+  keep(sbs_list, str_starts(names(sbs_list), "cit")) %>%
   imap(MicrobiomeFunction)
 
-f6p <- 
+f6p <-
   keep(sbs_list, str_starts(names(sbs_list), "f6p")) %>%
   imap(MicrobiomeFunction)
 ```
