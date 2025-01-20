@@ -11,7 +11,10 @@
 #' @param name Character string giving the desired name of the community.
 #'
 #' @return List with `n_co` number of communities.
+#' 
 #' @export
+#' 
+#' @importFrom tibble tibble
 #'
 #' @examples
 #' makeSynMiCo("Ex. Community", n_species = 5, max_met = 10)
@@ -67,10 +70,12 @@ makeSynMiCo <- function(
     return(community)
   }
 
-  newMiCo(
-    species = species,
-    metabolites = mets,
-    fluxes = fluxes,
+  MicrobiomeFunction(
+    data = tibble(
+      species = species,
+      met = mets,
+      flux = fluxes
+    ),
     name = name
   )
 }
