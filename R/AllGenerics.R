@@ -1,9 +1,7 @@
 #' Return Species in a Microbiome
 #'
 #' @export
-setGeneric("getSpecies", function(object) {
-  standardGeneric("getSpecies")
-})
+setGeneric("getSpecies", function(object) standardGeneric("getSpecies"))
 
 #' Get Metabolites
 #'
@@ -12,9 +10,7 @@ setGeneric("getSpecies", function(object) {
 #'
 #' @return A character vector representing the metabolites.
 #' @export
-setGeneric("getMet", function(object) {
-  standardGeneric("getMet")
-})
+setGeneric("getMet", function(object) standardGeneric("getMet"))
 
 #' Get Edges From a \code{MicrobiomeFunction} Object
 #'
@@ -22,9 +18,7 @@ setGeneric("getMet", function(object) {
 #'
 #' @return A list of edges in the community.
 #' @export
-setGeneric("getEdges", function(object) {
-  standardGeneric("getEdges")
-})
+setGeneric("getEdges", function(object) standardGeneric("getEdges"))
 
 #' Get the Community
 #'
@@ -41,6 +35,4 @@ setGeneric("getEdges", function(object) {
 #'
 #' getCo(c1)
 #' getCo(a)
-setGeneric("getCo", function(object) {
-  standardGeneric("getCo")
-})
+setGeneric("getCo", function(object) standardGeneric("getCo"))
