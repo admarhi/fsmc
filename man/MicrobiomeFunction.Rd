@@ -5,7 +5,14 @@
 \title{Functional Microbiome Representation based on
 \code{TreeSummarizedExperiment}}
 \usage{
-MicrobiomeFunction(data, name, ...)
+MicrobiomeFunction(
+  data,
+  name = NA_character_,
+  species_col = "species",
+  metabolite_col = "met",
+  flux_col = "flux",
+  ...
+)
 }
 \arguments{
 \item{data}{a DataFrame-like object that includes columns specfiying
@@ -13,6 +20,15 @@ the species, metabolites and fluxes in the microbiome. The fluxes can
 either be weighted or unweighted (all of magnitude 1).}
 
 \item{name}{a \code{character scalar} specifying the name of the Microbiome}
+
+\item{species_col}{Character scalar specfiying the name of the species
+column, defaults to 'spec'.}
+
+\item{metabolite_col}{Character scalar specifying the name of the metabolite
+column, defaults to 'met'.}
+
+\item{flux_col}{Character scalar specifying the name of the flux column,
+defaults to 'flux'.}
 }
 \description{
 Functional Microbiome Representation based on

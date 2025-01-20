@@ -28,12 +28,14 @@ tb <- tibble::tribble(
   "m1", "m2", 1, "s1",
   "m2", "m3", 1, "s2",
   "m3", "m4", 1, "s3",
-  "m4", "m1", 1, "s4")
+  "m4", "m1", 1, "s4"
+)
 
 pivotMiCo(
-    tb = tb,
-    species = "species",
-    from = "uptake",
-    to = "secretion",
-    flux = "flux")
+  tb = tb,
+  species = "species",
+  from = "uptake",
+  to = "secretion",
+  flux = "flux"
+)
 }

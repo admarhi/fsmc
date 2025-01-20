@@ -23,7 +23,7 @@ A character vector representing the microorganisms.
 \description{
 Return Species in a Microbiome
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
 \item \code{getSpecies(MicrobiomeFunction)}: Return Species in a Microbiome
 

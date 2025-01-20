@@ -6,7 +6,7 @@
 \usage{
 MicrobiomeFunctionAlignment(
   ...,
-  name = NA,
+  name = NA_character_,
   min_rxn = 1,
   min_mb = 2,
   pairwise = FALSE

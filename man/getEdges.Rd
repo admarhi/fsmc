@@ -18,7 +18,7 @@ A list of edges in the community.
 \description{
 Get Edges From a \code{MicrobiomeFunction} Object
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
 \item \code{getEdges(MicrobiomeFunction)}: Get Edges From a \code{MicrobiomeFunction} Object
 

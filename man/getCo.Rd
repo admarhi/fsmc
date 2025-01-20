@@ -20,7 +20,7 @@ Returns the community of a single \code{MicrobiomeFunction} object in a \
 tibble format or a list of communities in tibble format for
 \code{MicrobiomeFunctionAlignment} objects.
 }
-\section{Functions}{
+\section{Methods (by class)}{
 \itemize{
 \item \code{getCo(MicrobiomeFunction)}: Get the Community
 
