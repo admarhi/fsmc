@@ -28,7 +28,7 @@ test2 <- cit_A1R12_1%>%
     met = metabolites
   )
 
-x <- MicrobiomeFunction(test, "test")
+x <- MicrobiomeFunction(test1, "test")
 y <- MicrobiomeFunction(test2, "test2")
 
 plot(x@Graphs[[1]])
@@ -38,11 +38,11 @@ plot(y)
 
 o <- MicrobiomeFunctionAlignment(x, y, name = "test_alignment")
 assay(o)
-plotAlignmentNetwork(o)
+plotAlignmentNetwork(o, 0.8)
 
 x@Metabolites
 getMet(x)
-getMet(y)
+getMet(y, x)
 getMet(o)
 x@Metabolites
 
@@ -87,3 +87,11 @@ for (i in seq(nrow(test3))) {
 
   mat[row, col] <- mat[row, col] + 1
 }
+
+
+microbenchmark::microbenchmark(
+  MicrobiomeFunction(test0, "test")
+)
+
+# Results 19.01.2025
+# MicrobiomeFunction(test0, "test") 103.6132 111.7186 118.8462 115.9255 123.3139 180.822   100

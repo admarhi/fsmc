@@ -4,8 +4,8 @@ c1 <- ac_A1R12_1 %>%
     names_from = metabolites, 
     values_from = fluxes)
 
-c2 <- 
-readr::read_csv("/Users/amh/project_repos/fsmc/dev/TFM/cooccurrence_clean/competitive.csv") %>% 
+c2 <-
+  readr::read_csv("dev/archive/TFM/cooccurrence_clean/competitive_old.csv") %>% 
   dplyr::filter(community == "comp_0") %>% 
   tidyr::pivot_wider(
     id_cols = species,
@@ -14,11 +14,12 @@ readr::read_csv("/Users/amh/project_repos/fsmc/dev/TFM/cooccurrence_clean/compet
   )
 
 
-coop <- readr::read_csv("dev/TFM/cooccurrence_clean/cooperative_raw.csv") %>% 
+coop <- 
+  readr::read_csv("dev/archive/TFM/cooccurrence_clean/cooperative_raw.csv") |> 
   dplyr::rename(
     to = "receiver",
     from = "donor"
-  ) %>% 
+  ) |> 
   dplyr::mutate(
     compound = stringr::str_remove_all(.data$compound, "^M_|_e$"),
     community = stringr::str_replace(
