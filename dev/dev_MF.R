@@ -95,3 +95,44 @@ microbenchmark::microbenchmark(
 
 # Results 19.01.2025
 # MicrobiomeFunction(test0, "test") 103.6132 111.7186 118.8462 115.9255 123.3139 180.822   100
+
+
+coop <- 
+  readr::read_csv("dev/archive/TFM/cooccurrence_clean/cooperative_raw.csv") |> 
+  dplyr::rename(
+    to = "receiver",
+    from = "donor"
+  ) |> 
+  dplyr::mutate(
+    compound = stringr::str_remove_all(.data$compound, "^M_|_e$"),
+    community = stringr::str_replace(
+      .data$community, "rq_subsample", "coop")
+  ) 
+
+
+coop1 <- coop |> 
+  filter(community == "coop_1") |> 
+  select(to, from, compound, smetana) |> 
+  tidyr::pivot_longer(cols = c(to, from)) |> 
+  rename(
+    met = compound,
+    flux = smetana,
+    species = value
+  ) |> 
+  mutate(flux = if_else(name == "to", flux * -1, flux)) 
+
+old_coop1 <- findEdges(coop1)
+
+microbenchmark::microbenchmark(
+  findEdges(coop1)
+)
+
+# findEdges(coop1) 3.456772 3.793705 4.340301 4.027832 4.656197 7.81123   100
+
+oldMF_coop <- MicrobiomeFunction(coop1)
+
+microbenchmark::microbenchmark(
+  MicrobiomeFunction(coop1)
+)
+
+# MicrobiomeFunction(coop1) 134.38 143.0807 153.4163 147.8342 158.5333 233.8846   100

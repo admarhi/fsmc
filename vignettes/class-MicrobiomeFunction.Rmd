@@ -16,11 +16,14 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(fsmc)
+library(tibble)
 ```
 
 ## \code{MicrobiomeFunction} Class
 
 The `MicrobiomeFunction` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community.
+
+1. Create unnamed matrix and save metabolite names to col/row data
 
 ## Creation from data
 
@@ -32,11 +35,14 @@ To create an object of type `MiCo`, the user must input the data listed below. T
 - `name`: Character string giving the name of the community.
 
 ```{r}
-s <- c("RQR9693L", "RQR9693L", "RQR9693L", "RQR9693L", "MEV1152G", "MEV1152G", "MEV1152G", "XIQ2234Q", "XIQ2234Q", "XIQ2234Q")
-m <- c("met3", "met1", "met4", "met4", "met3", "met2", "met2", "met3", "met4", "met1")
-f <- c(-0.3023640, 0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769, 0.6027292)
+data <- tibble::tibble(
+  species = c("RQR9693L", "RQR9693L", "RQR9693L", "RQR9693L", "MEV1152G", "MEV1152G", "MEV1152G", "XIQ2234Q", "XIQ2234Q", "XIQ2234Q"),
+  met = c("met3", "met1", "met4", "met4", "met3", "met2", "met2", "met3", "met4", "met1"),
+  flux = c(-0.3023640, 0.5344641, -2.2337716, 3.3063823, 2.5520278, 0.3388498, -1.8460633, -1.3043675, -0.4788769, 0.6027292)
 
-newMiCo(species = s, metabolites = m, fluxes = f, name = "example_MiCo")
+)
+
+MicrobiomeFunction(data, name = "example_MiCo")
 ```
 
 `fsmc` provides the function `syn_community()` to generate random `MiCo` objects based on user parameters. 

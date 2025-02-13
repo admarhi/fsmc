@@ -2,6 +2,7 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom dplyr select
 #' @importFrom magrittr %>%
 #' @importFrom methods show
 #' @importFrom MultiAssayExperiment assays

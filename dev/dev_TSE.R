@@ -49,9 +49,9 @@ m1 * m2
 
 # Basic mia functionality -----------------------------------------------------------
 data("GlobalPatterns", package="mia")
-tse <- mia::GlobalPatterns
+tse <- GlobalPatterns
 
-mia::colTree(tse)
-mia::rowTree(tse)
-mia::rowLinks(tse)
-mia::metadata(tse)
+TreeSummarizedExperiment::colTree(tse)
+TreeSummarizedExperiment::rowTree(tse)
+TreeSummarizedExperiment::rowLinks(tse)
+metadata(tse)

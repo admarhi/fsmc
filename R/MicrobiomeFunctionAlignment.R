@@ -10,7 +10,7 @@
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 MicrobiomeFunctionAlignment <- function(
     ...,
-    name = NULL,
+    name = NA_character_,
     min_rxn = 1,
     min_mb = 2,
     pairwise = FALSE) {
@@ -20,13 +20,10 @@ MicrobiomeFunctionAlignment <- function(
     coms <- list(...)
   }
 
-  # Check that all list entries are MiCo objects
+  # Check that all list entries are MF objects
   stopifnot(exprs = {
     all(lapply(coms, class) == "MicrobiomeFunction")
   })
-
-  # Set empty string as name if not provided
-  if (is.null(name)) name <- ""
 
   # Name the communities
   names(coms) <- sapply(coms, function(x) x@Name)

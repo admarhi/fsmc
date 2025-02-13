@@ -13,6 +13,10 @@
 #' @examples
 #' findEdges(ac_A1R12_1)
 findEdges <- function(tb) {
+
+  ### This should be turned into an on-demand functino that is only called when
+  ### we need info on a specific edge. Calling it by default is very expensive.
+
   stopifnot(exprs = {
     all(c("species", "met", "flux") %in% names(tb))
   })
@@ -39,6 +43,7 @@ findEdges <- function(tb) {
   for (s in species) {
     metabolites_in <- unique(tb$met[tb$species == s & tb$flux < 0])
     metabolites_out <- unique(tb$met[tb$species == s & tb$flux > 0])
+    
     species_from <- vector()
     species_to <- vector()
     for (m in metabolites_in) {
@@ -47,6 +52,8 @@ findEdges <- function(tb) {
     for (m in metabolites_out) {
       species_to <- c(species_to, met_hash[[m]]$consumers)
     }
+
+
     species_hash[[s]] <- hash::hash(from = species_from, to = species_to)
   }
 
