@@ -1,0 +1,52 @@
+---
+title: "ToDo"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ToDo}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(fsmc)
+```
+
+# `fsmc` ToDo
+
+## Improvements
+- add fluxes to species edges
+- Add warning if there are unexpected values in the diagonal (!=0)
+- Throw insightful error when input wrong for MF
+
+
+## New Methods
+- Build and document the visualisation method for the alignment
+- Function to identify critical/overlapping pathways 
+- Create a wrapper function around MicrobiomeFunction that allows for easy import from relevant sources, including: SBML (Cobra CarveMe) JSON (COMETS, Escher) YAML (Misosoup). This needs to: accept factor variables for species and metabolite, allow for flexible variable naming, generate community name if missing
+- Write set functions for all slots
+- Write output methods to different formats
+
+
+## General Ideas
+- Can performance be improved by switching to use a databases?
+- Reread hypergraph paper and consider implications
+
+
+## Documentation
+- Document the different types of input data from various sources such as FLYCOP, MisoSoup, etc.
+  - What are the differences in the formats?
+  - How can each be imported into fsmc?
+  - Do standard formats exist?
+  - Which formats should fsmc support in the future?
+  - What does data from carvme look like? How does it differ from Misosoup/Flycop
+
+
+## Long Term
+- Chemical substitution score for metabolites
