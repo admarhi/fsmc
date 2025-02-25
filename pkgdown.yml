@@ -1,16 +1,13 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
-  class-MiCo: class-MiCo.html
-  class-MiCoAl: class-MiCoAl.html
-  classes: classes.html
-  Conventions: Conventions.html
-  ex1-substrates: ex1-substrates.html
-  ex2-func_type: ex2-func_type.html
-  ex3-cooccurrence: ex3-cooccurrence.html
-  scoring-algorithm: scoring-algorithm.html
-last_built: 2024-09-09T17:01Z
+  algorithms: algorithms.html
+  class-MicrobiomeFunction: class-MicrobiomeFunction.html
+  class-MicrobiomeFunctionAlignment: class-MicrobiomeFunctionAlignment.html
+  class-MicrobiomeFunctionSet: class-MicrobiomeFunctionSet.html
+  ToDo: ToDo.html
+last_built: 2025-02-25T03:30Z
 urls:
   reference: https://admarhi.github.io/fsmc/reference
   article: https://admarhi.github.io/fsmc/articles
