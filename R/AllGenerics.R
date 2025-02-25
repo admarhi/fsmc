@@ -27,12 +27,4 @@ setGeneric("getEdges", function(object) standardGeneric("getEdges"))
 #' \code{MicrobiomeFunctionAlignment} objects.
 #'
 #' @export
-#'
-#' @examples
-#' c1 <- newMiCo(ac_A1R12_1)
-#' c2 <- newMiCo(ac_A1R12_2)
-#' a <- newMiCoAl(c1, c2)
-#'
-#' getCo(c1)
-#' getCo(a)
 setGeneric("getCo", function(object) standardGeneric("getCo"))

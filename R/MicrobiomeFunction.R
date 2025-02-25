@@ -11,6 +11,7 @@
 #' column, defaults to 'met'.
 #' @param flux_col Character scalar specifying the name of the flux column,
 #' defaults to 'flux'.
+#' @param ... Additional arguments to be passed to the constructor.
 #'
 #' @export
 #'

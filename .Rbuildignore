@@ -13,3 +13,4 @@ vignettes/func_sim.Rmd
 ^\.github$
 ^doc$
 ^Meta$
+.lintr*

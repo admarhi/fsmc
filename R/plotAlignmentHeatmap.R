@@ -5,9 +5,6 @@
 #'
 #' @return A ggplot heatmap
 #' @export
-#'
-#' @examples
-#' ###
 plotAlignmentHeatmap <- function(object, frac) {
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@Alignment$levels_mat

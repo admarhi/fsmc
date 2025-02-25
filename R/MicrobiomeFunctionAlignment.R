@@ -4,16 +4,22 @@
 #' @title Alignment of \code{MicrobiomeFunction} objects
 #'
 #' @param ... A minimum of two \code{Microbiome Function} objects.
-#' @param name Character scaler specifying a name or ID for the Alignment
+#' @param name Character scaler specifying a name or ID for the Alignment.
+#' @param min_rxn Numeric scalar giving the minimum fraction of reactions.
+#' @param min_mb Numeric scalar giving the minimum fraction of microbiomes.
+#' @param pairwise Boolean scalar to toggle pairwise / multiple alignment.
+#'
 #' @export
+#'
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 MicrobiomeFunctionAlignment <- function(
-    ...,
-    name = NA_character_,
-    min_rxn = 1,
-    min_mb = 2,
-    pairwise = FALSE) {
+  ...,
+  name = NA_character_,
+  min_rxn = 1,
+  min_mb = 2,
+  pairwise = FALSE
+) {
   if (length(list(...)) == 1 && is.list(list(...)[[1]])) {
     coms <- list(...)[[1]]
   } else {
@@ -52,7 +58,7 @@ MicrobiomeFunctionAlignment <- function(
     assays = list(Levels = alignment$levels_mat)
   )
 
-  .MicrobiomeFunctionAlignment(
+  newMicrobiomeFunctionAlignment(
     tse,
     Name = name,
     Alignment = alignment,

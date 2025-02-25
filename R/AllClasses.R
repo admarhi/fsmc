@@ -1,4 +1,4 @@
-#' @export
+#' @noRd
 #' @import methods
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
 newMicrobiomeFunction <- setClass(
@@ -14,7 +14,7 @@ newMicrobiomeFunction <- setClass(
   )
 )
 
-#' @export
+#' @noRd
 #' @import methods
 newMicrobiomeFunctionSet <- setClass(
   Class = "MicrobiomeFunctionSet",
@@ -32,7 +32,7 @@ newMicrobiomeFunctionSet <- setClass(
   )
 )
 
-#' @export
+#' @noRd
 #' @import methods
 #' @importClassesFrom TreeSummarizedExperiment TreeSummarizedExperiment
 newMicrobiomeFunctionAlignment <- setClass(
@@ -40,7 +40,7 @@ newMicrobiomeFunctionAlignment <- setClass(
   contains = "TreeSummarizedExperiment",
   slots = list(
     Name = "character",
-    Alignment = "hash",
+    Alignment = "list",
     Communities = "list",
     Score = "data.frame"
   )

@@ -24,14 +24,14 @@
 #'   "m4", "m1", 1, "s4"
 #' )
 #'
-#' pivotMiCo(
+#' pivotMF(
 #'   tb = tb,
 #'   species = "species",
 #'   from = "uptake",
 #'   to = "secretion",
 #'   flux = "flux"
 #' )
-pivotMiCo <- function(tb, species, from, to, flux) {
+pivotMF <- function(tb, species, from, to, flux) {
   tb %>%
     pivot_longer(cols = c(from, to)) %>%
     rename(

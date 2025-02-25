@@ -5,9 +5,6 @@
 #'
 #' @return An igraph network
 #' @export
-#'
-#' @examples
-#' ###
 plotAlignmentNetwork <- function(object, frac) {
   # Filter the adjacency matrix for desired levels for visualization.
   levels_mat <- object@Alignment$levels_mat
