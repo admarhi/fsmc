@@ -17,6 +17,3 @@ A ggplot heatmap
 \description{
 MiCoAl Heatmap
 }
-\examples{
-###
-}

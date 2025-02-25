@@ -17,6 +17,3 @@ An igraph network
 \description{
 MiCoAl Network Plot
 }
-\examples{
-###
-}

@@ -15,7 +15,13 @@ MicrobiomeFunctionAlignment(
 \arguments{
 \item{...}{A minimum of two \code{Microbiome Function} objects.}
 
-\item{name}{Character scaler specifying a name or ID for the Alignment}
+\item{name}{Character scaler specifying a name or ID for the Alignment.}
+
+\item{min_rxn}{Numeric scalar giving the minimum fraction of reactions.}
+
+\item{min_mb}{Numeric scalar giving the minimum fraction of microbiomes.}
+
+\item{pairwise}{Boolean scalar to toggle pairwise / multiple alignment.}
 }
 \description{
 Alignment of \code{MicrobiomeFunction} objects

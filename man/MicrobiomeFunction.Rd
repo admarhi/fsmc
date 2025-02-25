@@ -19,7 +19,7 @@ MicrobiomeFunction(
 the species, metabolites and fluxes in the microbiome. The fluxes can
 either be weighted or unweighted (all of magnitude 1).}
 
-\item{name}{a \code{character scalar} specifying the name of the Microbiome}
+\item{name}{a character scalar specifying the name of the Microbiome}
 
 \item{species_col}{Character scalar specfiying the name of the species
 column, defaults to 'spec'.}
@@ -29,6 +29,8 @@ column, defaults to 'met'.}
 
 \item{flux_col}{Character scalar specifying the name of the flux column,
 defaults to 'flux'.}
+
+\item{...}{Additional arguments to be passed to the constructor.}
 }
 \description{
 Functional Microbiome Representation based on

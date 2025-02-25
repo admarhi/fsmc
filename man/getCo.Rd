@@ -25,11 +25,3 @@ tibble format or a list of communities in tibble format for
 \item \code{getCo(MicrobiomeFunction)}: Get the Community
 
 }}
-\examples{
-c1 <- newMiCo(ac_A1R12_1)
-c2 <- newMiCo(ac_A1R12_2)
-a <- newMiCoAl(c1, c2)
-
-getCo(c1)
-getCo(a)
-}

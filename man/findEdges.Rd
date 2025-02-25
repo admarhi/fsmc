@@ -19,5 +19,5 @@ list with two hashs, one giving the edges between metabolites and the other
 between species.
 }
 \examples{
-findEdges(ac_A1R12_1)
+# findEdges(ac_A1R12_1)
 }

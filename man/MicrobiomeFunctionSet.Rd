@@ -7,6 +7,8 @@
 MicrobiomeFunctionSet(..., name = NA_character_)
 }
 \arguments{
+\item{...}{Lists or individual \code{MicrobiomeFunction} objects.}
+
 \item{name}{Character scalar giving the name of the set.}
 }
 \description{
