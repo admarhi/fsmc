@@ -4,46 +4,52 @@
 #' @param data a DataFrame-like object that includes columns specfiying
 #' the species, metabolites and fluxes in the microbiome. The fluxes can
 #' either be weighted or unweighted (all of magnitude 1).
-#' @param name a \code{character scalar} specifying the name of the Microbiome
-#' @param species_col Character scalar specfiying the name of the species 
+#' @param name a character scalar specifying the name of the Microbiome
+#' @param species_col Character scalar specfiying the name of the species
 #' column, defaults to 'spec'.
 #' @param metabolite_col Character scalar specifying the name of the metabolite
 #' column, defaults to 'met'.
-#' @param flux_col Character scalar specifying the name of the flux column, 
+#' @param flux_col Character scalar specifying the name of the flux column,
 #' defaults to 'flux'.
 #'
 #' @export
-#' 
+#'
 #' @importFrom SummarizedExperiment metadata<-
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom tibble tibble
 #' @importFrom dplyr filter
 MicrobiomeFunction <- function(
-  data, 
+  data,
   name = NA_character_,
   species_col = "species",
   metabolite_col = "met",
   flux_col = "flux",
   ...
 ) {
-
   ### Include checkfor all columns and use str_detect
   ### Build the renaming of the columns
 
+  data <- data |>
+    dplyr::rename(
+      species = {{ species_col }},
+      met = {{ metabolite_col }},
+      flux = {{ flux_col }}
+    )
+
   stopifnot(exprs = {
-    all(c(species_col, metabolite_col, flux_col) %in% names(data))
+    all(c("species", "met", "flux") %in% names(data))
   })
 
   # Determine whether or not the fluxes are weighted or not
   weighted <- !all(data$flux**2 == 1)
 
-  # edges <- findEdges(data)
-  
+  edges <- findEdges(data)
+
   # Get metabolites
   all_met <- sort(unique(data$met))
   con_met <- sort(unique(data$met[data$flux < 0]))
   pro_met <- sort(unique(data$met[data$flux > 0]))
-  
+
   # Set row and col data
   row_data <- col_data <- tibble(metabolite = all_met)
 
@@ -51,15 +57,14 @@ MicrobiomeFunction <- function(
   bin_mat <- matrix(rep(0, length(all_met)**2), nrow = length(all_met))
   n_edges <- bin_mat
 
-  ### Recode the data to facilitate the 
+  ### Recode the data to facilitate the
 
-  
   for (c in seq(all_met)) {
     if (!all_met[c] %in% con_met) next
     consumers <- edges$met_edges[[all_met[c]]]$consumers
 
     for (p in seq(all_met)) {
-      if (!all_met[p] %in% produced) next
+      if (!all_met[p] %in% pro_met) next
       producers <- edges$met_edges[[all_met[p]]]$producers
       curr_edges <- intersect(producers, consumers)
       if (length(curr_edges) == 0) next
@@ -96,7 +101,6 @@ MicrobiomeFunction <- function(
 
   # rownames(assays$Binary) <- all_met
   # colnames(assays$Binary) <- all_met
-  
 
   tse <- TreeSummarizedExperiment(
     assays = assays,
@@ -104,10 +108,12 @@ MicrobiomeFunction <- function(
     colData = col_data
   )
 
-  graphs <- list(igraph::graph_from_adjacency_matrix(
-    adjmatrix = bin_mat,
-    mode = "directed"
-  ))
+  graphs <- list(
+    igraph::graph_from_adjacency_matrix(
+      adjmatrix = bin_mat,
+      mode = "directed"
+    )
+  )
 
   newMicrobiomeFunction(
     tse,

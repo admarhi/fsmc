@@ -24,15 +24,25 @@ getCo(test0)
 plot(test0)
 
 
-a <- MicrobiomeFunction(sbs_list$ac_A1R12_1, "ac")
-c <- MicrobiomeFunction(sbs_list$cit_A1R12_1, "cit")
-f <- MicrobiomeFunction(sbs_list$f6p_A3R04_3, "f6p")
+ac <- MicrobiomeFunction(
+  misosoup$ac_A1R12_1, "ac", metabolite_col = "metabolites", flux_col = "fluxes"
+)
+cit <- MicrobiomeFunction(
+  misosoup$cit_A1R12_1, "cit", metabolite_col = "metabolites", flux_col = "fluxes"
+)
+f6p <- MicrobiomeFunction(
+  misosoup$f6p_B3M02_1, "f6p", metabolite_col = "metabolites", flux_col = "fluxes"
+)
 
-a
-c
-f
+ac
+cit
+f6p
 
-alignment1 <- MicrobiomeFunctionAlignment(a, c, f, name = "Alignment Test")
+plot(ac)
+plot(cit)
+plot(f6p)
+
+alignment1 <- MicrobiomeFunctionAlignment(ac, cit, f6p, name = "Alignment Test")
 alignment1
 
 plotAlignmentHeatmap(alignment1, 0.8)
