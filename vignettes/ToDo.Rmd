@@ -1,8 +1,8 @@
 ---
-title: "ToDo"
+title: "Roadmap"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{ToDo}
+  %\VignetteIndexEntry{Roadmap}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,35 +18,80 @@ knitr::opts_chunk$set(
 library(fsmc)
 ```
 
-# `fsmc` ToDo
+# `fsmc` Roadmap
 
 ## Improvements
-- add fluxes to species edges
-- Add warning if there are unexpected values in the diagonal (!=0)
-- Throw insightful error when input wrong for MF
-
+- [ ] add fluxes to species edges
+- [ ] Add warning if there are unexpected values in the diagonal (!=0)
+- [ ] Throw insightful error when input wrong for MF
 
 ## New Methods
-- Build and document the visualisation method for the alignment
-- Function to identify critical/overlapping pathways 
-- Create a wrapper function around MicrobiomeFunction that allows for easy import from relevant sources, including: SBML (Cobra CarveMe) JSON (COMETS, Escher) YAML (Misosoup). This needs to: accept factor variables for species and metabolite, allow for flexible variable naming, generate community name if missing
-- Write set functions for all slots
-- Write output methods to different formats
+- [ ] Build and document the visualisation method for the alignment
+- [ ] Function to identify critical/overlapping pathways 
+- [ ] Create a wrapper function around MicrobiomeFunction that allows for easy import from relevant sources, including: SBML (Cobra CarveMe) JSON (COMETS, Escher) YAML (Misosoup). This needs to: accept factor variables for species and metabolite, allow for flexible variable naming, generate community name if missing
+- [ ] Write set functions for all slots
+- [ ] Write output methods to different formats
 
+## Visualisation
+### `MicrobiomeFunction`
+- [ ] Graph Plotting method
+- [ ] Plotting functions for EDA with info on the different metabolites/reactions
+### `MicrobiomeFunctionSet`
+- [ ] Plotting functions for EDA with info on the different communities
+### `MicrobiomeFunctionAlignment`
+- [ ] how to visualise the alignment? Read over the cooccurrence paper again and see which plotting solutions from them might make sense.
+
+## Methods - EDA
+
+### `MicrobiomeFunction`
+- [ ] accessor method for produced/consumed by a species, should be implementation of getMet with additional arg = "consumed"/"produced" and additional one for species.
+- [ ] calculate effective fluxes
+- [ ] find longest pathway
+- [ ] methods for common graph metrics
+### `MicrobiomeFunctionSet`
+- [ ] Same as for MF object, but additional argument "community" to select one within the set.
+- [ ] show method includes number of communities, average/min/max size in terms of taxonomy and metabolites
+### `MicrobiomeFunctionAlignment`
+- [ ] show levels of alignment
+- [ ] Compare connected vs unconnected alignment
+- [ ] get scores of different alignment
+- [ ] get alignments including certain species or metabolites
+
+
+## Alignment Methods
+- [ ] Make the methods quicker by not including alignments that are under the cut off limit
+- [ ] write a search function that either takes an MF object or the name of an MF object in an MFS to search the closest relative to.
+- [ ] Toggle connected and disconnected alignment
+- [ ] Improve speed
+- [ ] Warning if aligning MF with same ID
+- [ ] minimum flux of production is what is used in the alignment
+- [ ] Percent Identity (improve speed )
+- [ ] return (dis-) connected modules
+- [ ] connectedness of the alignment (as compared to the connectedness of all reactions?)
+- [ ] centrality for each edge in the alignment
+- [ ] make the method so that it takes a min number of reactions to be in the alignment, same argument for threshold cutoff as with the depth
+- [ ] if an alignment is not completley connected, evaluate the connectedness of each level of alignment.
+- [ ] pairwise vs multiple alignment?
+- [ ] Return metric on the average length of the reactions in the alignment?
+- [ ] peripheral vs central communities in the alignment? This would have to be solved with making a big graph of all communities and then giving each node groups for the communities it's in. Then for each group the average centrality would be a good measure.
+- [ ] How would we introduce gaps into the alignment? This could be most easily done by introducing placeholder metabolites/species. What is the best way to go about this? Matrix multiplication or graph representation?
+- [ ] introduce option to align with or without gaps with an argument `gaps = TRUE/FALSE`
+- [ ] What is the maximum connected breadth that we can achieve with a set of communities? --> This is what gaps will be most useful for.
 
 ## General Ideas
-- Can performance be improved by switching to use a databases?
-- Reread hypergraph paper and consider implications
+- [ ] Can performance be improved by switching to use a databases?
+- [ ] Reread hypergraph paper and consider implications
 
 
 ## Documentation
-- Document the different types of input data from various sources such as FLYCOP, MisoSoup, etc.
-  - What are the differences in the formats?
-  - How can each be imported into fsmc?
-  - Do standard formats exist?
-  - Which formats should fsmc support in the future?
-  - What does data from carvme look like? How does it differ from Misosoup/Flycop
+- [ ] Document the different types of input data from various sources such as FLYCOP, MisoSoup, etc.
+- [ ] What are the differences in the formats?
+- [ ] How can each be imported into fsmc?
+- [ ] Do standard formats exist?
+- [ ] Which formats should fsmc support in the future?
+- [ ] What does data from carvme look like? How does it differ from Misosoup/Flycop
 
 
 ## Long Term
-- Chemical substitution score for metabolites
+- [ ] Chemical substitution score for metabolites
+- [ ] `clusterMet` method to do the clustering of the metabolites and get an overview over how similar the metabolites in the community are.

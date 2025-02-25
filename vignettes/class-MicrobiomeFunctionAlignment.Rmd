@@ -20,6 +20,16 @@ library(fsmc)
 
 # Microbial Community Alignment Class
 
+- Clarify how the Alignment is represented primarily. Will it also be a TSE object?
+- Could use the assays to store each alignment, this would allow for quick calculation of the depth and breadth as well.
+- Decide on metrics to include in the alignment
+- in how many communities is any given species?
+- How to go about the multiscale entropy?
+- How do we maximise for community overlap in the alignment?
+- What happens if we have completley disconnected grpahs? how do we align with and without gaps?
+- To what extent should the alignment be interactive?
+
+
 - Takes a number of `MicrobiomeFunction` objects as input (? list or ...) and an additional argument to specify if a pairwise alignment of the communities is desired. 
 - The default is to align all communities against each other
 - if `pairwise = TRUE` all unique pairwise combinations are aligned. 

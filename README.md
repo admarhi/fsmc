@@ -20,3 +20,9 @@ pak::pkg_install("admarhi/fsmc")
 # or
 devtools::install_github("admarhi/fsmc")
 ```
+
+## Conventions
+
+[Bioconductor style
+guide](https://contributions.bioconductor.org/r-code.html#r-code) -
+Classes: `UpperCamelCase` - Methods and functions: `lowerCamelCase`

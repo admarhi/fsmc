@@ -21,12 +21,53 @@ library(tibble)
 
 ## \code{MicrobiomeFunction} Class
 
-The `MicrobiomeFunction` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community.
+# MF - MicrobiomeFunction
 
+`MicrobiomeFunction` (MF) objects build the backbone of the `fsmc` functionality by providing a novel approach to the representation of microbial consortia from a functional perspective. This is one of the three main object types of fsmc. The `MicrobiomeFunction` class serves as the standard way to save and work with data on the metabolism, the function, of a microbial community.
+
+## Content
+Upon the creation of a `MicrobiomeFunction` class based on a three column input, additional information is calculated:
+
+- graph representation of the network in MiCo object with data from the different matrices as weights
+- If the graph is purely directional, disable the calculations for other than bin_mat
+- how can we define optimised / generalist / robust consortia?
+- Which metrics to have in the object?
+- Tanimoto?
+- MES score (relationship between consumption and production of metabolites)
+- SCS, MUS, MPS, MIP/MRO, SMETANA
+- species
+- metabolites
+- fluxes
+- edges
+- binary matrix
+- flux matrix 
+- name
+- flux_consumption
+- flux_production
+- effective_flux_consumption
+- effective_flux_production
+
+Each of these slots is described in the `MicrobiomeFunction-class()` class documentation.
+
+## Validation
+- unkown metabolites in the database for ChemmineR
+- 0 fluxes in the input data
+- correct column names
+- Need a function that calcs the phylo tree for the metabolites
+- Return output on the different issues with the input data
+
+## Logic
 1. Create unnamed matrix and save metabolite names to col/row data
 
-## Creation from data
 
+## Available Methods 
+- `getCo()`: Returns the community in tibble format.
+- `getSpecies()`: Retrieves the species from a community.
+- `getMet()`: Retrieves metabolites from a community.
+- `getFlux()`: Retrieves the fluxes from a community.
+- `getEdges()`: Retrieves the edges from a community.
+
+## Examples
 To create an object of type `MiCo`, the user must input the data listed below. This data can either be contained in a single tibble or data frame, saved in a CSV file, or input as separate vectors.
 
 - `species`: A character vector specifying the species present in the community.
@@ -42,13 +83,13 @@ data <- tibble::tibble(
 
 )
 
-MicrobiomeFunction(data, name = "example_MiCo")
+# MicrobiomeFunction(data, name = "example_MiCo")
 ```
 
 `fsmc` provides the function `syn_community()` to generate random `MiCo` objects based on user parameters. 
 
 ```{r}
-makeSynMiCo(n_species = 8, max_met = 10, name = "example_syn_MiCo")
+# makeSynMiCo(n_species = 8, max_met = 10, name = "example_syn_MiCo")
 ```
 
 ## Create a MiCo Object from a tibble
@@ -56,29 +97,8 @@ makeSynMiCo(n_species = 8, max_met = 10, name = "example_syn_MiCo")
 
 The `MiCo` function can take either a path to a .csv file or a data frame/tibble as input.
 
-## Contents
-
-Upon the creation of a `MicrobiomeFunction` class based on a three column input, additional information is calculated:
-
-- species
-- metabolites
-- fluxes
-- edges
-- binary matrix
-- flux matrix 
-- name
-- flux_consumption
-- flux_production
-- effective_flux_consumption
-- effective_flux_production
-
-Each of these slots is described in the `MicrobiomeFunction-class()` class documentation.
 
 
-## Methods 
-- `getCo()`: Returns the community in tibble format.
-- `getSpecies()`: Retrieves the species from a community.
-- `getMet()`: Retrieves metabolites from a community.
-- `getFlux()`: Retrieves the fluxes from a community.
-- `getEdges()`: Retrieves the edges from a community.
+
+
 
