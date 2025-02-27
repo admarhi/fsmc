@@ -16,6 +16,7 @@ Imports:
     hash,
     igraph,
     magrittr,
+    Matrix,
     methods,
     MultiAssayExperiment,
     purrr,
